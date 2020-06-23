@@ -1,0 +1,48 @@
+[
+    {
+        "id": 0,
+        "tipo": "TERRENO",
+        "renderComp": {
+            "simbolo": "\"",
+            "colorSimbolo": "#44ab60ff",
+            "colorFondo": "#358849ff"
+        },
+        "nombreComp": {
+            "nombre": "grass floor"
+        }
+    },
+    {
+        "id": 1,
+        "tipo": "ACTOR",
+        "renderComp": {
+            "simbolo": "g",
+            "colorSimbolo": "#ad70c4ff"
+        },
+        "nombreComp": {
+            "nombre": "goblin"
+        }
+    },
+    {
+        "tipo": "ACTOR",
+        "nombreComp": {
+            "nombre": "player"
+        },
+        "renderComp": {
+            "simbolo": "@",
+            "colorSimbolo": "#ffffff"
+        },
+        "id": 2
+    },
+    {
+        "tipo": "TERRENO",
+        "nombreComp": {
+            "nombre": "stone wall"
+        },
+        "renderComp": {
+            "simbolo": "#",
+            "colorSimbolo": "#a5ccee",
+            "colorFondo": "#80a4a8ff"
+        },
+        "id": 3
+    }
+]

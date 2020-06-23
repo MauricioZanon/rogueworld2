@@ -1,22 +1,30 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
+import MainScreen from '@/vistas/menuprincipal/MainScreen.vue';
+import GameScreen from '@/vistas/gamescreen/GameScreen.vue';
+import CreadorEntidades from '@/vistas/creadorentidades/CreadorEntidades.vue';
 
 Vue.use(VueRouter)
 
-  const routes: Array<RouteConfig> = [
+const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'MainScreen',
+    component: MainScreen
+  },
+  // {
+  // 	path: '*',
+  // 	redirect: '/'
+  // },
+  {
+    path: '/game-screen',
+    name: 'GameScreen',
+    component: GameScreen
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/creador-entidades',
+    name: 'CreadorEntidades',
+    component: CreadorEntidades
   }
 ]
 
