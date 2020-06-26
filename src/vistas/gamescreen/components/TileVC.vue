@@ -10,7 +10,7 @@ import Tile from "@/mapa/Tile"
 import entities from "@/entities/entities";
 
 @Component
-export default class TileVueComp extends Vue {
+export default class TileVC extends Vue {
 	@Prop()
 	tile: Tile;
 	@Prop()

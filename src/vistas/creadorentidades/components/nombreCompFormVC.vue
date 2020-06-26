@@ -11,7 +11,7 @@ import Entidad from "@/entities/Entidad";
 import ValidacionComponente from "./../ValidacionComponente";
 
 @Component
-export default class NombreCompForm extends Vue {
+export default class NombreCompFormVC extends Vue {
 	@Prop()
 	nombreComp: NombreComp;
 

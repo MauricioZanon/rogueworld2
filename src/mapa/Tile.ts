@@ -11,32 +11,15 @@ export default class Tile {
     }
 
     getSimbolo(): string {
-        if (this.actor) {
-            return this.actor.renderComp.simbolo;
-        }
-        else if (this.items.length) {
-            return this.items[0].renderComp.simbolo;
-        }
-        else if (this.terreno) {
-            return this.terreno.renderComp.simbolo;
-        }
-        return "¿";
+        return this.actor?.renderComp.simbolo || this.items[0]?.renderComp.simbolo || this.terreno.renderComp.simbolo || "¿";
     }
 
     getColorSimbolo(): string {
-        if (this.actor) {
-            return this.actor.renderComp.colorSimbolo;
-        }
-        else if (this.items.length) {
-            return this.items[0].renderComp.colorSimbolo;
-        }
-        else if (this.terreno) {
-            return this.terreno.renderComp.colorSimbolo;
-        }
+        return this.actor?.renderComp.colorSimbolo || this.items[0]?.renderComp.colorSimbolo || this.terreno.renderComp.colorSimbolo || "#ffffff";
     }
 
     getColorFondo(): string {
-        return this.terreno?.renderComp?.colorFondo;
+        return this.terreno.renderComp.colorFondo;
     }
 
     toString(): string {

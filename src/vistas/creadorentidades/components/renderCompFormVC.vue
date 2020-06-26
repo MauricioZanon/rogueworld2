@@ -27,7 +27,7 @@ import Entidad from "@/entities/Entidad";
 import RenderComp from "@/entities/componentes-de-entidades/RenderComp";
 
 @Component
-export default class RenderCompForm extends Vue {
+export default class RenderCompFormVC extends Vue {
 	@Prop()
 	renderComp: RenderComp;
 

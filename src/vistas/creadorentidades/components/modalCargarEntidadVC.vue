@@ -64,7 +64,7 @@ import { Tipos } from "@/entities/Tipos";
 		}
 	}
 })
-export default class ModalCargarEntidad extends Vue {
+export default class ModalCargarEntidadVC extends Vue {
 	@Prop()
 	entidades: Entidad[]
 

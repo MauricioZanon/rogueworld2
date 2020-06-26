@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import MainScreen from '@/vistas/menuprincipal/MainScreen.vue';
-import GameScreen from '@/vistas/gamescreen/GameScreen.vue';
-import CreadorEntidades from '@/vistas/creadorentidades/CreadorEntidades.vue';
+import MainScreenVC from '@/vistas/menuprincipal/MainScreenVC.vue';
+import GameScreenVC from '@/vistas/gamescreen/GameScreenVC.vue';
+import CreadorEntidadesVC from '@/vistas/creadorentidades/CreadorEntidadesVC.vue';
 
 Vue.use(VueRouter)
 
@@ -10,7 +10,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'MainScreen',
-    component: MainScreen
+    component: MainScreenVC
   },
   // {
   // 	path: '*',
@@ -19,12 +19,12 @@ const routes: Array<RouteConfig> = [
   {
     path: '/game-screen',
     name: 'GameScreen',
-    component: GameScreen
+    component: GameScreenVC
   },
   {
     path: '/creador-entidades',
     name: 'CreadorEntidades',
-    component: CreadorEntidades
+    component: CreadorEntidadesVC
   }
 ]
 

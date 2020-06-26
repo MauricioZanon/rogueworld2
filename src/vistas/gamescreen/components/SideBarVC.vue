@@ -8,8 +8,8 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class SideBar extends Vue {
-};
+export default class SideBarVC extends Vue {
+}
 </script>
 
 <style scoped>

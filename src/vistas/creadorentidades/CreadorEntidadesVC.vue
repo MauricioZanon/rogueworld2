@@ -8,22 +8,22 @@
 			<option v-for="tipo in tipos" :value="tipo" :key="tipo">{{tipo}}</option>
 		</select>
 		<hr />
-		<nombre-comp-form @agregarValidacion="agregarValidacion" :nombreComp="nombreComp"></nombre-comp-form>
+		<NombreCompFormVC @agregarValidacion="agregarValidacion" :nombreComp="nombreComp"></NombreCompFormVC>
 		<hr />
-		<input type="checkbox" name="" id="" v-model="tieneRenderComp"> Is rendered?
+		<input type="checkbox" name id v-model="tieneRenderComp" /> Is rendered?
 		<div v-if="tieneRenderComp || entidad.renderComp">
-			<render-comp-form :renderComp="renderComp"></render-comp-form>
+			<RenderCompFormVC :renderComp="renderComp"></RenderCompFormVC>
 		</div>
-		<hr>
+		<hr />
 		<button class="boton-guardar" @click="guardarEntidades">Guardar</button>
 		<router-link :to="{name: 'MenuPrincipal'}">
 			<button class="boton-salir">Salir</button>
 		</router-link>
-		<modal-cargar-entidad
+		<ModalCargarEntidadVC
 			@cargarEntidad="cargarEntidad"
 			ref="modal-cargar-entidad"
 			:entidades="entidades"
-		></modal-cargar-entidad>
+		></ModalCargarEntidadVC>
 	</div>
 </template>
 
@@ -32,9 +32,9 @@ import { Component, Watch, Vue } from 'vue-property-decorator';
 import RenderComp from "@/entities/componentes-de-entidades/RenderComp";
 import Entidad from "@/entities/Entidad";
 import { Tipos } from "@/entities/Tipos";
-import nombreCompForm from "./components/nombreCompForm.vue"
-import renderCompForm from "./components/renderCompForm.vue"
-import modalCargarEntidad from "./components/modalCargarEntidad.vue"
+import NombreCompFormVC from "./components/nombreCompFormVC.vue"
+import RenderCompFormVC from "./components/renderCompFormVC.vue"
+import ModalCargarEntidadVC from "./components/modalCargarEntidadVC.vue"
 import NombreComp from "@/entities/componentes-de-entidades/NombreComp";
 import ValidacionComponente from "./ValidacionComponente";
 
@@ -43,12 +43,12 @@ const fs = window.require("electron").remote.require("fs");
 
 @Component({
 	components: {
-		nombreCompForm,
-		renderCompForm,
-		modalCargarEntidad
+		NombreCompFormVC,
+		RenderCompFormVC,
+		ModalCargarEntidadVC
 	}
 })
-export default class CreadorEntidades extends Vue {
+export default class CreadorEntidadesVC extends Vue {
 	entidades: Entidad[] = [];
 	entidad: Entidad = {} as Entidad;
 	tipos = [] as Tipos[];

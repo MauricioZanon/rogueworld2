@@ -1,12 +1,7 @@
 <template>
 	<div class="player-view">
 		<div v-for="(columna, indexCol) in mapa" :key="indexCol">
-			<tile-vue-comp
-				v-for="(tile, indexRow) in columna"
-				:key="indexRow"
-				:tile="tile"
-				:tamaño="tamañoTile"
-			></tile-vue-comp>
+			<TileVC v-for="(tile, indexRow) in columna" :key="indexRow" :tile="tile" :tamaño="tamañoTile"></TileVC>
 		</div>
 	</div>
 </template>
@@ -15,14 +10,14 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Mapa from "@/mapa/Mapa";
 import Tile from "@/mapa/Tile";
-import TileVueComp from "./TileVueComp.vue";
+import TileVC from "./TileVC.vue";
 
 @Component({
 	components: {
-		TileVueComp
+		TileVC
 	}
 })
-export default class PlayerView extends Vue {
+export default class PlayerViewVC extends Vue {
 	mapa = [] as Tile[][];
 	tamañoTile: number;
 
