@@ -52,8 +52,8 @@
 
 <script lang="ts">
 import { Component, Emit, Prop, Watch, Vue } from 'vue-property-decorator';
-import Entidad from "@/entities/Entidad";
-import { Tipos } from "@/entities/Tipos";
+import Entidad from "@/entidades/Entidad";
+import { Tipos } from "@/entidades/Tipos";
 
 @Component({
 	filters: {

@@ -44,5 +44,17 @@
             "colorFondo": "#80a4a8ff"
         },
         "id": 3
+    },
+    {
+        "tipo": "TERRENO",
+        "nombreComp": {
+            "nombre": "dirt floor"
+        },
+        "renderComp": {
+            "simbolo": ".",
+            "colorSimbolo": "#c1a250",
+            "colorFondo": "#9c8340ff"
+        },
+        "id": 4
     }
 ]

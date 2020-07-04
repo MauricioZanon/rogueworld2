@@ -17,6 +17,7 @@
     "core-js": "^3.6.5",
     "electron": "^9.0.4",
     "fast-clone": "^1.5.13",
+    "fast-random": "^2.0.4",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^8.5.0",

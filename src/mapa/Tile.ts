@@ -1,4 +1,4 @@
-import Entidad from '@/entities/Entidad';
+import Entidad from '@/entidades/Entidad';
 
 export default class Tile {
     posicion: [number, number, number];

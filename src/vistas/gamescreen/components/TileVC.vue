@@ -7,7 +7,6 @@
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 import Tile from "@/mapa/Tile"
-import entities from "@/entities/entities";
 
 @Component
 export default class TileVC extends Vue {

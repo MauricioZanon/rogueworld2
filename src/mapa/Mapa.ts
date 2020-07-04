@@ -1,7 +1,7 @@
 import Tile from './Tile';
-import entities from '@/entities/entities';
+import EntidadFactory from '@/entidades/EntidadFactory';
 
-const tamaño = 33;
+const TAMAÑO_CHUNK = 25;
 
 export default class Mapa {
 
@@ -9,18 +9,18 @@ export default class Mapa {
 
     constructor() {
         this.array = [];
-        for (let i = 0; i < tamaño; i++) {
+        for (let i = 0; i < TAMAÑO_CHUNK; i++) {
             this.array[i] = [];
-            for (let j = 0; j < tamaño; j++) {
+            for (let j = 0; j < TAMAÑO_CHUNK; j++) {
                 const nuevoTile = new Tile([i, j, 0]);
-                nuevoTile.terreno = entities.obtenerEntidad("grass floor");
+                nuevoTile.terreno = EntidadFactory.obtenerEntidad("dirt floor");
                 if ((i + j) % 7 == 0) {
-                    nuevoTile.actor = entities.obtenerEntidad("goblin");
+                    nuevoTile.actor = EntidadFactory.obtenerEntidad("goblin");
                 }
                 this.array[i][j] = nuevoTile;
             }
         }
-        this.array[16][16].actor = entities.obtenerEntidad("player");
+        this.array[16][16].actor = EntidadFactory.obtenerEntidad("player");
     }
 
 }

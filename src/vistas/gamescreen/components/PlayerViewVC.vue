@@ -11,6 +11,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import Mapa from "@/mapa/Mapa";
 import Tile from "@/mapa/Tile";
 import TileVC from "./TileVC.vue";
+import PlayerViewController from "../controllers/PlayerViewController"
 
 @Component({
 	components: {
@@ -24,6 +25,7 @@ export default class PlayerViewVC extends Vue {
 	mounted(): void {
 		this.mapa = new Mapa().array;
 		this.tamañoTile = 100 / this.mapa.length;
+		window.addEventListener("keypress", evento => PlayerViewController.resolverKeyPress(evento));
 	}
 
 }

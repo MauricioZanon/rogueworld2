@@ -29,13 +29,13 @@
 
 <script lang="ts">
 import { Component, Watch, Vue } from 'vue-property-decorator';
-import RenderComp from "@/entities/componentes-de-entidades/RenderComp";
-import Entidad from "@/entities/Entidad";
-import { Tipos } from "@/entities/Tipos";
+import RenderComp from "@/entidades/componentes-de-entidades/RenderComp";
+import Entidad from "@/entidades/Entidad";
+import { Tipos } from "@/entidades/Tipos";
 import NombreCompFormVC from "./components/nombreCompFormVC.vue"
 import RenderCompFormVC from "./components/renderCompFormVC.vue"
 import ModalCargarEntidadVC from "./components/modalCargarEntidadVC.vue"
-import NombreComp from "@/entities/componentes-de-entidades/NombreComp";
+import NombreComp from "@/entidades/componentes-de-entidades/NombreComp";
 import ValidacionComponente from "./ValidacionComponente";
 
 const pathArchivoEntidades = "./src/assets/entidades.json";

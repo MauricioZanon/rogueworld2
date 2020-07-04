@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import { Component, Emit, Prop, Watch, Vue } from 'vue-property-decorator';
-import NombreComp from "@/entities/componentes-de-entidades/NombreComp"
-import Entidad from "@/entities/Entidad";
+import NombreComp from "@/entidades/componentes-de-entidades/NombreComp"
+import Entidad from "@/entidades/Entidad";
 import ValidacionComponente from "./../ValidacionComponente";
 
 @Component

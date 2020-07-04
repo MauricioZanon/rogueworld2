@@ -23,8 +23,8 @@
 
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import Entidad from "@/entities/Entidad";
-import RenderComp from "@/entities/componentes-de-entidades/RenderComp";
+import Entidad from "@/entidades/Entidad";
+import RenderComp from "@/entidades/componentes-de-entidades/RenderComp";
 
 @Component
 export default class RenderCompFormVC extends Vue {
