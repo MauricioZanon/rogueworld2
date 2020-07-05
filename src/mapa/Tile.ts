@@ -4,22 +4,22 @@ export default class Tile {
     public posicion: [number, number, number];
     public terreno: Entidad;
     public items: Entidad[] = [];
-    public actor: Entidad;
+    public actor?: Entidad;
 
     public constructor(posicion: [number, number, number]) {
         this.posicion = posicion;
     }
 
     public getSimbolo(): string {
-        return this.actor.renderComp.simbolo || this.items[0]?.renderComp.simbolo || this.terreno.renderComp.simbolo || "¿";
+        return this.actor?.renderComp.simbolo || this.items[0]?.renderComp.simbolo || this.terreno?.renderComp.simbolo || "¿";
     }
 
     public getColorSimbolo(): string {
-        return this.actor.renderComp.colorSimbolo || this.items[0]?.renderComp.colorSimbolo || this.terreno.renderComp.colorSimbolo || "#ffffff";
+        return this.actor?.renderComp.colorSimbolo || this.items[0]?.renderComp.colorSimbolo || this.terreno?.renderComp.colorSimbolo || "#ffffff";
     }
 
     public getColorFondo(): string {
-        return this.terreno.renderComp.colorFondo;
+        return this.terreno?.renderComp.colorFondo || "#ffffff";
     }
 
     public toString(): string {

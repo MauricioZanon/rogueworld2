@@ -33,7 +33,6 @@ module.exports = {
         "@typescript-eslint/no-namespace": "off",
         "@typescript-eslint/prefer-namespace-keyword": "off",
         "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
-        "@typescript-eslint/no-unnecessary-condition": ["error", {"allowConstantLoopConditions": true}],
         "@typescript-eslint/no-unnecessary-type-assertion": "warn",
         "@typescript-eslint/no-unused-vars-experimental": "warn",
         "@typescript-eslint/prefer-nullish-coalescing": "warn",
