@@ -51,14 +51,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Emit, Prop, Watch, Vue } from "vue-property-decorator";
 import Entidad from "@/entidades/Entidad";
 import { Tipos } from "@/entidades/Tipos";
 
 @Component({
 	filters: {
-		capitalize(value) {
-			if (!value) return ''
+		capitalize(value: string): string {
+			if (!value) return ""
 			value = value.toString()
 			return value.charAt(0).toUpperCase() + value.slice(1)
 		}
@@ -66,14 +66,14 @@ import { Tipos } from "@/entidades/Tipos";
 })
 export default class ModalCargarEntidadVC extends Vue {
 	@Prop()
-	entidades: Entidad[]
+	public readonly entidades: Entidad[]
 
-	actores: string[] = [];
-	items: string[] = [];
-	terrenos: string[] = [];
+	public readonly actores: string[] = [];
+	public readonly items: string[] = [];
+	public readonly terrenos: string[] = [];
 
 	@Watch("entidades")
-	organizarEntidades(): void {
+	public organizarEntidades(): void {
 		this.entidades.forEach(entidad => {
 			switch (entidad.tipo) {
 				case Tipos.ITEM:
@@ -89,7 +89,7 @@ export default class ModalCargarEntidadVC extends Vue {
 	}
 
 	@Emit("cargarEntidad")
-	cargarEntidad(nombre: string): string {
+	public cargarEntidad(nombre: string): string {
 		return nombre.toLowerCase();
 	}
 

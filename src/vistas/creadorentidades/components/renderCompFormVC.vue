@@ -22,43 +22,41 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import Entidad from "@/entidades/Entidad";
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import RenderComp from "@/entidades/componentes-de-entidades/RenderComp";
 
 @Component
 export default class RenderCompFormVC extends Vue {
 	@Prop()
-	renderComp: RenderComp;
+	private readonly renderComp: RenderComp;
 
-	simbolo = "";
-	colorSimbolo = "";
-	tieneColorFondo = false;
-	colorFondo = "";
-	opacidad = "0";
+	public simbolo = "";
+	public colorSimbolo = "";
+	public tieneColorFondo = false;
+	public colorFondo = "";
+	public opacidad = "0";
 
-	actualizarOpacidad(evt): void {
-		const nuevoValor = parseInt(evt.target.value);
+	public actualizarOpacidad(evt: InputEvent ): void {
+		const nuevoValor = parseInt(evt.data);
 		this.colorFondo = this.colorFondo.slice(0, 7).concat(nuevoValor.toString(16));
 	}
 
 	@Watch("renderComp")
-	actualizarInformacionDelForm(): void {
+	public actualizarInformacionDelForm(): void {
 		this.simbolo = this.renderComp.simbolo;
 		this.colorSimbolo = this.renderComp.colorSimbolo;
 		if(this.renderComp.colorFondo){
 			this.tieneColorFondo = true;
 			this.colorFondo = this.renderComp.colorFondo;
 			this.opacidad = parseInt(this.colorFondo.slice(7, 9), 16).toString(10);
-		}
-		else{
+		} else{
 			this.tieneColorFondo = false;
 			this.colorFondo = "";
 			this.opacidad = "0";
 		}
 	}
 
-	created(): void {
+	public created(): void {
 		this.actualizarInformacionDelForm()
 	}
 }

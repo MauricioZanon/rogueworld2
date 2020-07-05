@@ -1,13 +1,13 @@
-import Tile from './Tile';
-import EntidadFactory from '@/entidades/EntidadFactory';
+import Tile from "./Tile";
+import EntidadFactory from "@/entidades/EntidadFactory";
 
 const TAMAÑO_CHUNK = 25;
 
 export default class Mapa {
 
-    array: Tile[][];
+    public readonly array: Tile[][];
 
-    constructor() {
+    public constructor() {
         this.array = [];
         for (let i = 0; i < TAMAÑO_CHUNK; i++) {
             this.array[i] = [];

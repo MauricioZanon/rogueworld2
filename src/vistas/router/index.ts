@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
-import MainScreenVC from '@/vistas/menuprincipal/MainScreenVC.vue';
-import GameScreenVC from '@/vistas/gamescreen/GameScreenVC.vue';
-import CreadorEntidadesVC from '@/vistas/creadorentidades/CreadorEntidadesVC.vue';
+import Vue from "vue"
+import VueRouter, { RouteConfig } from "vue-router"
+import MainScreenVC from "@/vistas/menuprincipal/MainScreenVC.vue";
+import GameScreenVC from "@/vistas/gamescreen/GameScreenVC.vue";
+import CreadorEntidadesVC from "@/vistas/creadorentidades/CreadorEntidadesVC.vue";
 
 Vue.use(VueRouter)
 
-const routes: Array<RouteConfig> = [
+const routes: RouteConfig[] = [
   {
-    path: '/',
-    name: 'MainScreen',
+    path: "/",
+    name: "MainScreen",
     component: MainScreenVC
   },
   // {
@@ -17,19 +17,19 @@ const routes: Array<RouteConfig> = [
   // 	redirect: '/'
   // },
   {
-    path: '/game-screen',
-    name: 'GameScreen',
+    path: "/game-screen",
+    name: "GameScreen",
     component: GameScreenVC
   },
   {
-    path: '/creador-entidades',
-    name: 'CreadorEntidades',
+    path: "/creador-entidades",
+    name: "CreadorEntidades",
     component: CreadorEntidadesVC
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
 })

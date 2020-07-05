@@ -5,17 +5,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from "vue-property-decorator";
 import Tile from "@/mapa/Tile"
 
 @Component
 export default class TileVC extends Vue {
 	@Prop()
-	tile: Tile;
+	private readonly tile: Tile;
 	@Prop()
-	tamaño: number;
+	private readonly tamaño: number;
 
-	get estilado() {
+	public get estilado(): string {
 		return "color:" +
 			this.tile.getColorSimbolo() +
 			"; background-color: " +

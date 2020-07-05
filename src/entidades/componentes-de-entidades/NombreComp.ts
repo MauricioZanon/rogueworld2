@@ -1,7 +1,7 @@
-import Componente from './Componente';
+import Componente from "./Componente";
 
 export default class NombreComp implements Componente {
-    constructor(
+    public constructor(
         public nombre: string
         ) {}
 }

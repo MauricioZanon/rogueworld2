@@ -1,10 +1,10 @@
-import {Direcciones} from '@/mapa/Direcciones';
+import {Direcciones} from "@/mapa/Direcciones";
 import store from "@/store/store";
-import { Bump } from '@/entidades/acciones/Bump';
+import { Bump } from "@/entidades/acciones/Bump";
 
 export default class PlayerViewController {
 
-    static resolverKeyPress(evento: KeyboardEvent): void {
+    public static resolverKeyPress(evento: KeyboardEvent): void {
         console.log(evento);
         switch(evento.code) {
             case "Numpad4": Bump.ejecutar(store.state.player, Direcciones.OESTE);

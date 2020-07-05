@@ -1,8 +1,8 @@
 export default class ValidacionComponente {
-    nombreComponente: string;
-    componenteValido: boolean;
+    public nombreComponente: string;
+    public componenteValido: boolean;
 
-    constructor(nombreComponente: string, componenteValido: boolean) {
+    public constructor(nombreComponente: string, componenteValido: boolean) {
         this.nombreComponente = nombreComponente;
         this.componenteValido = componenteValido;
     }

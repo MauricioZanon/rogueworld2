@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Watch, Vue } from 'vue-property-decorator';
+import { Component, Watch, Vue } from "vue-property-decorator";
 import RenderComp from "@/entidades/componentes-de-entidades/RenderComp";
 import Entidad from "@/entidades/Entidad";
 import { Tipos } from "@/entidades/Tipos";
@@ -49,46 +49,45 @@ const fs = window.require("electron").remote.require("fs");
 	}
 })
 export default class CreadorEntidadesVC extends Vue {
-	entidades: Entidad[] = [];
-	entidad: Entidad = {} as Entidad;
-	tipos = [] as Tipos[];
-	tipo: Tipos = null;
-	nombreComp: NombreComp = {} as NombreComp;
-	tieneRenderComp = false;
-	renderComp: RenderComp = {} as RenderComp;
-	validaciones = new Map<string, boolean>();
+	public entidades: Entidad[] = [];
+	public entidad: Entidad = {} as Entidad;
+	public readonly tipos = [] as Tipos[];
+	public tipo: Tipos = null;
+	public nombreComp: NombreComp = {} as NombreComp;
+	public readonly tieneRenderComp = false;
+	public renderComp: RenderComp = {} as RenderComp;
+	public validaciones = new Map<string, boolean>();
 
-	mounted(): void {
+	public mounted(): void {
 		this.cargarEntidades();
 		this.tipos.push(Tipos.ACTOR);
 		this.tipos.push(Tipos.TERRENO);
 		this.tipos.push(Tipos.ITEM);
 	}
 
-	agregarValidacion(entryValidezComponente: ValidacionComponente): void {
+	public agregarValidacion(entryValidezComponente: ValidacionComponente): void {
 		this.validaciones[entryValidezComponente.nombreComponente] = entryValidezComponente.componenteValido;
 	}
 
-	cargarEntidad(nombre: string): void {
+	public cargarEntidad(nombre: string): void {
 		this.entidad = this.entidades.find(entidad => entidad.nombreComp.nombre === nombre);
 	}
 
-	cargarEntidades(): void {
-		fs.readFile(pathArchivoEntidades, (err, data) => {
+	public cargarEntidades(): void {
+		fs.readFile(pathArchivoEntidades, (err, data: Buffer) => {
 			if (err) {
 				console.log("Error al cargar las entidades");
 			} else {
-				this.entidades = JSON.parse(data);
+				this.entidades = JSON.parse(data.toString()) as Entidad[];
 			}
 		});
 	}
 
-	guardarEntidades(): void {
+	public guardarEntidades(): void {
 		if (this.entidadValida()) {
 			if (this.entidad.id >= 0) {
 				this.sobreescribirEntidadEnLista();
-			}
-			else {
+			} else {
 				this.agregarNuevaEntidadALaLista();
 			}
 			fs.writeFileSync(pathArchivoEntidades, JSON.stringify(this.entidades), err => {
@@ -101,7 +100,7 @@ export default class CreadorEntidadesVC extends Vue {
 		}
 	}
 
-	sobreescribirEntidadEnLista(): void {
+	public sobreescribirEntidadEnLista(): void {
 		for (let i = 0; i < this.entidades.length; i++) {
 			if (this.entidades[i].id == this.entidad.id) {
 				this.entidades[i] = this.entidad;
@@ -110,12 +109,12 @@ export default class CreadorEntidadesVC extends Vue {
 		}
 	}
 
-	agregarNuevaEntidadALaLista(): void {
+	public agregarNuevaEntidadALaLista(): void {
 		this.entidad.id = this.buscarIdSinUsar();
 		this.entidades.push(this.entidad);
 	}
 
-	buscarIdSinUsar(): number {
+	public buscarIdSinUsar(): number {
 		const ids = this.entidades.map(entidad => entidad.id);
 		let nuevoId = 1;
 		while (ids.includes(nuevoId)) {
@@ -124,8 +123,8 @@ export default class CreadorEntidadesVC extends Vue {
 		return nuevoId;
 	}
 
-	entidadValida(): boolean {
-		this.validaciones.forEach((compValido, nombreComp) => {
+	public entidadValida(): boolean {
+		this.validaciones.forEach(compValido => {
 			if (!compValido) {
 				return false;
 			}
@@ -134,14 +133,14 @@ export default class CreadorEntidadesVC extends Vue {
 	}
 
 	@Watch("entidad")
-	borrarValidaciones(): void {
+	public borrarValidaciones(): void {
 		this.tipo = this.entidad.tipo;
 		this.nombreComp = this.entidad.nombreComp;
 		this.renderComp = this.entidad.renderComp;
 		this.validaciones.clear();
 	}
 
-	crearNuevaEntidad(): void {
+	public crearNuevaEntidad(): void {
 		this.entidad = new Entidad();
 	}
 

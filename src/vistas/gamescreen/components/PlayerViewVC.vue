@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from "vue-property-decorator";
 import Mapa from "@/mapa/Mapa";
 import Tile from "@/mapa/Tile";
 import TileVC from "./TileVC.vue";
@@ -19,10 +19,10 @@ import PlayerViewController from "../controllers/PlayerViewController"
 	}
 })
 export default class PlayerViewVC extends Vue {
-	mapa = [] as Tile[][];
-	tamañoTile: number;
+	public mapa = [] as Tile[][];
+	public tamañoTile: number;
 
-	mounted(): void {
+	public mounted(): void {
 		this.mapa = new Mapa().array;
 		this.tamañoTile = 100 / this.mapa.length;
 		window.addEventListener("keypress", evento => PlayerViewController.resolverKeyPress(evento));

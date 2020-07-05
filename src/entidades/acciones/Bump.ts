@@ -1,5 +1,5 @@
-import Entidad from '../Entidad'
-import { Direccion } from '@/mapa/Direcciones'
+import Entidad from "../Entidad"
+import { Direccion } from "@/mapa/Direcciones"
 
 export module Bump {
     export function ejecutar(actor: Entidad, direccion: Direccion): void{

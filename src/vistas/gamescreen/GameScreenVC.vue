@@ -8,7 +8,7 @@
 <script lang="ts">
 import PlayerViewVC from "./components/PlayerViewVC.vue";
 import SideBarVC from "./components/SideBarVC.vue";
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from "vue-property-decorator";
 
 @Component({
 	components: {

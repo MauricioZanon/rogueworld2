@@ -1,2 +1,2 @@
-export default interface Componente {
+export default abstract class Componente {
 }

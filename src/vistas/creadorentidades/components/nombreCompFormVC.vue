@@ -5,20 +5,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Component, Emit, Prop, Watch, Vue } from "vue-property-decorator";
 import NombreComp from "@/entidades/componentes-de-entidades/NombreComp"
-import Entidad from "@/entidades/Entidad";
 import ValidacionComponente from "./../ValidacionComponente";
 
 @Component
 export default class NombreCompFormVC extends Vue {
 	@Prop()
-	nombreComp: NombreComp;
+	public nombreComp: NombreComp;
 
-	nombre = "";
-	componenteValido = false;
+	public nombre = "";
+	public componenteValido = false;
 
-	validar(): void {
+	public validar(): void {
 		this.componenteValido = this.nombre !== "";
 		this.agregarValidacion();
 
@@ -27,17 +26,17 @@ export default class NombreCompFormVC extends Vue {
 		}
 	}
 
-	actualizarComponente(): void {
+	public actualizarComponente(): void {
 		this.nombreComp.nombre = this.nombre
 	}
 
 	@Watch("nombreComp")
-	actualizarInformacionDelForm(): void {
+	public actualizarInformacionDelForm(): void {
 		this.nombre = this.nombreComp.nombre;
 	}
 
 	@Emit()
-	agregarValidacion(): ValidacionComponente {
+	private agregarValidacion(): ValidacionComponente {
 		return new ValidacionComponente("nombreComp", this.componenteValido);
 	}
 
