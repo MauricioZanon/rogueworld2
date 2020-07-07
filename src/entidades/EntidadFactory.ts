@@ -16,7 +16,6 @@ export default class EntidadFactory {
             } else {
                 const entidades: Entidad[] = JSON.parse(data.toString()) as Entidad[];
                 entidades.forEach(entidad => resultado.set(entidad.nombreComp.nombre, entidad))
-
             }
         });
         return resultado;

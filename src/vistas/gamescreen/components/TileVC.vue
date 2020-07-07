@@ -1,11 +1,11 @@
 <template>
 	<div data-toggle="tooltip" :title="tile.toString()" class="tile" :style="estilado">
-		<div class="ascii">{{ tile.getSimbolo() }}</div>
+		<div class="ascii">{{ simbolo }}</div>
 	</div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
 import Tile from "@/mapa/Tile"
 
 @Component
@@ -15,11 +15,23 @@ export default class TileVC extends Vue {
 	@Prop()
 	private readonly tamaño: number;
 
+	public get simbolo(): string {
+		return this.tile.actor?.renderComp.simbolo || this.tile.terreno.renderComp.simbolo || "¿";
+	}
+
+	public get colorSimbolo(): string {
+		 return this.tile.actor?.renderComp.colorSimbolo || this.tile.terreno?.renderComp.colorSimbolo || "#ffffff";
+	}
+
+	public get colorFondo(): string {
+		 return this.tile.terreno?.renderComp.colorFondo || "#ffffff";
+	}
+
 	public get estilado(): string {
 		return "color:" +
-			this.tile.getColorSimbolo() +
+			this.colorSimbolo +
 			"; background-color: " +
-			this.tile.getColorFondo() +
+			this.colorFondo +
 			"; width: " +
 			this.tamaño +
 			"vh;" +

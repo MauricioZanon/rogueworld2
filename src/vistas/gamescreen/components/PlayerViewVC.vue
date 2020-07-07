@@ -21,11 +21,13 @@ import PlayerViewController from "../controllers/PlayerViewController"
 export default class PlayerViewVC extends Vue {
 	public mapa = [] as Tile[][];
 	public tamañoTile: number;
+	public listener = (evento: KeyboardEvent): void => PlayerViewController.resolverKeyDown(evento);
 
 	public mounted(): void {
-		this.mapa = new Mapa().array;
+		this.mapa = Mapa.array;
 		this.tamañoTile = 100 / this.mapa.length;
-		window.addEventListener("keypress", evento => PlayerViewController.resolverKeyPress(evento));
+		window.removeEventListener("keydown", this.listener)
+		window.addEventListener("keydown", this.listener);
 	}
 
 }

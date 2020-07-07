@@ -4,7 +4,7 @@
         "tipo": "TERRENO",
         "renderComp": {
             "simbolo": "\"",
-            "colorSimbolo": "#44ab60ff",
+            "colorSimbolo": "#44ab60",
             "colorFondo": "#358849ff"
         },
         "nombreComp": {
@@ -16,7 +16,7 @@
         "tipo": "ACTOR",
         "renderComp": {
             "simbolo": "g",
-            "colorSimbolo": "#ad70c4ff"
+            "colorSimbolo": "#963955"
         },
         "nombreComp": {
             "nombre": "goblin"

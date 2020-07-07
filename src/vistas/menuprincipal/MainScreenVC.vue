@@ -1,8 +1,6 @@
 <template>
 	<div class="menu">
-		<router-link :to="{name: 'GameScreen'}">
-			<button class="boton boton-new-game">New game</button>
-		</router-link>
+		<button @click="comenzarNuevoJuego" class="boton boton-new-game">New game</button>
 		<button class="boton boton-load-game">Load game</button>
 		<router-link :to="{name: 'CreadorEntidades'}">
 			<button class="boton boton-creador-de-entidades">Entity creator</button>
@@ -13,9 +11,16 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import Mapa from "@/mapa/Mapa";
+import MapasFactory from "@/mapa/MapasFactory";
+import router from "@/vistas/router/index";
 
 @Component
 export default class MainScreenVC extends Vue {
+	public comenzarNuevoJuego(): void {
+		Mapa.inicializar();
+		router.push({name: "GameScreen"});
+	}
 }
 </script>
 

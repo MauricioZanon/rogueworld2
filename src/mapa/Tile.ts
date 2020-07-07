@@ -1,36 +1,51 @@
 import Entidad from "@/entidades/Entidad";
+import { Posicion } from "./Posicion";
+import { Tipos } from "@/entidades/Tipos";
 
 export default class Tile {
-    public posicion: [number, number, number];
-    public terreno: Entidad;
-    public items: Entidad[] = [];
-    public actor?: Entidad;
+    public readonly posicion: Posicion;
+    public terreno: Entidad = null;
+    public items: Set<Entidad> = new Set();
+    public actor?: Entidad = null;
 
-    public constructor(posicion: [number, number, number]) {
+    public constructor(posicion: Posicion) {
         this.posicion = posicion;
     }
 
-    public getSimbolo(): string {
-        return this.actor?.renderComp.simbolo || this.items[0]?.renderComp.simbolo || this.terreno?.renderComp.simbolo || "¿";
+    public remover(entidad: Entidad): void {
+        switch(entidad.tipo){
+            case Tipos.ACTOR: {
+                this.actor = null;
+                break;
+            }
+            case Tipos.TERRENO: {
+                this.terreno = null;
+                break;
+            }
+            case Tipos.ITEM: {
+                this.items.delete(entidad);
+                break;
+            }
+        }
     }
 
-    public getColorSimbolo(): string {
-        return this.actor?.renderComp.colorSimbolo || this.items[0]?.renderComp.colorSimbolo || this.terreno?.renderComp.colorSimbolo || "#ffffff";
+    public removerActor(): void{
+        this.actor = null;
     }
 
-    public getColorFondo(): string {
-        return this.terreno?.renderComp.colorFondo || "#ffffff";
+    public colocarActor(actor: Entidad): void {
+        if(actor.tipo === Tipos.ACTOR) {
+            this.actor = actor;
+            actor.posicion = this.posicion;
+        } else {
+            throw new Error("Se intentó colocar una entidad no actor en el slot de actor " + actor);
+        }
     }
 
     public toString(): string {
         let mensaje: string;
         if (this.actor != null) {
             mensaje = this.actor.nombreComp.nombre;
-        } else if (this.items.length) {
-            mensaje = this.items[0].nombreComp.nombre;
-            if (this.items.length > 1) {
-                mensaje.concat(" and several more items")
-            }
         } else if (this.terreno != null) {
             mensaje = this.terreno.nombreComp.nombre;
         } else {
