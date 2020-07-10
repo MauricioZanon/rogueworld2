@@ -9,6 +9,7 @@ export default class Entidad {
     public posicion: Posicion;
     public nombreComp?: NombreComp;
     public renderComp?: RenderComp;
+    public esTransitable?: boolean;
 
     public constructor(id?: number, tipo?: Tipos) {
         this.id = id;

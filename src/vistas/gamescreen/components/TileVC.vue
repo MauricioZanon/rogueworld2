@@ -1,11 +1,18 @@
 <template>
-	<div data-toggle="tooltip" :title="tile.toString()" class="tile" :style="estilado">
-		<div class="ascii">{{ simbolo }}</div>
+	<div data-toggle="tooltip" :title="tile.toString()" >
+		<div class="tile" :style="{
+				'background-color': colorFondo, 
+				'color': colorSimbolo, 
+				'width': tamañoTile, 
+				'height': tamañoTile, 
+				'font-size': tamañoFuente}">
+			<div class="ascii">{{ simbolo }}</div>
+		</div>
 	</div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import Tile from "@/mapa/Tile"
 
 @Component
@@ -20,27 +27,19 @@ export default class TileVC extends Vue {
 	}
 
 	public get colorSimbolo(): string {
-		 return this.tile.actor?.renderComp.colorSimbolo || this.tile.terreno?.renderComp.colorSimbolo || "#ffffff";
+		return this.tile.actor?.renderComp.colorSimbolo || this.tile.terreno?.renderComp.colorSimbolo || "#ffffff";
 	}
 
 	public get colorFondo(): string {
-		 return this.tile.terreno?.renderComp.colorFondo || "#ffffff";
+		return this.tile.terreno?.renderComp.colorFondo || "#ffffff";
 	}
 
-	public get estilado(): string {
-		return "color:" +
-			this.colorSimbolo +
-			"; background-color: " +
-			this.colorFondo +
-			"; width: " +
-			this.tamaño +
-			"vh;" +
-			"height: " +
-			this.tamaño +
-			"vh;" +
-			"font-size: " +
-			this.tamaño * 0.8 +
-			"vh;";
+	public get tamañoTile(): string {
+		return this.tamaño + "vh";
+	}
+
+	public get tamañoFuente(): string {
+		return this.tamaño*0.8 + "vh";
 	}
 
 }
@@ -56,7 +55,6 @@ export default class TileVC extends Vue {
 	user-select: none;
 }
 .tile:hover {
-	position: unset;
-	border: 2px dashed yellow;
+	border: 1px dashed yellow;
 }
 </style>

@@ -13,9 +13,9 @@ export default class Chunk {
             this.array[i] = [];
             for (let j = 0; j < TAMAÑO_CHUNK; j++) {
                 const nuevoTile = new Tile([x0 + i, y0 + j, z0]);
-                nuevoTile.terreno = EntidadFactory.obtenerEntidad("dirt floor");
+                nuevoTile.terreno = EntidadFactory.obtenerEntidad("grass floor");
                 if ((i + j) % 7 == 0) {
-                    nuevoTile.colocarActor(EntidadFactory.obtenerEntidad("goblin"));
+                    nuevoTile.terreno = EntidadFactory.obtenerEntidad("stone wall");
                 }
                 this.array[i][j] = nuevoTile;
             }

@@ -10,7 +10,7 @@ export default class Mapa {
 
     public static array: Tile[][];
 
-    public static inicializar() {
+    public static inicializar(): void {
         const chunk: Chunk = new Chunk([0, 0, 0]);
         Mapa.array = chunk.array;
         const player: Entidad = EntidadFactory.obtenerEntidad("player");

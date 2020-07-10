@@ -12,14 +12,13 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Mapa from "@/mapa/Mapa";
-import MapasFactory from "@/mapa/MapasFactory";
 import router from "@/vistas/router/index";
 
 @Component
 export default class MainScreenVC extends Vue {
 	public comenzarNuevoJuego(): void {
 		Mapa.inicializar();
-		router.push({name: "GameScreen"});
+		void router.push({name: "GameScreen"});
 	}
 }
 </script>
