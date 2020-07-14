@@ -39,7 +39,7 @@ export default class TileVC extends Vue {
 	}
 
 	public get tamañoFuente(): string {
-		return this.tamaño*0.8 + "vh";
+		return this.tamaño + "vh";
 	}
 
 }
@@ -48,7 +48,6 @@ export default class TileVC extends Vue {
 <style scoped>
 .ascii {
 	text-align: center;
-	align-content: center;
 	font-family: "Courier New", Courier, monospace;
 	font-weight: 700;
 	line-height: 110%;
