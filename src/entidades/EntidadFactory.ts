@@ -15,7 +15,10 @@ export default class EntidadFactory {
                 console.log("Error al cargar las entidades");
             } else {
                 const entidades: Entidad[] = JSON.parse(data.toString()) as Entidad[];
-                entidades.forEach(entidad => resultado.set(entidad.nombreComp.nombre, entidad))
+                entidades.forEach(entidad => {
+                    entidad.posicion = {cx: 0, cy: 0, cz: 0, tx: 0, ty: 0};
+                    resultado.set(entidad.nombreComp.nombre, entidad)
+                });
             }
         });
         return resultado;

@@ -1,18 +1,21 @@
 import Tile from "./Tile";
 import EntidadFactory from "@/entidades/EntidadFactory";
-import { Posicion } from "./Posicion";
+import { ChunkPos, TilePos } from "./Posicion";
 
-const TAMAÑO_CHUNK = 25;
+export const TAMAÑO_CHUNK = 25;
 
 export default class Chunk {
-	public readonly array: Tile[][];
+    public readonly array: Tile[][];
+    public readonly posicion: ChunkPos;
 
-	public constructor([x0, y0, z0]: Posicion){
+	public constructor({cx, cy, cz}: ChunkPos){
+        this.posicion = {cx, cy, cz};
+
 		this.array = [];
 		for (let i = 0; i < TAMAÑO_CHUNK; i++) {
             this.array[i] = [];
             for (let j = 0; j < TAMAÑO_CHUNK; j++) {
-                const nuevoTile = new Tile([x0 + i, y0 + j, z0]);
+                const nuevoTile = new Tile({...this.posicion, tx: i, ty: j});
                 nuevoTile.terreno = EntidadFactory.obtenerEntidad("grass floor");
                 if ((i + j) % 7 == 0) {
                     nuevoTile.terreno = EntidadFactory.obtenerEntidad("stone wall");
@@ -20,5 +23,10 @@ export default class Chunk {
                 this.array[i][j] = nuevoTile;
             }
         }
-	}
+    }
+
+    public obtenerTile(posicion: TilePos): Tile {
+        return this.array[posicion.tx][posicion.ty];
+    }
+    
 }

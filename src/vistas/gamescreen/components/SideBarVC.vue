@@ -1,6 +1,5 @@
 <template>
 	<div class="side-bar">
-		<span>Nombre: Mawi</span>
 	</div>
 </template>
 

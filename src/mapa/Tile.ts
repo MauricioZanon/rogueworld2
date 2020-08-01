@@ -1,6 +1,6 @@
 import Entidad from "@/entidades/Entidad";
-import { Posicion } from "./Posicion";
 import { Tipos } from "@/entidades/Tipos";
+import { Posicion } from "./Posicion";
 
 export default class Tile {
     public readonly posicion: Posicion;
@@ -53,6 +53,5 @@ export default class Tile {
         }
         return mensaje
     }
-
 
 }

@@ -5,7 +5,8 @@
 				'color': colorSimbolo, 
 				'width': tamañoTile, 
 				'height': tamañoTile, 
-				'font-size': tamañoFuente}">
+				'font-size': tamañoFuente,
+				'top': 100}">
 			<div class="ascii">{{ simbolo }}</div>
 		</div>
 	</div>
@@ -31,7 +32,7 @@ export default class TileVC extends Vue {
 	}
 
 	public get colorFondo(): string {
-		return this.tile.terreno?.renderComp.colorFondo || "#ffffff";
+		return this.tile.terreno?.renderComp.colorFondo || "#000000";
 	}
 
 	public get tamañoTile(): string {
@@ -39,7 +40,7 @@ export default class TileVC extends Vue {
 	}
 
 	public get tamañoFuente(): string {
-		return this.tamaño + "vh";
+		return this.tamaño*0.8 + "vh";
 	}
 
 }

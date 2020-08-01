@@ -12,6 +12,8 @@ import Mapa from "@/mapa/Mapa";
 import Tile from "@/mapa/Tile";
 import TileVC from "./TileVC.vue";
 import PlayerViewController from "../controllers/PlayerViewController"
+import store from "@/store/store"
+import { Posicion, modificarTx, modificarTy } from "@/mapa/Posicion";
 
 @Component({
 	components: {
@@ -19,13 +21,24 @@ import PlayerViewController from "../controllers/PlayerViewController"
 	}
 })
 export default class PlayerViewVC extends Vue {
-	public mapa = [] as Tile[][];
-	public tamañoTile: number;
-	public listener = (evento: KeyboardEvent): void => PlayerViewController.resolverKeyDown(evento);
+	public readonly tamañoTile = 4;
+	public readonly listener = (evento: KeyboardEvent): void => PlayerViewController.resolverKeyDown(evento);
+
+	public get mapa(): Tile[][] {
+		return Mapa.obtenerAreaCuadrada(this.pos00, 25, 25);
+	}
+
+	private get pos00(): Posicion {
+		const resultado: Posicion = {...store.getters.player.posicion};
+		console.log("resultado");
+		console.log(resultado);
+		modificarTx(resultado, -12);
+		modificarTy(resultado, -12);
+		console.log(resultado);
+		return resultado;
+	}
 
 	public mounted(): void {
-		this.mapa = Mapa.array;
-		this.tamañoTile = 100 / this.mapa.length;
 		window.removeEventListener("keydown", this.listener)
 		window.addEventListener("keydown", this.listener);
 	}

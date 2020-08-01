@@ -1,35 +1,43 @@
-import Tile from "./Tile";
-import EntidadFactory from "@/entidades/EntidadFactory";
-import { Posicion } from "./Posicion";
-import { Direccion } from "./Direcciones";
-import Chunk from "./Chunk";
 import store from "@/store/store";
-import Entidad from "@/entidades/Entidad";
+import Chunk from "./Chunk";
+import { Direccion } from "./Direcciones";
+import { aplicarDireccion, ChunkPos, modificarTx, modificarTy, Posicion } from "./Posicion";
+import Tile from "./Tile";
 
 export default class Mapa {
 
-    public static array: Tile[][];
+    private static readonly mapas = new Map<string, Chunk>();
 
     public static inicializar(): void {
-        const chunk: Chunk = new Chunk([0, 0, 0]);
-        Mapa.array = chunk.array;
-        const player: Entidad = EntidadFactory.obtenerEntidad("player");
-        Mapa.array[16][16].colocarActor(player);
-        store.state.player = player;
+        const chunk: Chunk = new Chunk({cx: 0, cy: 0, cz: 0});
+        Mapa.mapas.set(chunk.posicion.toString(), chunk);
+        chunk.array[12][12].colocarActor(store.getters.player);
+    }
+
+    public static obtenerChunk(posicion: ChunkPos): Chunk {
+        return Mapa.mapas.get(posicion.toString());
     }
 
     public static obtenerTile(posicion: Posicion, direccion?: Direccion): Tile {
-        const pos0 = Mapa.array[0][0].posicion;
-        let xf: number;
-        let yf: number;
         if(direccion) {
-            xf = Math.abs(pos0[0] - posicion[0] + direccion.x);
-            yf = Math.abs(pos0[1] - posicion[1] + direccion.y);
-        } else {
-            xf = Math.abs(pos0[0] - posicion[0]);
-            yf = Math.abs(pos0[1] - posicion[1]);
+            posicion = aplicarDireccion(posicion, direccion);
         }
-        return Mapa.array[xf][yf];
+        return Mapa.obtenerChunk(posicion).obtenerTile(posicion);
+    }
+
+    public static obtenerAreaCuadrada(posicionInicial: Posicion, alto: number, ancho: number): Tile[][] {
+        const resultado: Tile[][] = [];
+        const auxPos = {...posicionInicial};
+        for(let i = 0; i < ancho; i++) {
+            resultado[i] = [];
+            for(let j = 0; j < alto; j++) {
+                modificarTy(auxPos, 1);
+                resultado[i][j] = Mapa.obtenerTile(auxPos);
+            }
+            modificarTx(auxPos, 1);
+        }
+
+        return resultado;
     }
 
 }

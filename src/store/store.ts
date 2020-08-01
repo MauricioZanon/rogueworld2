@@ -8,6 +8,11 @@ export default new Vuex.Store({
   state: {
     player: {} as Entidad
   },
+  getters: {
+    player(state): Entidad{
+      return state.player;
+    }
+  },
   mutations: {
     usarComoPlayer(state, nuevoPlayer: Entidad): void{
       state.player = nuevoPlayer;

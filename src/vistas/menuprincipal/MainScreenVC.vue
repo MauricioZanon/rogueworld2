@@ -13,10 +13,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import Mapa from "@/mapa/Mapa";
 import router from "@/vistas/router/index";
+import store from "@/store/store";
+import EntidadFactory from "@/entidades/EntidadFactory";
 
 @Component
 export default class MainScreenVC extends Vue {
 	public comenzarNuevoJuego(): void {
+        store.commit("usarComoPlayer", EntidadFactory.obtenerEntidad("player"));
 		Mapa.inicializar();
 		void router.push({name: "GameScreen"});
 	}
