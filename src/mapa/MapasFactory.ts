@@ -1,14 +1,9 @@
 import Chunk from "./Chunk";
-import { Posicion } from "./Posicion";
+import { ChunkPos } from "./Posicion";
 
 export default class MapasFactory {
 
-	private constructor() {
-		console.log("asd");
-		
-	}
-
-	public static crearChunk(posicion: Posicion): Chunk {
+	public static crearChunk(posicion: ChunkPos): Chunk {
 		return new Chunk(posicion);
 	}
 

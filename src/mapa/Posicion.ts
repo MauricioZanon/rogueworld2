@@ -5,6 +5,10 @@ export type ChunkPos = {cx: number, cy: number, cz: number};
 export type TilePos = {tx: number, ty: number};
 export type Posicion = ChunkPos & TilePos;
 
+export function toString(posicion: ChunkPos): string {
+        return posicion.cx + "-" + posicion.cy + "-" + posicion.cz;
+}
+
 export function aplicarDireccion(posicion: Posicion, direccion: Direccion): Posicion {
     const resultado: Posicion = {...posicion};
     resultado.tx += direccion.x;
@@ -28,7 +32,7 @@ function corregirX(posicion: Posicion): void {
         posicion.cx += Math.floor(posicion.tx / TAMAÑO_CHUNK);
         posicion.tx = (TAMAÑO_CHUNK + posicion.tx) % TAMAÑO_CHUNK;
     } else if(posicion.tx >= TAMAÑO_CHUNK) {
-        posicion.cx += Math.ceil(posicion.tx / TAMAÑO_CHUNK);
+        posicion.cx += Math.floor(posicion.tx / TAMAÑO_CHUNK);
         posicion.tx = posicion.tx % TAMAÑO_CHUNK;
     }
 }
@@ -38,7 +42,7 @@ function corregirY(posicion: Posicion): void {
         posicion.cy += Math.floor(posicion.ty / TAMAÑO_CHUNK);
         posicion.ty = (TAMAÑO_CHUNK + posicion.ty) % TAMAÑO_CHUNK;
     } else if(posicion.ty >= TAMAÑO_CHUNK) {
-        posicion.cy += Math.ceil(posicion.ty / TAMAÑO_CHUNK);
+        posicion.cy += Math.floor(posicion.ty / TAMAÑO_CHUNK);
         posicion.ty = posicion.ty % TAMAÑO_CHUNK;
     }
 }

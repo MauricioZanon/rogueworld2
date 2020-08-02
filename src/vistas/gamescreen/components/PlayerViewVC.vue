@@ -30,11 +30,8 @@ export default class PlayerViewVC extends Vue {
 
 	private get pos00(): Posicion {
 		const resultado: Posicion = {...store.getters.player.posicion};
-		console.log("resultado");
-		console.log(resultado);
 		modificarTx(resultado, -12);
-		modificarTy(resultado, -12);
-		console.log(resultado);
+		modificarTy(resultado, -13);
 		return resultado;
 	}
 

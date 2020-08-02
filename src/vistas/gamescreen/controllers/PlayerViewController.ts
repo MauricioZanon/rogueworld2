@@ -2,7 +2,7 @@ import {Direcciones} from "@/mapa/Direcciones";
 import store from "@/store/store";
 import { Bump } from "@/entidades/acciones/Bump";
 import router from "@/vistas/router/index";
-import Entidad from '@/entidades/Entidad';
+import Entidad from "@/entidades/Entidad";
 
 export default class PlayerViewController {
 
