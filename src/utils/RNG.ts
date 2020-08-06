@@ -12,8 +12,8 @@ export default abstract class RNG {
         return Math.random() * (max - min) + min;
     }
 
-    public static getNoise(x: number, y:number): number {
-        return RNG.noiseGen.scaled([x, y]);
+    public static getNoise(x: number, y: number, z: number): number {
+        return RNG.noiseGen.scaled([x, y, z]);
     }
 
 }

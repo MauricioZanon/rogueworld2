@@ -5,6 +5,7 @@ import { Posicion } from "./Posicion";
 export default class Tile {
     public readonly posicion: Posicion;
     public terreno: Entidad = null;
+    public feature: Entidad = null;
     public items: Set<Entidad> = new Set();
     public actor?: Entidad = null;
 
@@ -16,6 +17,10 @@ export default class Tile {
         switch(entidad.tipo){
             case Tipos.ACTOR: {
                 this.actor = null;
+                break;
+            }
+            case Tipos.FEATURE: {
+                this.feature = null;
                 break;
             }
             case Tipos.TERRENO: {
@@ -46,6 +51,8 @@ export default class Tile {
         let mensaje: string;
         if (this.actor != null) {
             mensaje = this.actor.nombreComp.nombre;
+        }else if (this.feature != null) {
+            mensaje = this.feature.nombreComp.nombre;
         } else if (this.terreno != null) {
             mensaje = this.terreno.nombreComp.nombre;
         } else {

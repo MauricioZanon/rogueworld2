@@ -24,11 +24,17 @@ export default class TileVC extends Vue {
 	private readonly tamaño: number;
 
 	public get simbolo(): string {
-		return this.tile.actor?.renderComp.simbolo || this.tile.terreno.renderComp.simbolo || "¿";
+		return this.tile.actor?.renderComp.simbolo ||
+				this.tile.feature?.renderComp.simbolo ||
+				this.tile.terreno?.renderComp.simbolo || 
+				"¿";
 	}
 
 	public get colorSimbolo(): string {
-		return this.tile.actor?.renderComp.colorSimbolo || this.tile.terreno?.renderComp.colorSimbolo || "#ffffff";
+		return this.tile.actor?.renderComp.colorSimbolo || 
+				this.tile.feature?.renderComp.colorSimbolo ||
+				this.tile.terreno?.renderComp.colorSimbolo || 
+				"#ffffff";
 	}
 
 	public get colorFondo(): string {

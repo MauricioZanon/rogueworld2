@@ -59,5 +59,29 @@
         },
         "id": 4,
         "esTransitable": true
+    },
+    {
+        "tipo": "FEATURE",
+        "nombreComp": {
+            "nombre": "downstairs"
+        },
+        "renderComp": {
+            "simbolo": ">",
+            "colorSimbolo": "#444"
+        },
+        "id": 5,
+        "esTransitable": true
+    },
+    {
+        "tipo": "FEATURE",
+        "nombreComp": {
+            "nombre": "upstairs"
+        },
+        "renderComp": {
+            "simbolo": "<",
+            "colorSimbolo": "#444"
+        },
+        "id": 6,
+        "esTransitable": true
     }
 ]
