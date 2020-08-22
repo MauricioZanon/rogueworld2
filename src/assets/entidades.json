@@ -83,5 +83,18 @@
         },
         "id": 6,
         "esTransitable": true
+    },
+    {
+        "tipo": "TERRENO",
+        "nombreComp": {
+            "nombre": "dirt wall"
+        },
+        "renderComp": {
+            "simbolo": "#",
+            "colorSimbolo": "#877137",
+            "colorFondo": "#615127ff"
+        },
+        "id": 7,
+        "esTransitable": false
     }
 ]

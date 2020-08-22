@@ -10,9 +10,9 @@ export default class Mapa {
     private static readonly mapas = new Map<string, Chunk>();
 
     public static inicializar(): void {
-        const chunk: Chunk = new Chunk({cx: 0, cy: 0, cz: 0});
+        const chunk: Chunk = MapasFactory.crearChunk({cx: 0, cy: 0, cz: 0});
         Mapa.mapas.set(toString(chunk.posicion), chunk);
-        chunk.array[12][12].colocarActor(store.getters.player);
+        chunk.obtenerTile({tx: 12, ty: 12}).colocarActor(store.getters.player);
     }
 
     public static obtenerChunk(posicion: ChunkPos): Chunk {

@@ -3,8 +3,8 @@ import store from "@/store/store";
 import { Bump } from "@/entidades/acciones/Bump";
 import router from "@/vistas/router/index";
 import Entidad from "@/entidades/Entidad";
-import { Descender } from '@/entidades/acciones/Descender';
-import { Ascender } from '@/entidades/acciones/Ascender';
+import { Descender } from "@/entidades/acciones/Descender";
+import { Ascender } from "@/entidades/acciones/Ascender";
 
 export default class PlayerViewController {
 
