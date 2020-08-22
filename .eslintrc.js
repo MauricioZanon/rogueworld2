@@ -56,6 +56,8 @@ module.exports = {
         "quotes": "off",
         "@typescript-eslint/quotes": ["warn", "double"],
         "@typescript-eslint/restrict-plus-operands": "off",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/no-this-alias": "off",
         //######### Estos tres siguientes estan para que compile #############
         "@typescript-eslint/no-unsafe-call": "off", //warn
         "@typescript-eslint/no-unsafe-assignment": "off", //warn
