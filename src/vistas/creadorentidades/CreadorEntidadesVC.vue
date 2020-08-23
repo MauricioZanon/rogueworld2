@@ -8,19 +8,19 @@
 			<option v-for="tipo in tipos" :value="tipo" :key="tipo">{{tipo}}</option>
 		</select>
 		<hr />
-		<NombreCompFormVC @agregarValidacion="agregarValidacion" :nombreComp="nombreComp"></NombreCompFormVC>
+		<NombreCompFormVC @agregar-validacion="agregarValidacion" :nombreComp="nombreComp"></NombreCompFormVC>
 		<hr />
 		<input type="checkbox" name id v-model="tieneRenderComp" /> Is rendered?
 		<div v-if="tieneRenderComp || entidad.renderComp">
-			<RenderCompFormVC :renderComp="renderComp"></RenderCompFormVC>
+			<RenderCompFormVC @agregar-validacion="agregarValidacion" :renderComp="renderComp"></RenderCompFormVC>
 		</div>
 		<hr />
-		<button class="boton-guardar" @click="guardarEntidades">Guardar</button>
+		<button :disabled="!nuevaEntidadValida" @click="guardarEntidades(entidades, entidad)">Guardar</button>
 		<router-link :to="{name: 'MenuPrincipal'}">
-			<button class="boton-salir">Salir</button>
+			<button >Salir</button>
 		</router-link>
 		<ModalCargarEntidadVC
-			@cargarEntidad="cargarEntidad"
+			@setEntidad="setEntidad"
 			ref="modal-cargar-entidad"
 			:entidades="entidades"
 		></ModalCargarEntidadVC>
@@ -37,9 +37,9 @@ import RenderCompFormVC from "./components/renderCompFormVC.vue"
 import ModalCargarEntidadVC from "./components/modalCargarEntidadVC.vue"
 import NombreComp from "@/entidades/componentes-de-entidades/NombreComp";
 import ValidacionComponente from "./ValidacionComponente";
-
-const pathArchivoEntidades = "./src/assets/entidades.json";
-const fs = window.require("electron").remote.require("fs");
+import { obtenerEntidades } from './EntidadRepository';
+import { guardarEntidades } from './EntidadRepository';
+import { log } from 'util';
 
 @Component({
 	components: {
@@ -51,97 +51,55 @@ const fs = window.require("electron").remote.require("fs");
 export default class CreadorEntidadesVC extends Vue {
 	public entidades: Entidad[] = [];
 	public entidad: Entidad = {} as Entidad;
-	public readonly tipos = [] as Tipos[];
+	public readonly tipos: Tipos[] = [] as Tipos[];
 	public tipo: Tipos = null;
 	public nombreComp: NombreComp = {} as NombreComp;
-	public readonly tieneRenderComp = false;
+	public tieneRenderComp: boolean = false;
 	public renderComp: RenderComp = {} as RenderComp;
-	public validaciones = new Map<string, boolean>();
+	public validaciones: Map<string, boolean> = new Map<string, boolean>();
+	public nuevaEntidadValida: boolean = false;
 
 	public mounted(): void {
-		this.cargarEntidades();
+		this.entidades = obtenerEntidades();
 		this.tipos.push(Tipos.ACTOR);
 		this.tipos.push(Tipos.TERRENO);
 		this.tipos.push(Tipos.ITEM);
 	}
 
-	public agregarValidacion(entryValidezComponente: ValidacionComponente): void {
-		this.validaciones[entryValidezComponente.nombreComponente] = entryValidezComponente.componenteValido;
-	}
-
-	public cargarEntidad(nombre: string): void {
+	public setEntidad(nombre: string): void {
 		this.entidad = this.entidades.find(entidad => entidad.nombreComp.nombre === nombre);
 	}
 
-	public cargarEntidades(): void {
-		fs.readFile(pathArchivoEntidades, (err, data: Buffer) => {
-			if (err) {
-				console.log("Error al cargar las entidades");
-			} else {
-				this.entidades = JSON.parse(data.toString()) as Entidad[];
-			}
-		});
+
+	public agregarValidacion(entryValidezComponente: ValidacionComponente): void {
+		this.validaciones.set(entryValidezComponente.nombreComponente, entryValidezComponente.componenteValido);
+		this.validarEntidad();
 	}
 
-	public guardarEntidades(): void {
-		if (this.entidadValida()) {
-			if (this.entidad.id >= 0) {
-				this.sobreescribirEntidadEnLista();
-			} else {
-				this.agregarNuevaEntidadALaLista();
-			}
-			fs.writeFileSync(pathArchivoEntidades, JSON.stringify(this.entidades), err => {
-				if (err) {
-					console.log("Error al guardar las entidades");
-				} else {
-					console.log("Entidades guardadas correctamente")
-				}
-			});
+	@Watch("tipo")
+	public validarEntidad(): void {
+		let resultado: boolean = true;
+		if(!this.tipo || this.validaciones.size == 0) {
+			resultado = false;
 		}
-	}
-
-	public sobreescribirEntidadEnLista(): void {
-		for (let i = 0; i < this.entidades.length; i++) {
-			if (this.entidades[i].id == this.entidad.id) {
-				this.entidades[i] = this.entidad;
-				return;
-			}
-		}
-	}
-
-	public agregarNuevaEntidadALaLista(): void {
-		this.entidad.id = this.buscarIdSinUsar();
-		this.entidades.push(this.entidad);
-	}
-
-	public buscarIdSinUsar(): number {
-		const ids = this.entidades.map(entidad => entidad.id);
-		let nuevoId = 1;
-		while (ids.includes(nuevoId)) {
-			nuevoId++;
-		}
-		return nuevoId;
-	}
-
-	public entidadValida(): boolean {
 		this.validaciones.forEach(compValido => {
 			if (!compValido) {
-				return false;
+				resultado = false;
 			}
 		});
-		return true;
-	}
-
-	@Watch("entidad")
-	public borrarValidaciones(): void {
-		this.tipo = this.entidad.tipo;
-		this.nombreComp = this.entidad.nombreComp;
-		this.renderComp = this.entidad.renderComp;
-		this.validaciones.clear();
+		this.nuevaEntidadValida = resultado;
 	}
 
 	public crearNuevaEntidad(): void {
 		this.entidad = new Entidad();
+	}
+
+	@Watch("entidad")
+	public cargarDatosDeEntidad(): void {
+		this.validaciones.clear();
+		this.tipo = this.entidad.tipo;
+		this.nombreComp = this.entidad.nombreComp ?? {} as NombreComp;
+		this.renderComp = this.entidad.renderComp ?? {} as RenderComp;
 	}
 
 }
@@ -169,11 +127,5 @@ label {
 .inputs-componente {
 	float: left;
 	width: 100%;
-}
-.boton-guardar {
-	background-color: yellowgreen;
-}
-.boton-salir {
-	background-color: yellowgreen;
 }
 </style>

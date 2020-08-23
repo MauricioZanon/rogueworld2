@@ -11,7 +11,7 @@
 							<h4>ACTORS</h4>
 							<hr />
 							<div
-								@click='cargarEntidad(actor)'
+								@click='setEntidad(actor)'
 								class="opcion"
 								v-for="actor in actores"
 								:key="actor"
@@ -22,7 +22,7 @@
 							<h4>ITEMS</h4>
 							<hr />
 							<div
-								@click="cargarEntidad(item)"
+								@click="setEntidad(item)"
 								class="opcion"
 								v-for="item in items"
 								:key="item"
@@ -33,7 +33,7 @@
 							<h4>TERRAINS</h4>
 							<hr />
 							<div
-								@click="cargarEntidad(terreno)"
+								@click="setEntidad(terreno)"
 								class="opcion"
 								v-for="terreno in terrenos"
 								:key="terreno"
@@ -88,8 +88,8 @@ export default class ModalCargarEntidadVC extends Vue {
 		});
 	}
 
-	@Emit("cargarEntidad")
-	public cargarEntidad(nombre: string): string {
+	@Emit("setEntidad")
+	public setEntidad(nombre: string): string {
 		return nombre.toLowerCase();
 	}
 

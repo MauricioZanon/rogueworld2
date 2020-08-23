@@ -8,6 +8,7 @@
 import { Component, Emit, Prop, Watch, Vue } from "vue-property-decorator";
 import NombreComp from "@/entidades/componentes-de-entidades/NombreComp"
 import ValidacionComponente from "./../ValidacionComponente";
+import { log } from 'util';
 
 @Component
 export default class NombreCompFormVC extends Vue {
@@ -15,15 +16,23 @@ export default class NombreCompFormVC extends Vue {
 	public nombreComp: NombreComp;
 
 	public nombre = "";
-	public componenteValido = false;
+
+	private updated(): void {
+		this.validar()
+	}
 
 	public validar(): void {
-		this.componenteValido = this.nombre !== "";
-		this.agregarValidacion();
-
-		if (this.componenteValido) {
+		let esComponenteValido = this.nombre !== "";
+		this.agregarValidacion(esComponenteValido);
+		
+		if (esComponenteValido) {
 			this.actualizarComponente();
 		}
+	}
+
+	@Emit()
+	private agregarValidacion(esValido: boolean): ValidacionComponente {
+		return new ValidacionComponente("nombreComp", esValido);
 	}
 
 	public actualizarComponente(): void {
@@ -32,13 +41,9 @@ export default class NombreCompFormVC extends Vue {
 
 	@Watch("nombreComp")
 	public actualizarInformacionDelForm(): void {
-		this.nombre = this.nombreComp.nombre;
+		this.nombre = this.nombreComp?.nombre;
 	}
 
-	@Emit()
-	private agregarValidacion(): ValidacionComponente {
-		return new ValidacionComponente("nombreComp", this.componenteValido);
-	}
 
 }
 </script>
