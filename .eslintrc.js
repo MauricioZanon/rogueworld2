@@ -45,6 +45,7 @@ module.exports = {
         "@typescript-eslint/default-param-last": "warn",
         "@typescript-eslint/dot-notation": "warn",
         "@typescript-eslint/func-call-spacing": ["warn", "never"],
+        "@typescript-eslint/no-unsafe-return": "off",
         "no-extra-parens": "off",
         "@typescript-eslint/no-extra-parens": ["warn"],
         "no-extra-semi": "off",

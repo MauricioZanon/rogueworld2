@@ -44,16 +44,18 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Close</button>
-				</div>
+				</div> 
 			</div>
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Watch, Vue } from "vue-property-decorator";
-import Entidad from "@/entidades/Entidad";
+import { Component, Vue } from "vue-property-decorator";
 import { Tipos } from "@/entidades/Tipos";
+import store from "./../store/creadorEntidadesStore";
+import { obtenerEntidades } from "./../EntidadRepository";
+import EventBus from "../EventBus";
 
 @Component({
 	filters: {
@@ -65,16 +67,17 @@ import { Tipos } from "@/entidades/Tipos";
 	}
 })
 export default class ModalCargarEntidadVC extends Vue {
-	@Prop()
-	public readonly entidades: Entidad[]
-
 	public readonly actores: string[] = [];
 	public readonly items: string[] = [];
 	public readonly terrenos: string[] = [];
 
-	@Watch("entidades")
+	public mounted(): void {
+		store.state.entidades = obtenerEntidades();
+		this.organizarEntidades();
+	}
+
 	public organizarEntidades(): void {
-		this.entidades.forEach(entidad => {
+		store.state.entidades.forEach(entidad => {
 			switch (entidad.tipo) {
 				case Tipos.ITEM:
 					this.items.push(entidad.nombreComp.nombre);
@@ -87,12 +90,12 @@ export default class ModalCargarEntidadVC extends Vue {
 			}
 		});
 	}
-
-	@Emit("setEntidad")
-	public setEntidad(nombre: string): string {
-		return nombre.toLowerCase();
+	
+	public setEntidad(nombre: string): void {
+		store.commit("seleccionarEntidad", nombre);
+		EventBus.$emit("actualizar-informacion");
 	}
-
+	
 }
 </script>
 

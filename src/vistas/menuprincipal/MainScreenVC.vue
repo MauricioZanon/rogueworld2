@@ -36,7 +36,6 @@ export default class MainScreenVC extends Vue {
 	border-radius: 3px;
 	border: 3px solid;
 	font-weight: bolder;
-	margin-bottom: 5px;
 	width: 150px;
 	align-content: center;
 	cursor: pointer;
