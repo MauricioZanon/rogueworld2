@@ -9,6 +9,8 @@
 		<hr />
 		<RenderCompFormVC></RenderCompFormVC>
 		<hr />
+		<FlagsFormVC></FlagsFormVC>
+		<hr />
 		<button @click="guardarEntidad()">Guardar</button>
 		<router-link :to="{name: 'MenuPrincipal'}">
 			<button >Salir</button>
@@ -23,6 +25,7 @@ import Entidad from "@/entidades/Entidad";
 import NombreCompFormVC from "./components/nombreCompFormVC.vue"
 import TipoFormVC from "./components/tipoFormVC.vue"
 import RenderCompFormVC from "./components/renderCompFormVC.vue"
+import FlagsFormVC from "./components/flagsFormVC.vue"
 import ModalCargarEntidadVC from "./components/modalCargarEntidadVC.vue"
 import store from "./store/creadorEntidadesStore";
 import { guardarEntidades } from "./EntidadRepository";
@@ -32,6 +35,7 @@ import { guardarEntidades } from "./EntidadRepository";
 		TipoFormVC,
 		NombreCompFormVC,
 		RenderCompFormVC,
+		FlagsFormVC,
 		ModalCargarEntidadVC
 	}
 })

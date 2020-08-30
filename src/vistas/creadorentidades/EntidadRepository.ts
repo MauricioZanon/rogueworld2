@@ -44,6 +44,9 @@ function formarEntidad(entidad: Entidad): Entidad {
     entidad.tipo = state.tipo;
     entidad.nombreComp = state.nombreComp;
     entidad.renderComp = state.renderComp;
+    if(state.esIntransitable) {
+        entidad.esIntransitable = state.esIntransitable;
+    }
 
     return entidad;
 }

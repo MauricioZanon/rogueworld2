@@ -15,7 +15,8 @@ export default new Vuex.Store({
     nombreComp: {} as NombreComp,
     nombreCompValido: false,
     renderComp: {} as RenderComp,
-    renderCompValido: false
+    renderCompValido: false,
+    esIntransitable: false
   },
   getters: {
     entidadSeleccionada(state): Entidad{
@@ -30,6 +31,7 @@ export default new Vuex.Store({
         state.tipo = entidad.tipo;
         state.nombreComp = entidad.nombreComp;  
         state.renderComp = entidad.renderComp;
+        state.esIntransitable = entidad.esIntransitable || false;
     }
   },
   actions: {
