@@ -72,6 +72,7 @@ module.exports = {
 				ignoreUrls: true,
 			},
         ],
+        "vue/experimental-script-setup-vars": "off"
     },
     "overrides": [
     {
