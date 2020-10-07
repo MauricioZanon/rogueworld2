@@ -47,7 +47,7 @@ export default class PlayerViewController {
                 console.log(store.getters.player.posicion);
                 break;
             case "Escape": {
-                void router.push({name: "MainMenu"});
+                void router.push({name: "MainScreen"});
                 break;
             }
             case "IntlBackslash": {
@@ -60,7 +60,6 @@ export default class PlayerViewController {
             }
             default: {
                 console.log(evento.code);
-                
             }
             
         }

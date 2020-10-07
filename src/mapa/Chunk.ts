@@ -12,8 +12,8 @@ export default class Chunk {
         this.posicion = {cx, cy, cz};
 
 		this.tiles = tiles;
-        this.tiles[0][0].feature = EntidadFactory.obtenerEntidad("upstairs");
-        this.tiles[0][1].feature = EntidadFactory.obtenerEntidad("downstairs");
+        this.tiles[0][0].feature = EntidadFactory.crearEntidad("upstairs");
+        this.tiles[0][1].feature = EntidadFactory.crearEntidad("downstairs");
     }
 
     public obtenerTile(posicion: TilePos): Tile {

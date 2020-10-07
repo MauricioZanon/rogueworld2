@@ -14,7 +14,7 @@ export default class Tile {
     }
 
     public remover(entidad: Entidad): void {
-        switch(entidad.tipo){
+        switch (entidad.tipo) {
             case Tipos.ACTOR: {
                 this.actor = null;
                 break;
@@ -34,12 +34,12 @@ export default class Tile {
         }
     }
 
-    public removerActor(): void{
+    public removerActor(): void {
         this.actor = null;
     }
 
     public colocarActor(actor: Entidad): void {
-        if(actor.tipo === Tipos.ACTOR) {
+        if (actor.tipo === Tipos.ACTOR) {
             this.actor = actor;
             actor.posicion = this.posicion;
         } else {
@@ -51,7 +51,7 @@ export default class Tile {
         let mensaje: string;
         if (this.actor != null) {
             mensaje = this.actor.nombreComp.nombre;
-        }else if (this.feature != null) {
+        } else if (this.feature != null) {
             mensaje = this.feature.nombreComp.nombre;
         } else if (this.terreno != null) {
             mensaje = this.terreno.nombreComp.nombre;

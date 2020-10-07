@@ -31,12 +31,12 @@ export default class PlayerViewVC extends Vue {
 	private get pos00(): Posicion {
 		const resultado: Posicion = {...store.getters.player.posicion};
 		modificarTx(resultado, -12);
-		modificarTy(resultado, -13);
+		modificarTy(resultado, -12);
 		return resultado;
 	}
 
 	public mounted(): void {
-		window.removeEventListener("keydown", this.listener)
+		window.removeEventListener("keydown", this.listener);
 		window.addEventListener("keydown", this.listener);
 	}
 

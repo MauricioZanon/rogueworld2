@@ -1,5 +1,5 @@
 import Entidad from "@/entidades/Entidad";
-import store from "./store/creadorEntidadesStore";
+import store from "../vistas/creadorentidades/store/creadorEntidadesStore";
 
 const pathArchivoEntidades = "./src/assets/entidades.json";
 const fs = window.require("electron").remote.require("fs-extra");

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<PlayerViewVC></PlayerViewVC>
+		<PlayerViewVC @keydown.native="key"></PlayerViewVC>
 		<SideBarVC></SideBarVC>
 	</div>
 </template>

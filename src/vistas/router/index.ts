@@ -12,10 +12,6 @@ const routes: RouteConfig[] = [
     name: "MainScreen",
     component: MainScreenVC
   },
-  // {
-  // 	path: '*',
-  // 	redirect: '/'
-  // },
   {
     path: "/game-screen",
     name: "GameScreen",

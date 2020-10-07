@@ -24,9 +24,9 @@ export default class MapasFactory {
                                             posicion.cy*TAMAÑO_CHUNK + nuevoTile.posicion.ty,
                                             posicion.cz);
                 if (rand > 210) {
-                    nuevoTile.terreno = EntidadFactory.obtenerEntidad("stone wall");
+                    nuevoTile.terreno = EntidadFactory.crearEntidad("stone wall");
                 } else {
-                    nuevoTile.terreno = EntidadFactory.obtenerEntidad("dirt wall");
+                    nuevoTile.terreno = EntidadFactory.crearEntidad("dirt wall");
                 }
                 tiles[i][j] = nuevoTile;
             }
@@ -44,11 +44,11 @@ export default class MapasFactory {
                                             posicion.cy*TAMAÑO_CHUNK + nuevoTile.posicion.ty,
                                             posicion.cz);
                 if (rand < 75) {
-                    nuevoTile.terreno = EntidadFactory.obtenerEntidad("dirt floor");
+                    nuevoTile.terreno = EntidadFactory.crearEntidad("dirt floor");
                 } else if (rand > 210) {
-                    nuevoTile.terreno = EntidadFactory.obtenerEntidad("stone wall");
+                    nuevoTile.terreno = EntidadFactory.crearEntidad("stone wall");
                 } else {
-                    nuevoTile.terreno = EntidadFactory.obtenerEntidad("grass floor");
+                    nuevoTile.terreno = EntidadFactory.crearEntidad("grass floor");
                 }
                 tiles[i][j] = nuevoTile;
             }

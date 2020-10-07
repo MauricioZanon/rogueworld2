@@ -19,7 +19,7 @@ import EntidadFactory from "@/entidades/EntidadFactory";
 @Component
 export default class MainScreenVC extends Vue {
 	public comenzarNuevoJuego(): void {
-        store.commit("usarComoPlayer", EntidadFactory.obtenerEntidad("player"));
+        store.commit("usarComoPlayer", EntidadFactory.crearEntidad("player"));
 		Mapa.inicializar();
 		void router.push({name: "GameScreen"});
 	}

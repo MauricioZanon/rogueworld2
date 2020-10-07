@@ -12,7 +12,7 @@
 		<FlagsFormVC></FlagsFormVC>
 		<hr />
 		<button @click="guardarEntidad()">Guardar</button>
-		<router-link :to="{name: 'MenuPrincipal'}">
+		<router-link :to="{name: 'MainScreen'}">
 			<button >Salir</button>
 		</router-link>
 		<ModalCargarEntidadVC ref="modal-cargar-entidad"></ModalCargarEntidadVC>
@@ -28,7 +28,7 @@ import RenderCompFormVC from "./components/renderCompFormVC.vue"
 import FlagsFormVC from "./components/flagsFormVC.vue"
 import ModalCargarEntidadVC from "./components/modalCargarEntidadVC.vue"
 import store from "./store/creadorEntidadesStore";
-import { guardarEntidades } from "./EntidadRepository";
+import { guardarEntidades } from "@/entidades/EntidadRepository";
 
 @Component({
 	components: {

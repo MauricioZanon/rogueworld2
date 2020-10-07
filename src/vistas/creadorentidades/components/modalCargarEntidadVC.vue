@@ -54,7 +54,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { Tipos } from "@/entidades/Tipos";
 import store from "./../store/creadorEntidadesStore";
-import { obtenerEntidades } from "./../EntidadRepository";
+import { obtenerEntidades } from "@/entidades/EntidadRepository";
 import EventBus from "../EventBus";
 
 @Component({
