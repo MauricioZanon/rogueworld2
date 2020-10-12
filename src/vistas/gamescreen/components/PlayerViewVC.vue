@@ -36,8 +36,11 @@ export default class PlayerViewVC extends Vue {
 	}
 
 	public mounted(): void {
-		window.removeEventListener("keydown", this.listener);
 		window.addEventListener("keydown", this.listener);
+	}
+
+	public destroyed(): void {
+		window.removeEventListener("keydown", this.listener);
 	}
 
 }
