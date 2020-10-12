@@ -8,9 +8,9 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component } from "vue-property-decorator";
 import store from "./../store/creadorEntidadesStore";
-import EventBus from '../EventBus';
+import EventBus from "../EventBus";
 
 @Component
 export default class FlagsFormVC extends Vue {
