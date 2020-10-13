@@ -15,13 +15,15 @@ export default class MapasFactory {
 	}
 	
 	private static crearChunkSubterraneo(posicion: ChunkPos): Chunk {
-		const tiles: Tile[][] = [];
+        const tiles: Tile[][] = [];
+        const posX00 = posicion.cx*TAMAÑO_CHUNK;
+        const posY00 = posicion.cy*TAMAÑO_CHUNK;
 		for (let i = 0; i < TAMAÑO_CHUNK; i++) {
             tiles[i] = [];
             for (let j = 0; j < TAMAÑO_CHUNK; j++) {
                 const nuevoTile = new Tile({...posicion, tx: i, ty: j});
-                const rand = RNG.getNoise(posicion.cx*TAMAÑO_CHUNK + nuevoTile.posicion.tx, 
-                                            posicion.cy*TAMAÑO_CHUNK + nuevoTile.posicion.ty,
+                const rand = RNG.getNoise(posX00 + nuevoTile.posicion.tx, 
+                                            posY00 + nuevoTile.posicion.ty,
                                             posicion.cz);
                 if (rand > 210) {
                     nuevoTile.terreno = EntidadFactory.crearEntidad("stone wall");

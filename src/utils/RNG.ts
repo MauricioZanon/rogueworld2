@@ -7,9 +7,12 @@ export default abstract class RNG {
         return Math.random()
     }
 
-    /**Devuelve un double random entre min y max*/
-    public static getRandomEntre(min: number, max: number): number {
-        return Math.random() * (max - min) + min;
+    public static getRandomHasta(maximo: number): number {
+        return Math.floor(Math.random()*maximo);
+    }
+
+    public static getElementoRandom<T>(lista: T[]): T{
+        return lista[RNG.getRandomHasta(lista.length)];
     }
 
     public static getNoise(x: number, y: number, z: number): number {
