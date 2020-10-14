@@ -9,7 +9,7 @@ export module Ascender {
         const origen: Tile = Mapa.obtenerTile(actor.posicion);
         const destino: Tile = obtenerTileSuperior(origen);
         if(origen.feature?.nombreComp.nombre === "upstairs") {
-            origen.removerActor();
+            origen.actor = null;
             destino.colocarActor(actor);
         }
     }

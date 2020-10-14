@@ -9,7 +9,7 @@ export module Descender {
         const origen: Tile = Mapa.obtenerTile(actor.posicion);
         const destino: Tile = obtenerTileInferior(origen);
         if(origen.feature?.nombreComp.nombre === "downstairs") {
-            origen.removerActor();
+            origen.actor = null;
             destino.colocarActor(actor);
         }
     }

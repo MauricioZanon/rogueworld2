@@ -1,13 +1,11 @@
 <template>
-	<div data-toggle="tooltip" :title="tile.toString()" >
-		<div class="tile" :style="{
-				'background-color': colorFondo, 
-				'color': colorSimbolo, 
-				'width': tamañoTile, 
-				'height': tamañoTile, 
-				'font-size': tamañoFuente}">
-			<div class="ascii">{{ simbolo }}</div>
-		</div>
+	<div class="tile" :style="{
+			'background-color': colorFondo, 
+			'color': colorSimbolo, 
+			'width': tamañoTile, 
+			'height': tamañoTile, 
+			'font-size': tamañoFuente}">
+		<div class="ascii">{{ simbolo }}</div>
 	</div>
 </template>
 

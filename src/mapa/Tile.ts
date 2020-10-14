@@ -4,38 +4,13 @@ import { Posicion } from "./Posicion";
 
 export default class Tile {
     public readonly posicion: Posicion;
-    public terreno: Entidad = null;
-    public feature: Entidad = null;
+    public terreno?: Entidad = null;
+    public feature?: Entidad = null;
     public items: Set<Entidad> = new Set();
     public actor?: Entidad = null;
 
     public constructor(posicion: Posicion) {
         this.posicion = posicion;
-    }
-
-    public remover(entidad: Entidad): void {
-        switch (entidad.tipo) {
-            case Tipos.ACTOR: {
-                this.actor = null;
-                break;
-            }
-            case Tipos.FEATURE: {
-                this.feature = null;
-                break;
-            }
-            case Tipos.TERRENO: {
-                this.terreno = null;
-                break;
-            }
-            case Tipos.ITEM: {
-                this.items.delete(entidad);
-                break;
-            }
-        }
-    }
-
-    public removerActor(): void {
-        this.actor = null;
     }
 
     public colocarActor(actor: Entidad): void {
