@@ -30,7 +30,7 @@ export function modificarTy(posicion: Posicion, delta: number): void {
 function corregirX(posicion: Posicion): void {
     if(posicion.tx < 0) {
         posicion.cx += Math.floor(posicion.tx / TAMAÑO_CHUNK);
-        posicion.tx = (TAMAÑO_CHUNK + posicion.tx) % TAMAÑO_CHUNK;
+        posicion.tx = Math.abs((TAMAÑO_CHUNK + posicion.tx) % TAMAÑO_CHUNK);
     } else if(posicion.tx >= TAMAÑO_CHUNK) {
         posicion.cx += Math.floor(posicion.tx / TAMAÑO_CHUNK);
         posicion.tx = posicion.tx % TAMAÑO_CHUNK;
@@ -40,7 +40,7 @@ function corregirX(posicion: Posicion): void {
 function corregirY(posicion: Posicion): void {
     if(posicion.ty < 0) {
         posicion.cy += Math.floor(posicion.ty / TAMAÑO_CHUNK);
-        posicion.ty = (TAMAÑO_CHUNK + posicion.ty) % TAMAÑO_CHUNK;
+        posicion.ty = Math.abs((TAMAÑO_CHUNK + posicion.ty) % TAMAÑO_CHUNK);
     } else if(posicion.ty >= TAMAÑO_CHUNK) {
         posicion.cy += Math.floor(posicion.ty / TAMAÑO_CHUNK);
         posicion.ty = posicion.ty % TAMAÑO_CHUNK;

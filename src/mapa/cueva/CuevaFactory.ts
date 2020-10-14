@@ -7,13 +7,11 @@ import EntidadFactory from "../../entidades/EntidadFactory";
 export default class CuevaFactory {
 
     public crearCueva(posicion: Posicion, tamaño: TamañoCueva): void {
-
         const excavadores: Excavador[] = [new Excavador(posicion)];
         const tilesExcavados: Set<Tile> = new Set<Tile>();
 
         this.excavarEntrada(Mapa.obtenerTile(posicion));
         while(tilesExcavados.size < tamaño) {
-            console.log(excavadores.length);
             excavadores.forEach(excavador => {
                 tilesExcavados.add(excavador.avanzar());
                 if(RNG.getRandom() > 0.95) {

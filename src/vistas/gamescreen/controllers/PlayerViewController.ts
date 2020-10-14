@@ -6,6 +6,8 @@ import Entidad from "@/entidades/Entidad";
 import { Descender } from "@/entidades/acciones/Descender";
 import { Ascender } from "@/entidades/acciones/Ascender";
 
+export type EventoMouse = "mouseup" | "mousedown";
+
 export default class PlayerViewController {
 
     public static resolverKeyDown(evento: KeyboardEvent): void {
@@ -62,6 +64,15 @@ export default class PlayerViewController {
                 console.log(evento.code);
             }
             
+        }
+    }
+
+    public static resolverEventoMouse(nombreEvento: EventoMouse): void {
+        switch(nombreEvento) {
+            case "mousedown":
+                break;
+            case "mouseup":
+                break;
         }
     }
 }

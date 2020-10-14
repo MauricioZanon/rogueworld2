@@ -5,8 +5,7 @@
 				'color': colorSimbolo, 
 				'width': tamañoTile, 
 				'height': tamañoTile, 
-				'font-size': tamañoFuente,
-				'top': 100}">
+				'font-size': tamañoFuente}">
 			<div class="ascii">{{ simbolo }}</div>
 		</div>
 	</div>

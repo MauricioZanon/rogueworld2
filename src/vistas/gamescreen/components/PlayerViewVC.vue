@@ -1,8 +1,8 @@
 <template>
-	<div class="player-view">
-		<div v-for="(columna, indexCol) in mapa" :key="indexCol">
+	<div class="player-view" @wheel="cambiarZoom">
+		<span v-for="(columna, indexCol) in mapa" :key="indexCol">
 			<TileVC v-for="(tile, indexRow) in columna" :key="indexRow" :tile="tile" :tamaño="tamañoTile"></TileVC>
-		</div>
+		</span>
 	</div>
 </template>
 
@@ -11,36 +11,52 @@ import { Component, Vue } from "vue-property-decorator";
 import Mapa from "@/mapa/Mapa";
 import Tile from "@/mapa/Tile";
 import TileVC from "./TileVC.vue";
-import PlayerViewController from "../controllers/PlayerViewController"
-import store from "@/store/store"
+import PlayerViewController from "../controllers/PlayerViewController";
+import store from "@/store/store";
 import { Posicion, modificarTx, modificarTy } from "@/mapa/Posicion";
+
+const listener = (evento: KeyboardEvent): void => PlayerViewController.resolverKeyDown(evento);
 
 @Component({
 	components: {
 		TileVC
-	}
+	},
 })
 export default class PlayerViewVC extends Vue {
-	public readonly tamañoTile = 4;
-	public readonly listener = (evento: KeyboardEvent): void => PlayerViewController.resolverKeyDown(evento);
+	public cambiarZoom(evento: WheelEvent): void {
+		if(evento.deltaY > 0) {
+			store.commit("aumentarCantidadTiles");
+		} else {
+			store.commit("disminuirCantidadTiles");
+		}
+	}
 
 	public get mapa(): Tile[][] {
-		return Mapa.obtenerAreaCuadrada(this.pos00, 25, 25);
+		return Mapa.obtenerAreaCuadrada(this.pos00, this.cantidadTiles, this.cantidadTiles);
 	}
 
 	private get pos00(): Posicion {
 		const resultado: Posicion = {...store.getters.player.posicion};
-		modificarTx(resultado, -12);
-		modificarTy(resultado, -12);
+		const delta: number = Math.ceil(-(this.cantidadTiles/2));
+		modificarTx(resultado, delta);
+		modificarTy(resultado, delta);
 		return resultado;
 	}
 
+	public get tamañoTile(): number {
+		return 100 / this.cantidadTiles;
+	}
+
+	public get cantidadTiles(): number {
+		return store.state.cantidadTiles;
+	}
+
 	public mounted(): void {
-		window.addEventListener("keydown", this.listener);
+		window.addEventListener("keydown", listener);
 	}
 
 	public destroyed(): void {
-		window.removeEventListener("keydown", this.listener);
+		window.removeEventListener("keydown", listener);
 	}
 
 }

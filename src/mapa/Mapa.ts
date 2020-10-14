@@ -56,7 +56,8 @@ export default class Mapa {
                 modificarTy(auxPos, 1);
             }
             modificarTx(auxPos, 1);
-            modificarTy(auxPos, -alto);
+            auxPos.cy = posicionInicial.cy;
+            auxPos.ty = posicionInicial.ty;
         }
         return resultado;
     }
