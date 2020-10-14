@@ -59,7 +59,14 @@ export default class TileVC extends Vue {
 	line-height: 110%;
 	user-select: none;
 }
+.tile {
+	transition: border 0.7s 0.1s;
+}
 .tile:hover {
-	border: 1px dashed yellow;
+	--grosorBorde: 4px;
+	border-top: var(--grosorBorde) solid #FFFFFF22;
+	border-left: var(--grosorBorde) solid #FFFFFF33;
+	border-right: var(--grosorBorde) solid #00000033;
+	border-bottom: var(--grosorBorde) solid #00000022;
 }
 </style>
