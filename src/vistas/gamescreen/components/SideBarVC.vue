@@ -20,12 +20,11 @@ export default class SideBarVC extends Vue {
 
 <style scoped>
 .side-bar {
-	border-left: 3px solid rgb(139, 240, 114);
 	color: white;
+	font-size: 1rem;
 	background-color: black;
 	height: 100vh;
 	float: right;
-	width: max-content;
-	border-left: 1px gray;
+	width: 25%;
 }
 </style>

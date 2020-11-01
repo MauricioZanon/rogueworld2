@@ -1,6 +1,9 @@
 import Entidad from "./Entidad";
 import clone from "fast-clone";
 import { obtenerEntidades } from "@/entidades/EntidadRepository";
+import RenderComp from "./componentes-de-entidades/RenderComp";
+import chroma, { Scale } from "chroma-js";
+import RNG from "@/utils/RNG";
 
 export default class EntidadFactory {
     private static readonly prototipos = EntidadFactory.crearMapaDeEntidades();
@@ -16,6 +19,15 @@ export default class EntidadFactory {
     }
 
     public static crearEntidad(nombre: string): Entidad {
-        return clone(EntidadFactory.prototipos.get(nombre));
+        const nuevaEntidad: Entidad = clone(EntidadFactory.prototipos.get(nombre));
+        if(nuevaEntidad.renderComp?.colorFondo) {
+            this.randomizarColores(nuevaEntidad.renderComp);
+        }
+        return nuevaEntidad;
+    }
+
+    private static randomizarColores(componente: RenderComp): void {
+        const espectro: Scale = chroma.scale([componente.colorFondo, componente.colorSimbolo]);
+        componente.colorFondo = espectro(RNG.getRandomHasta(0.14)).hex("rgba");
     }
 }

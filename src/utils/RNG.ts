@@ -8,11 +8,11 @@ export default abstract class RNG {
     }
 
     public static getRandomHasta(maximo: number): number {
-        return Math.floor(Math.random()*maximo);
+        return Math.random()*maximo;
     }
 
     public static getElementoRandom<T>(lista: T[]): T{
-        return lista[RNG.getRandomHasta(lista.length)];
+        return lista[Math.floor(RNG.getRandomHasta(lista.length))];
     }
 
     public static getNoise(x: number, y: number, z: number): number {
