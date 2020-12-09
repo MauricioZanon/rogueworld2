@@ -1,11 +1,12 @@
 import store from "@/store/store";
 import Chunk from "./Chunk";
-import { Direccion } from "./Direcciones";
+import { Direccion, NORTE, OESTE, ESTE, SUR } from './Direcciones';
 import { toString, aplicarDireccion, ChunkPos, modificarTx, modificarTy, Posicion } from "./Posicion";
 import Tile from "./Tile";
 import MapasFactory from "./MapasFactory";
-import { Direcciones } from "@/mapa/Direcciones";
-import CuevaFactory, { TamañoCueva } from "./cueva/CuevaFactory";
+import CuevaFactory from "./cueva/CuevaFactory";
+import { TamañoCueva } from './cueva/TamañoCueva';
+import { PreferenciasCuevaConPasillos } from './cueva/CuevaFactory';
 
 export default class Mapa {
 
@@ -14,8 +15,16 @@ export default class Mapa {
     public static inicializar(): void {
         const chunk: Chunk = MapasFactory.crearChunk({cx: 0, cy: 0, cz: 0});
         Mapa.mapas.set(toString(chunk.posicion), chunk);
-        const cuevaPos: Posicion = {cx:0, cy:0, cz:1, tx:0, ty:0};
-        new CuevaFactory().crearCueva(cuevaPos, TamañoCueva.GRANDE);
+
+        const preferenciasCueva: PreferenciasCuevaConPasillos = {
+            tamaño: TamañoCueva.GRANDE,
+            posicionInicial: {cx:0, cy:0, cz:1, tx:0, ty:0},
+            largoMaximo: 15,
+            largoMinimo: 5,
+            chanceDeRotar: 0.15
+        }
+
+        new CuevaFactory().crearCuevaConPasillos(preferenciasCueva);
         chunk.obtenerTile({tx: 12, ty: 12}).colocarActor(store.getters.player);
     }
 
@@ -38,10 +47,10 @@ export default class Mapa {
     public static obtenerTilesAdyacentesOrtogonales(posicion: Posicion): Tile[] {
         const resultado: Tile[] = [];
         
-        resultado.push(this.obtenerTile(posicion, Direcciones.NORTE));
-        resultado.push(this.obtenerTile(posicion, Direcciones.OESTE));
-        resultado.push(this.obtenerTile(posicion, Direcciones.ESTE));
-        resultado.push(this.obtenerTile(posicion, Direcciones.SUR));
+        resultado.push(this.obtenerTile(posicion, NORTE));
+        resultado.push(this.obtenerTile(posicion, OESTE));
+        resultado.push(this.obtenerTile(posicion, ESTE));
+        resultado.push(this.obtenerTile(posicion, SUR));
         
         return resultado;
     }

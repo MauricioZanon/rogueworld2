@@ -5,6 +5,7 @@ import router from "@/vistas/router/index";
 import Entidad from "@/entidades/Entidad";
 import { Descender } from "@/entidades/acciones/Descender";
 import { Ascender } from "@/entidades/acciones/Ascender";
+import { SUDOESTE, SUR, SUDESTE, OESTE, ESTE, NOROESTE, NORTE, NORESTE } from '../../../mapa/Direcciones';
 
 export type EventoMouse = "mouseup" | "mousedown";
 
@@ -14,35 +15,35 @@ export default class PlayerViewController {
         const player: Entidad = store.getters.player;
         switch(evento.code) {
             case "Numpad1": {
-                Bump.ejecutar(player, Direcciones.SUDOESTE);
+                Bump.ejecutar(player, SUDOESTE);
                 break;
             }
             case "Numpad2": {
-                Bump.ejecutar(player, Direcciones.SUR);
+                Bump.ejecutar(player, SUR);
                 break;
             }
             case "Numpad3": {
-                Bump.ejecutar(player, Direcciones.SUDESTE);
+                Bump.ejecutar(player, SUDESTE);
                 break;
             }
             case "Numpad4": {
-                Bump.ejecutar(player, Direcciones.OESTE);
+                Bump.ejecutar(player, OESTE);
                 break;
             }
             case "Numpad6": {
-                Bump.ejecutar(player, Direcciones.ESTE);
+                Bump.ejecutar(player, ESTE);
                 break;
             }
             case "Numpad7": {
-                Bump.ejecutar(player, Direcciones.NOROESTE);
+                Bump.ejecutar(player, NOROESTE);
                 break;
             }
             case "Numpad8": {
-                Bump.ejecutar(player, Direcciones.NORTE);
+                Bump.ejecutar(player, NORTE);
                 break;
             }
             case "Numpad9": {
-                Bump.ejecutar(player, Direcciones.NORESTE);
+                Bump.ejecutar(player, NORESTE);
                 break;
             }
             case "Space":
