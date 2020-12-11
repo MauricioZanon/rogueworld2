@@ -15,12 +15,13 @@ import Mapa from "@/mapa/Mapa";
 import router from "@/vistas/router/index";
 import store from "@/store/store";
 import EntidadFactory from "@/entidades/EntidadFactory";
+import { crearMundoInicial } from "@/mapa/builder/WorldBuilder";
 
 @Component
 export default class MainScreenVC extends Vue {
 	public comenzarNuevoJuego(): void {
         store.commit("usarComoPlayer", EntidadFactory.crearEntidad("player"));
-		Mapa.inicializar();
+		crearMundoInicial();
 		void router.push({name: "GameScreen"});
 	}
 }

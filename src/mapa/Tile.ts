@@ -18,7 +18,8 @@ export default class Tile {
             this.actor = actor;
             actor.posicion = this.posicion;
         } else {
-            throw new Error("Se intentó colocar una entidad no actor en el slot de actor " + actor);
+            console.log(actor);
+            throw new Error("Se intentó colocar una entidad no actor en el slot de actor " + actor.nombreComp.nombre);
         }
     }
 

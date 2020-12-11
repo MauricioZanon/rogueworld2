@@ -18,7 +18,7 @@ export default class EntidadFactory {
         return resultado;
     }
 
-    public static crearEntidad(nombre: string): Entidad {
+    public static crearEntidad(nombre: nombreEntidad): Entidad {
         const nuevaEntidad: Entidad = clone(EntidadFactory.prototipos.get(nombre));
         if(nuevaEntidad.renderComp?.colorFondo) {
             this.randomizarColores(nuevaEntidad.renderComp);
@@ -31,3 +31,6 @@ export default class EntidadFactory {
         componente.colorFondo = espectro(RNG.getRandomHasta(0.14)).hex("rgba");
     }
 }
+
+export type nombreEntidad = "grass floor" | "goblin" | "player" | "stone wall" | "dirt floor" | "downstairs" | "upstairs" | 
+"dirt wall" | "wooden floor" | "wooden wall" | "stone floor"

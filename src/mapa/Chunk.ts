@@ -10,10 +10,7 @@ export default class Chunk {
 
 	public constructor({cx, cy, cz}: ChunkPos, tiles: Tile[][]){
         this.posicion = {cx, cy, cz};
-
 		this.tiles = tiles;
-        this.tiles[0][0].feature = EntidadFactory.crearEntidad("upstairs");
-        this.tiles[0][1].feature = EntidadFactory.crearEntidad("downstairs");
     }
 
     public obtenerTile(posicion: TilePos): Tile {

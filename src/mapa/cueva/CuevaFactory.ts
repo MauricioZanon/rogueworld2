@@ -8,17 +8,17 @@ import { TamañoCueva } from './TamañoCueva';
 import Excavador from './Excavador';
 import ExcavadorPasillos from './ExcavadorPasillos';
 import ExcavadorHabitaciones from './ExcavadorHabitaciones';
+import { nombreEntidad } from '../../entidades/EntidadFactory';
 
 export default class CuevaFactory {
 
     public crearCuevaConPasillos(preferencias: PreferenciasCuevaConPasillos): void {
         const direccionInicial: Direccion = preferencias.direccionInicial || RNG.getElementoRandom([NORTE, ESTE, SUR, OESTE]);
         const {tamaño, posicionInicial} = preferencias;
-
+        this.excavarEntrada(posicionInicial);
+        
         const excavadores: Excavador[] = [new ExcavadorPasillos(posicionInicial, direccionInicial, preferencias)];
         const tilesExcavados: Set<Tile> = new Set<Tile>();
-
-        this.excavarEntrada(Mapa.obtenerTile(posicionInicial));
 
         let turnosDesdeUltimoExcavadorNuevo = 0;
         while(tilesExcavados.size < tamaño) {
@@ -40,9 +40,15 @@ export default class CuevaFactory {
         }
     }
 
-    private excavarEntrada(tile: Tile): void {
-        const nombreTerreno = tile.terreno.nombreComp.nombre;
-        tile.terreno = EntidadFactory.crearEntidad(nombreTerreno.replace("wall", "floor"));
+    private excavarEntrada(posicionEntrada: Posicion): void {
+        let tile: Tile = Mapa.obtenerTile(posicionEntrada);
+        tile.feature = EntidadFactory.crearEntidad("downstairs");
+        posicionEntrada.cz++;
+        
+        tile = Mapa.obtenerTile(posicionEntrada);
+        tile.feature = EntidadFactory.crearEntidad("upstairs");
+        const nombreTerreno: nombreEntidad = <nombreEntidad> tile.terreno.nombreComp.nombre.replace("wall", "floor");
+        tile.terreno = EntidadFactory.crearEntidad(nombreTerreno);
     }
 
 }
