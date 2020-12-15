@@ -1,6 +1,6 @@
-import EntidadFactory, { nombreEntidad } from '@/entidades/EntidadFactory';
-import { Posicion } from '../Posicion';
-import Tile from '../Tile';
+import EntidadFactory, { nombreEntidad } from "@/entidades/EntidadFactory";
+import { Posicion } from "../Posicion";
+import Tile from "../Tile";
 
 export default abstract class Excavador {
 

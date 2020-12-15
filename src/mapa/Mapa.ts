@@ -1,6 +1,6 @@
-import { crearChunk } from './builder/ChunkFactory';
+import { crearChunk } from "./builder/ChunkFactory";
 import Chunk from "./Chunk";
-import { Direccion, NORTE, OESTE, ESTE, SUR } from './Direcciones';
+import { Direccion, NORTE, OESTE, ESTE, SUR } from "./Direcciones";
 import { toString, aplicarDireccion, ChunkPos, modificarTx, modificarTy, Posicion } from "./Posicion";
 import Tile from "./Tile";
 

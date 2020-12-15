@@ -3,12 +3,12 @@ import Mapa from "../Mapa";
 import { Posicion } from "../Posicion";
 import Tile from "../Tile";
 import EntidadFactory from "../../entidades/EntidadFactory";
-import { Direccion, NORTE, SUR, OESTE, ESTE } from '../Direcciones';
-import { TamañoCueva } from './TamañoCueva';
-import Excavador from './Excavador';
-import ExcavadorPasillos from './ExcavadorPasillos';
-import ExcavadorHabitaciones from './ExcavadorHabitaciones';
-import { nombreEntidad } from '../../entidades/EntidadFactory';
+import { Direccion, NORTE, SUR, OESTE, ESTE } from "../Direcciones";
+import { TamañoCueva } from "./TamañoCueva";
+import Excavador from "./Excavador";
+import ExcavadorPasillos from "./ExcavadorPasillos";
+import ExcavadorHabitaciones from "./ExcavadorHabitaciones";
+import { nombreEntidad } from "../../entidades/EntidadFactory";
 
 export default class CuevaFactory {
 

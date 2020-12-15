@@ -1,10 +1,10 @@
-import RNG from '@/utils/RNG';
-import { Direccion } from '../Direcciones';
-import Mapa from '../Mapa';
-import { Posicion } from '../Posicion';
-import Tile from '../Tile';
-import { PreferenciasCuevaConPasillos } from './CuevaFactory';
-import Excavador from './Excavador';
+import RNG from "@/utils/RNG";
+import { Direccion } from "../Direcciones";
+import Mapa from "../Mapa";
+import { Posicion } from "../Posicion";
+import Tile from "../Tile";
+import { PreferenciasCuevaConPasillos } from "./CuevaFactory";
+import Excavador from "./Excavador";
 
 export default class ExcavadorHabitaciones extends Excavador {
     private readonly preferencias: PreferenciasCuevaConPasillos;

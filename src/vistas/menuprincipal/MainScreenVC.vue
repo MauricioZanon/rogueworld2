@@ -11,7 +11,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Mapa from "@/mapa/Mapa";
 import router from "@/vistas/router/index";
 import store from "@/store/store";
 import EntidadFactory from "@/entidades/EntidadFactory";

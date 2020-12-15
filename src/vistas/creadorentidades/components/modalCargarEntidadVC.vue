@@ -52,7 +52,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { Tipos } from "@/entidades/Tipos";
+import { Tipo } from "@/entidades/Tipos";
 import store from "./../store/creadorEntidadesStore";
 import { obtenerEntidades } from "@/entidades/EntidadRepository";
 import EventBus from "../EventBus";
@@ -79,10 +79,10 @@ export default class ModalCargarEntidadVC extends Vue {
 	public organizarEntidades(): void {
 		store.state.entidades.forEach(entidad => {
 			switch (entidad.tipo) {
-				case Tipos.ITEM:
+				case Tipo.ITEM:
 					this.items.push(entidad.nombreComp.nombre);
 					break;
-				case Tipos.TERRENO:
+				case Tipo.TERRENO:
 					this.terrenos.push(entidad.nombreComp.nombre);
 					break;
 				default:

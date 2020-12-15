@@ -1,4 +1,3 @@
-import EntidadFactory from "@/entidades/EntidadFactory";
 import { ChunkPos, TilePos } from "./Posicion";
 import Tile from "./Tile";
 

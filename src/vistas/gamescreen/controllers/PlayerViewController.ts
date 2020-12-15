@@ -1,11 +1,10 @@
-import {Direcciones} from "@/mapa/Direcciones";
 import store from "@/store/store";
 import { Bump } from "@/entidades/acciones/Bump";
 import router from "@/vistas/router/index";
 import Entidad from "@/entidades/Entidad";
 import { Descender } from "@/entidades/acciones/Descender";
 import { Ascender } from "@/entidades/acciones/Ascender";
-import { SUDOESTE, SUR, SUDESTE, OESTE, ESTE, NOROESTE, NORTE, NORESTE } from '../../../mapa/Direcciones';
+import { SUDOESTE, SUR, SUDESTE, OESTE, ESTE, NOROESTE, NORTE, NORESTE } from "../../../mapa/Direcciones";
 
 export type EventoMouse = "mouseup" | "mousedown";
 

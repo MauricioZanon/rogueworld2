@@ -1,5 +1,5 @@
 import Entidad from "@/entidades/Entidad";
-import { Tipos } from "@/entidades/Tipos";
+import { Tipo } from "@/entidades/Tipos";
 import { Posicion } from "./Posicion";
 
 export default class Tile {
@@ -14,7 +14,7 @@ export default class Tile {
     }
 
     public colocarActor(actor: Entidad): void {
-        if (actor.tipo === Tipos.ACTOR) {
+        if (actor.tipo === Tipo.ACTOR) {
             this.actor = actor;
             actor.posicion = this.posicion;
         } else {

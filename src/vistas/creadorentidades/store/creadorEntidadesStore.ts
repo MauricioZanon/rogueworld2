@@ -2,7 +2,7 @@ import Vue from "vue"
 import Vuex from "vuex"
 import Entidad from "@/entidades/Entidad"
 import NombreComp from "@/entidades/componentes-de-entidades/NombreComp"
-import { Tipos } from "@/entidades/Tipos"
+import { Tipo } from "@/entidades/Tipos"
 import RenderComp from "@/entidades/componentes-de-entidades/RenderComp";
 
 Vue.use(Vuex)
@@ -10,7 +10,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     entidadSeleccionada: {} as Entidad,
-    tipo: null as Tipos,
+    tipo: null as Tipo,
     entidades: [] as Entidad[],
     nombreComp: {} as NombreComp,
     nombreCompValido: false,

@@ -9,20 +9,20 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
-import { Tipos } from "@/entidades/Tipos";
+import { Tipo } from "@/entidades/Tipos";
 import store from "./../store/creadorEntidadesStore"
 import EventBus from "../EventBus";
 
 @Component 
 export default class TipoFormVC extends Vue {
-	public readonly tipos: Tipos[] = [] as Tipos[];
-	public tipo: Tipos = null;
+	public readonly tipos: Tipo[] = [] as Tipo[];
+	public tipo: Tipo = null;
 
     public created(): void {
-        this.tipos.push(Tipos.ACTOR);
-		this.tipos.push(Tipos.TERRENO);
-		this.tipos.push(Tipos.FEATURE);
-        this.tipos.push(Tipos.ITEM);
+        this.tipos.push(Tipo.ACTOR);
+		this.tipos.push(Tipo.TERRENO);
+		this.tipos.push(Tipo.FEATURE);
+        this.tipos.push(Tipo.ITEM);
         EventBus.$on("actualizar-informacion", () => this.actualizar());
     }
 

@@ -1,9 +1,9 @@
-import store from '@/store/store';
-import Chunk from '../Chunk';
-import CuevaFactory, { PreferenciasCuevaConPasillos } from '../cueva/CuevaFactory';
-import { TamañoCueva } from '../cueva/TamañoCueva';
-import Mapa from '../Mapa';
-import { ChunkPos, Posicion } from '../Posicion';
+import store from "@/store/store";
+import Chunk from "../Chunk";
+import CuevaFactory, { PreferenciasCuevaConPasillos } from "../cueva/CuevaFactory";
+import { TamañoCueva } from "../cueva/TamañoCueva";
+import Mapa from "../Mapa";
+import { Posicion } from "../Posicion";
 
 export function crearMundoInicial(): void {
     const chunk: Chunk = Mapa.obtenerChunk({cx: 0, cy: 0, cz: 0});
