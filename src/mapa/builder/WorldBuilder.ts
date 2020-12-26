@@ -13,9 +13,7 @@ export function crearMundoInicial(): void {
     chunk.obtenerTile({tx: 12, ty: 12}).colocarActor(store.getters.player);
 }
 
-
 export function crearCueva(positionEntrada: Posicion): void {
-
     const preferenciasCueva: PreferenciasCuevaConPasillos = {
         tamaño: TamañoCueva.GRANDE,
         posicionInicial: positionEntrada,
@@ -23,7 +21,5 @@ export function crearCueva(positionEntrada: Posicion): void {
         largoMinimo: 5,
         chanceDeRotar: 0.15
     }
-
     new CuevaFactory().crearCuevaConPasillos(preferenciasCueva);
-
 }

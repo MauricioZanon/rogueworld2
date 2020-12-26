@@ -13,31 +13,10 @@ import { nombreEntidad } from "../../entidades/EntidadFactory";
 export default class CuevaFactory {
 
     public crearCuevaConPasillos(preferencias: PreferenciasCuevaConPasillos): void {
-        const direccionInicial: Direccion = preferencias.direccionInicial || RNG.getElementoRandom([NORTE, ESTE, SUR, OESTE]);
-        const {tamaño, posicionInicial} = preferencias;
-        this.excavarEntrada(posicionInicial);
-        
-        const excavadores: Excavador[] = [new ExcavadorPasillos(posicionInicial, direccionInicial, preferencias)];
         const tilesExcavados: Set<Tile> = new Set<Tile>();
-
-        let turnosDesdeUltimoExcavadorNuevo = 0;
-        while(tilesExcavados.size < tamaño) {
-            excavadores.forEach(excavador => {
-                tilesExcavados.add(excavador.avanzar());
-                if(excavador instanceof ExcavadorPasillos) {
-                    turnosDesdeUltimoExcavadorNuevo++;
-                    if(turnosDesdeUltimoExcavadorNuevo > 25 && RNG.getRandom() > 0.9) {
-                        excavadores.push(new ExcavadorHabitaciones(excavador.posicion, preferencias));
-                        excavadores.push(new ExcavadorHabitaciones(excavador.posicion, preferencias));
-                        excavadores.push(new ExcavadorHabitaciones(excavador.posicion, preferencias));
-                        excavadores.push(new ExcavadorHabitaciones(excavador.posicion, preferencias));
-                        excavadores.push(new ExcavadorHabitaciones(excavador.posicion, preferencias));
-                        excavadores.push(new ExcavadorHabitaciones(excavador.posicion, preferencias));
-                        turnosDesdeUltimoExcavadorNuevo = 0;
-                    }
-                }
-            });
-        }
+        this.excavarEntrada(preferencias.posicionInicial);
+        this.excavarCueva(preferencias, tilesExcavados);
+        this.crearActores(tilesExcavados);
     }
 
     private excavarEntrada(posicionEntrada: Posicion): void {
@@ -49,6 +28,43 @@ export default class CuevaFactory {
         tile.feature = EntidadFactory.crearEntidad("upstairs");
         const nombreTerreno: nombreEntidad = <nombreEntidad> tile.terreno.nombreComp.nombre.replace("wall", "floor");
         tile.terreno = EntidadFactory.crearEntidad(nombreTerreno);
+    }
+    
+    private excavarCueva(preferencias: PreferenciasCuevaConPasillos, tilesExcavados: Set<Tile>): void {
+        const direccionInicial: Direccion = preferencias.direccionInicial || RNG.getElementoRandom([NORTE, ESTE, SUR, OESTE]);
+        const { posicionInicial, tamaño } = preferencias;
+        let excavadores: Excavador[] = [new ExcavadorPasillos(posicionInicial, direccionInicial, preferencias)];
+
+        let turnosDesdeUltimoExcavadorNuevo = 0;
+        while (tilesExcavados.size < tamaño) {
+            excavadores.forEach(excavador => {
+                tilesExcavados.add(excavador.avanzar());
+                if (excavador instanceof ExcavadorPasillos) {
+                    turnosDesdeUltimoExcavadorNuevo++;
+                    if (turnosDesdeUltimoExcavadorNuevo > 25 && RNG.getRandom() > 0.9) {
+                        excavadores = [excavador, ...this.crearNuevosExcavadores(excavador.posicion, preferencias)];
+                        this.crearNuevosExcavadores(excavador.posicion, preferencias);
+                        turnosDesdeUltimoExcavadorNuevo = 0;
+                    }
+                }
+            });
+        }
+    }
+    
+    private crearNuevosExcavadores(posicion: Posicion, preferencias: PreferenciasCuevaConPasillos): Excavador[] {
+        return [new ExcavadorHabitaciones(posicion, preferencias),
+                new ExcavadorHabitaciones(posicion, preferencias),
+                new ExcavadorHabitaciones(posicion, preferencias),
+                new ExcavadorHabitaciones(posicion, preferencias),
+                new ExcavadorHabitaciones(posicion, preferencias),
+                new ExcavadorHabitaciones(posicion, preferencias)];
+    }
+
+    private crearActores(tilesExcavados: Set<Tile>): void {
+        const tilesArray: Tile[] = Array.from(tilesExcavados);
+        for(let i = 0; i < 20; i++) {
+            RNG.getElementoRandom(tilesArray).colocarActor(EntidadFactory.crearEntidad("goblin"));
+        }
     }
 
 }

@@ -1,5 +1,4 @@
 import RNG from "@/utils/RNG";
-import { Direccion } from "../Direcciones";
 import Mapa from "../Mapa";
 import { Posicion } from "../Posicion";
 import Tile from "../Tile";

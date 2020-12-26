@@ -1,6 +1,6 @@
 import { crearChunk } from "./builder/ChunkFactory";
 import Chunk from "./Chunk";
-import { Direccion, NORTE, OESTE, ESTE, SUR } from "./Direcciones";
+import { Direccion, NORTE, OESTE, ESTE, SUR, NOROESTE, NORESTE, SUDESTE, SUDOESTE } from "./Direcciones";
 import { toString, aplicarDireccion, ChunkPos, modificarTx, modificarTy, Posicion } from "./Posicion";
 import Tile from "./Tile";
 
@@ -9,10 +9,10 @@ export default class Mapa {
     private static readonly mapas = new Map<string, Chunk>();
 
     public static obtenerChunk(posicion: ChunkPos): Chunk {
-        let chunk: Chunk = Mapa.mapas.get(toString(posicion));
+        let chunk: Chunk = this.mapas.get(toString(posicion));
         if(!chunk) {
             chunk = crearChunk(posicion);
-            Mapa.mapas.set(toString(posicion), chunk);
+            this.mapas.set(toString(posicion), chunk);
         }
         return chunk;
     }
@@ -21,18 +21,32 @@ export default class Mapa {
         if(direccion) {
             posicion = aplicarDireccion(posicion, direccion);
         }
-        return Mapa.obtenerChunk(posicion).obtenerTile(posicion);
+        return this.obtenerChunk(posicion).obtenerTile(posicion);
     }
 
     public static obtenerTilesAdyacentesOrtogonales(posicion: Posicion): Tile[] {
-        const resultado: Tile[] = [];
-        
-        resultado.push(this.obtenerTile(posicion, NORTE));
-        resultado.push(this.obtenerTile(posicion, OESTE));
-        resultado.push(this.obtenerTile(posicion, ESTE));
-        resultado.push(this.obtenerTile(posicion, SUR));
-        
-        return resultado;
+        return [
+            this.obtenerTile(posicion, NORTE),
+            this.obtenerTile(posicion, OESTE),
+            this.obtenerTile(posicion, ESTE),
+            this.obtenerTile(posicion, SUR)
+        ];
+    }
+
+    public static obtenerTilesAdyacentesDiagonales(posicion: Posicion): Tile[] {
+        return [
+            this.obtenerTile(posicion, NOROESTE),
+            this.obtenerTile(posicion, SUDOESTE),
+            this.obtenerTile(posicion, NORESTE),
+            this.obtenerTile(posicion, SUDESTE)
+        ];
+    }
+
+    public static obtenerTilesAdyacentes(posicion: Posicion): Tile[] {
+        return [
+            ...this.obtenerTilesAdyacentesOrtogonales(posicion),
+            ...this.obtenerTilesAdyacentesDiagonales(posicion)
+        ]
     }
 
     public static obtenerAreaCuadrada(posicionInicial: Posicion, alto: number, ancho: number): Tile[][] {
@@ -41,7 +55,7 @@ export default class Mapa {
         for(let i = 0; i < ancho; i++) {
             resultado[i] = [];
             for(let j = 0; j < alto; j++) {
-                resultado[i][j] = Mapa.obtenerTile(auxPos);
+                resultado[i][j] = this.obtenerTile(auxPos);
                 modificarTy(auxPos, 1);
             }
             modificarTx(auxPos, 1);

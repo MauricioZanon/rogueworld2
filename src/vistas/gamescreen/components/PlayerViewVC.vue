@@ -20,7 +20,7 @@ const listener = (evento: KeyboardEvent): void => PlayerViewController.resolverK
 @Component({
 	components: {
 		TileVC
-	},
+	}
 })
 export default class PlayerViewVC extends Vue {
 	public cambiarZoom(evento: WheelEvent): void {
@@ -63,15 +63,15 @@ export default class PlayerViewVC extends Vue {
 </script>
 
 <style scoped>
-.player-view {
-	display: grid;
-	grid-template-columns: repeat(100, 0fr);
-	grid-template-rows: 100px;
-	width: 100vh;
-	height: 100vh;
-	float: left;
-	background-color: black;
-	border-right: 1px gray;
-	cursor: default;
-}
+	.player-view {
+		display: grid;
+		grid-template-columns: repeat(100, 0fr);
+		grid-template-rows: 100px;
+		width: 100vh;
+		height: 100vh;
+		float: left;
+		background-color: black;
+		border-right: 1px gray;
+		cursor: default;
+	}
 </style>
