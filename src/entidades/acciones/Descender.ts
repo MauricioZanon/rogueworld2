@@ -4,7 +4,7 @@ import Mapa from "@/mapa/Mapa";
 import { Posicion } from "@/mapa/Posicion";
 import Acciones from "./Acciones";
 
-Acciones.descender = (actor: Entidad): void => {
+export function descender(actor: Entidad): void {
     const origen: Tile = Mapa.obtenerTile(actor.posicion);
     const destino: Tile = obtenerTileInferior(origen);
     if(origen.feature?.nombreComp.nombre === "downstairs") {

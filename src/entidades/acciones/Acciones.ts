@@ -1,14 +1,13 @@
-import Tile from "@/mapa/Tile";
-import Entidad from "../Entidad";
+import { ascender } from "./Ascender";
+import { atacar } from "./Atacar";
+import { avanzar } from './Avanzar';
+import { descender } from "./Descender";
 
-const acciones: Acciones = {};
+const acciones = {
+    atacar: atacar,
+    ascender: ascender,
+    avanzar: avanzar,
+    descender: descender
+};
 
 export default acciones;
-
-type Acciones = {
-    atacar?: (actor: Entidad, tileObjetivo: Tile) => void,
-    avanzar?: (actor: Entidad, tileOrigen: Tile, tileDestino: Tile) => void,
-    ascender?: (actor: Entidad) => void,
-    descender?: (actor: Entidad) => void,
-
-}
