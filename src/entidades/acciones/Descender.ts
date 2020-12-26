@@ -2,18 +2,15 @@ import Tile from "@/mapa/Tile";
 import Entidad from "../Entidad";
 import Mapa from "@/mapa/Mapa";
 import { Posicion } from "@/mapa/Posicion";
+import Acciones from "./Acciones";
 
-export module Descender {
-
-    export function ejecutar(actor: Entidad): void {
-        const origen: Tile = Mapa.obtenerTile(actor.posicion);
-        const destino: Tile = obtenerTileInferior(origen);
-        if(origen.feature?.nombreComp.nombre === "downstairs") {
-            origen.actor = null;
-            destino.colocarActor(actor);
-        }
+Acciones.descender = (actor: Entidad): void => {
+    const origen: Tile = Mapa.obtenerTile(actor.posicion);
+    const destino: Tile = obtenerTileInferior(origen);
+    if(origen.feature?.nombreComp.nombre === "downstairs") {
+        origen.actor = null;
+        destino.colocarActor(actor);
     }
-
 }
 
 function obtenerTileInferior(origen: Tile): Tile {
@@ -21,4 +18,3 @@ function obtenerTileInferior(origen: Tile): Tile {
     posicionDestino.cz++;
     return Mapa.obtenerTile(posicionDestino);
 }
-

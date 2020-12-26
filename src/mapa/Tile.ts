@@ -24,17 +24,15 @@ export default class Tile {
     }
 
     public toString(): string {
-        let mensaje: string;
         if (this.actor != null) {
-            mensaje = this.actor.nombreComp.nombre;
+            return this.actor.nombreComp.nombre;
         } else if (this.feature != null) {
-            mensaje = this.feature.nombreComp.nombre;
+            return this.feature.nombreComp.nombre;
         } else if (this.terreno != null) {
-            mensaje = this.terreno.nombreComp.nombre;
+            return this.terreno.nombreComp.nombre;
         } else {
-            mensaje = "There's nothing here";
+            return "There's nothing here";
         }
-        return mensaje
     }
 
 }

@@ -17,6 +17,8 @@ import { Posicion, modificarTx, modificarTy } from "@/mapa/Posicion";
 
 const listener = (evento: KeyboardEvent): void => PlayerViewController.resolverKeyDown(evento);
 
+//TODO triggerear render SOLO cuando empieza el turno del pj
+
 @Component({
 	components: {
 		TileVC
