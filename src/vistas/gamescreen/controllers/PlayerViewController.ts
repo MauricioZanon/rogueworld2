@@ -1,5 +1,5 @@
 import store from "@/store/store";
-import { Bump } from "@/entidades/acciones/Bump";
+import { bump } from "@/entidades/acciones/Bump";
 import router from "@/vistas/router/index";
 import Entidad from "@/entidades/Entidad";
 import { SUDOESTE, SUR, SUDESTE, OESTE, ESTE, NOROESTE, NORTE, NORESTE } from "../../../mapa/Direcciones";
@@ -13,35 +13,35 @@ export default class PlayerViewController {
         const player: Entidad = store.getters.player;
         switch(evento.code) {
             case "Numpad1": {
-                Bump.ejecutar(player, SUDOESTE);
+                bump(player, SUDOESTE);
                 break;
             }
             case "Numpad2": {
-                Bump.ejecutar(player, SUR);
+                bump(player, SUR);
                 break;
             }
             case "Numpad3": {
-                Bump.ejecutar(player, SUDESTE);
+                bump(player, SUDESTE);
                 break;
             }
             case "Numpad4": {
-                Bump.ejecutar(player, OESTE);
+                bump(player, OESTE);
                 break;
             }
             case "Numpad6": {
-                Bump.ejecutar(player, ESTE);
+                bump(player, ESTE);
                 break;
             }
             case "Numpad7": {
-                Bump.ejecutar(player, NOROESTE);
+                bump(player, NOROESTE);
                 break;
             }
             case "Numpad8": {
-                Bump.ejecutar(player, NORTE);
+                bump(player, NORTE);
                 break;
             }
             case "Numpad9": {
-                Bump.ejecutar(player, NORESTE);
+                bump(player, NORESTE);
                 break;
             }
             case "Space":

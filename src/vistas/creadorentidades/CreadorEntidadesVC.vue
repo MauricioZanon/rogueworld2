@@ -11,6 +11,8 @@
 		<hr />
 		<FlagsFormVC></FlagsFormVC>
 		<hr />
+		<StatsFormVC></StatsFormVC>
+		<hr>
 		<button @click="guardarEntidad()">Guardar</button>
 		<router-link :to="{name: 'MainScreen'}">
 			<button >Salir</button>
@@ -24,6 +26,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Entidad from "@/entidades/Entidad";
 import NombreCompFormVC from "./components/nombreCompFormVC.vue"
 import TipoFormVC from "./components/tipoFormVC.vue"
+import StatsFormVC from "./components/statsFormVC.vue"
 import RenderCompFormVC from "./components/renderCompFormVC.vue"
 import FlagsFormVC from "./components/flagsFormVC.vue"
 import ModalCargarEntidadVC from "./components/modalCargarEntidadVC.vue"
@@ -36,7 +39,8 @@ import { guardarEntidades } from "@/entidades/EntidadRepository";
 		NombreCompFormVC,
 		RenderCompFormVC,
 		FlagsFormVC,
-		ModalCargarEntidadVC
+		ModalCargarEntidadVC,
+		StatsFormVC
 	}
 })
 export default class CreadorEntidadesVC extends Vue {

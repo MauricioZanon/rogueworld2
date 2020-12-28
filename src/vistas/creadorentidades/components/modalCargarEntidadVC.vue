@@ -19,15 +19,15 @@
 							>{{actor | capitalize}}</div>
 						</div>
 						<div class="col s3 columna-entidades">
-							<h4>ITEMS</h4>
+							<h4>FEATURES</h4>
 							<hr />
 							<div
-								@click="setEntidad(item)"
+								@click="setEntidad(features)"
 								class="opcion"
-								v-for="item in items"
-								:key="item"
+								v-for="features in features"
+								:key="features"
 								data-dismiss="modal"
-							>{{item | capitalize}}</div>
+							>{{features | capitalize}}</div>
 						</div>
 						<div class="col s3 columna-entidades">
 							<h4>TERRAINS</h4>
@@ -68,7 +68,7 @@ import EventBus from "../EventBus";
 })
 export default class ModalCargarEntidadVC extends Vue {
 	public readonly actores: string[] = [];
-	public readonly items: string[] = [];
+	public readonly features: string[] = [];
 	public readonly terrenos: string[] = [];
 
 	public mounted(): void {
@@ -79,8 +79,8 @@ export default class ModalCargarEntidadVC extends Vue {
 	public organizarEntidades(): void {
 		store.state.entidades.forEach(entidad => {
 			switch (entidad.tipo) {
-				case Tipo.ITEM:
-					this.items.push(entidad.nombreComp.nombre);
+				case Tipo.FEATURE:
+					this.features.push(entidad.nombreComp.nombre);
 					break;
 				case Tipo.TERRENO:
 					this.terrenos.push(entidad.nombreComp.nombre);
