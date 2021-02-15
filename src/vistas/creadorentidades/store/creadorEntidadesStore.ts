@@ -5,7 +5,7 @@ import NombreComp from "@/entidades/componentes-de-entidades/NombreComp"
 import { Tipo } from "@/entidades/Tipos"
 import RenderComp from "@/entidades/componentes-de-entidades/RenderComp";
 import StatsComp from "@/entidades/componentes-de-entidades/StatsComp"
-import { Flag } from '../../../entidades/Flags';
+import { Flag } from "../../../entidades/Flags";
 
 Vue.use(Vuex)
 

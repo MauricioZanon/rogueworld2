@@ -2,7 +2,6 @@ import Tile from "@/mapa/Tile";
 import Entidad from "../Entidad";
 import Mapa from "@/mapa/Mapa";
 import { Posicion } from "@/mapa/Posicion";
-import Acciones from "./Acciones";
 
 export function ascender(actor: Entidad): void {
     const origen: Tile = Mapa.obtenerTile(actor.posicion);

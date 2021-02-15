@@ -4,7 +4,6 @@ import { obtenerEntidades } from "@/entidades/EntidadRepository";
 import RenderComp from "./componentes-de-entidades/RenderComp";
 import chroma, { Scale } from "chroma-js";
 import RNG from "@/utils/RNG";
-import { Flag } from "./Flags";
 
 export default class EntidadFactory {
     private static readonly prototipos = EntidadFactory.crearMapaDeEntidades();

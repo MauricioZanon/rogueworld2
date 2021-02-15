@@ -26,8 +26,7 @@ export default class FlagsFormVC extends Vue {
     public guardarNuevoValorEsIntransitable() {
         if(this.esIntransitable) {
             store.state.flags.add("INTRANSITABLE");
-        }
-        else {
+        } else {
             store.state.flags.delete("INTRANSITABLE");
         }
     }
@@ -36,8 +35,7 @@ export default class FlagsFormVC extends Vue {
     public guardarNuevoValorEsOpaco() {
         if(this.esOpaco) {
             store.state.flags.add("OPACO");
-        }
-        else {
+        } else {
             store.state.flags.delete("OPACO");
         }
     }

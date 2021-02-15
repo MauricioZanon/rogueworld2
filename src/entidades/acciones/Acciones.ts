@@ -1,6 +1,6 @@
 import { ascender } from "./Ascender";
 import { atacar } from "./Atacar";
-import { avanzar } from './Avanzar';
+import { avanzar } from "./Avanzar";
 import { descender } from "./Descender";
 import { morir } from "./Morir";
 

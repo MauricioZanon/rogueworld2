@@ -24,15 +24,10 @@ export default class Tile {
     }
 
     public toString(): string {
-        if (this.actor != null) {
-            return this.actor.nombreComp.nombre;
-        } else if (this.feature != null) {
-            return this.feature.nombreComp.nombre;
-        } else if (this.terreno != null) {
-            return this.terreno.nombreComp.nombre;
-        } else {
-            return "There's nothing here";
-        }
+        return this.actor?.nombreComp.nombre ||
+            this.feature?.nombreComp.nombre ||
+            this.terreno?.nombreComp.nombre ||
+            "There's nothing here";
     }
 
 }

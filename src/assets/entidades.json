@@ -1,1 +1,182 @@
-[{"id":0,"tipo":"TERRENO","renderComp":{"simbolo":"\"","colorSimbolo":"#44ab60","colorFondo":"#358849ff"},"nombreComp":{"nombre":"grass floor"},"flags":[]},{"id":1,"tipo":"ACTOR","renderComp":{"simbolo":"g","colorSimbolo":"#963955"},"nombreComp":{"nombre":"goblin"},"statsComp":{"base":{"STR":"6","DEX":"9","INT":5,"CUN":"9","WIS":5,"CON":5},"salud":{"max":"10","actual":"10","regeneracion":"1"}},"flags":[]},{"tipo":"ACTOR","nombreComp":{"nombre":"player"},"renderComp":{"simbolo":"@","colorSimbolo":"#ffffff"},"id":2,"statsComp":{"base":{"STR":"10","DEX":"10","INT":"10","CUN":"10","WIS":"10","CON":"10"},"salud":{"max":"50","actual":"50","regeneracion":"0.1"}},"flags":[]},{"tipo":"TERRENO","nombreComp":{"nombre":"stone wall"},"renderComp":{"simbolo":"#","colorSimbolo":"#82a0ba","colorFondo":"#688082ff"},"flags":["INTRANSITABLE","OPACO"],"id":3,"statsComp":{}},{"tipo":"TERRENO","nombreComp":{"nombre":"dirt floor"},"renderComp":{"simbolo":".","colorSimbolo":"#c1a250","colorFondo":"#9c8340ff"},"id":4,"flags":[]},{"tipo":"FEATURE","nombreComp":{"nombre":"downstairs"},"renderComp":{"simbolo":">","colorSimbolo":"#444"},"id":5,"flags":[]},{"tipo":"FEATURE","nombreComp":{"nombre":"upstairs"},"renderComp":{"simbolo":"<","colorSimbolo":"#444"},"id":6,"flags":[]},{"tipo":"TERRENO","nombreComp":{"nombre":"dirt wall"},"renderComp":{"simbolo":"#","colorSimbolo":"#877137","colorFondo":"#615127ff"},"id":7,"flags":["OPACO","INTRANSITABLE"],"statsComp":{}},{"id":8,"tipo":"TERRENO","nombreComp":{"nombre":"wooden floor"},"renderComp":{"simbolo":".","colorSimbolo":"#dbcc80","colorFondo":"#ccac66ff"},"flags":[]},{"id":9,"tipo":"TERRENO","nombreComp":{"nombre":"wooden wall"},"renderComp":{"simbolo":"#","colorSimbolo":"#9a8560","colorFondo":"#746044ff"},"flags":["INTRANSITABLE","OPACO"]},{"id":10,"tipo":"TERRENO","nombreComp":{"nombre":"stone floor"},"renderComp":{"simbolo":".","colorSimbolo":"#a2cfd7","colorFondo":"#98B1BDFF"},"flags":[]}]
+[
+    {
+        "id": 0,
+        "tipo": "TERRENO",
+        "renderComp": {
+            "simbolo": "\"",
+            "colorSimbolo": "#44ab60",
+            "colorFondo": "#358849ff"
+        },
+        "nombreComp": {
+            "nombre": "grass floor"
+        },
+        "flags": []
+    },
+    {
+        "id": 1,
+        "tipo": "ACTOR",
+        "renderComp": {
+            "simbolo": "g",
+            "colorSimbolo": "#963955"
+        },
+        "nombreComp": {
+            "nombre": "goblin"
+        },
+        "statsComp": {
+            "base": {
+                "STR": "6",
+                "DEX": "9",
+                "INT": 5,
+                "CUN": "9",
+                "WIS": 5,
+                "CON": 5
+            },
+            "salud": {
+                "max": "10",
+                "actual": "10",
+                "regeneracion": "1"
+            }
+        },
+        "flags": []
+    },
+    {
+        "tipo": "ACTOR",
+        "nombreComp": {
+            "nombre": "player"
+        },
+        "renderComp": {
+            "simbolo": "@",
+            "colorSimbolo": "#ffffff"
+        },
+        "id": 2,
+        "statsComp": {
+            "base": {
+                "STR": "10",
+                "DEX": "10",
+                "INT": "10",
+                "CUN": "10",
+                "WIS": "10",
+                "CON": "10"
+            },
+            "salud": {
+                "max": "50",
+                "actual": "50",
+                "regeneracion": "0.1"
+            }
+        },
+        "flags": []
+    },
+    {
+        "tipo": "TERRENO",
+        "nombreComp": {
+            "nombre": "stone wall"
+        },
+        "renderComp": {
+            "simbolo": "#",
+            "colorSimbolo": "#82a0ba",
+            "colorFondo": "#688082ff"
+        },
+        "flags": [
+            "INTRANSITABLE",
+            "OPACO"
+        ],
+        "id": 3,
+        "statsComp": {}
+    },
+    {
+        "tipo": "TERRENO",
+        "nombreComp": {
+            "nombre": "dirt floor"
+        },
+        "renderComp": {
+            "simbolo": ".",
+            "colorSimbolo": "#c1a250",
+            "colorFondo": "#9c8340ff"
+        },
+        "id": 4,
+        "flags": []
+    },
+    {
+        "tipo": "FEATURE",
+        "nombreComp": {
+            "nombre": "downstairs"
+        },
+        "renderComp": {
+            "simbolo": ">",
+            "colorSimbolo": "#444"
+        },
+        "id": 5,
+        "flags": []
+    },
+    {
+        "tipo": "FEATURE",
+        "nombreComp": {
+            "nombre": "upstairs"
+        },
+        "renderComp": {
+            "simbolo": "<",
+            "colorSimbolo": "#444"
+        },
+        "id": 6,
+        "flags": []
+    },
+    {
+        "tipo": "TERRENO",
+        "nombreComp": {
+            "nombre": "dirt wall"
+        },
+        "renderComp": {
+            "simbolo": "#",
+            "colorSimbolo": "#877137",
+            "colorFondo": "#615127ff"
+        },
+        "id": 7,
+        "flags": [
+            "OPACO",
+            "INTRANSITABLE"
+        ],
+        "statsComp": {}
+    },
+    {
+        "id": 8,
+        "tipo": "TERRENO",
+        "nombreComp": {
+            "nombre": "wooden floor"
+        },
+        "renderComp": {
+            "simbolo": ".",
+            "colorSimbolo": "#dbcc80",
+            "colorFondo": "#ccac66ff"
+        },
+        "flags": []
+    },
+    {
+        "id": 9,
+        "tipo": "TERRENO",
+        "nombreComp": {
+            "nombre": "wooden wall"
+        },
+        "renderComp": {
+            "simbolo": "#",
+            "colorSimbolo": "#9a8560",
+            "colorFondo": "#746044ff"
+        },
+        "flags": [
+            "INTRANSITABLE",
+            "OPACO"
+        ]
+    },
+    {
+        "id": 10,
+        "tipo": "TERRENO",
+        "nombreComp": {
+            "nombre": "stone floor"
+        },
+        "renderComp": {
+            "simbolo": ".",
+            "colorSimbolo": "#a2cfd7",
+            "colorFondo": "#98B1BDFF"
+        },
+        "flags": []
+    }
+]

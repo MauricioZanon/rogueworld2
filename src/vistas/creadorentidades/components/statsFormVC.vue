@@ -26,7 +26,7 @@
 import store from "./../store/creadorEntidadesStore";
 import { Component, Vue } from "vue-property-decorator";
 import StatsComp, { HPStats } from "@/entidades/componentes-de-entidades/StatsComp";
-import { BaseStats } from '../../../entidades/componentes-de-entidades/StatsComp';
+import { BaseStats } from "../../../entidades/componentes-de-entidades/StatsComp";
 import EventBus from "../EventBus";
 
     @Component

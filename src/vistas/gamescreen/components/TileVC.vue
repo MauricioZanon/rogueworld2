@@ -31,11 +31,11 @@ export default class TileVC extends Vue {
 		return this.tile.actor?.renderComp.colorSimbolo || 
 				this.tile.feature?.renderComp.colorSimbolo ||
 				this.tile.terreno?.renderComp.colorSimbolo || 
-				"#ffffff";
+				"#fff";
 	}
 
 	public get colorFondo(): string {
-		return this.tile.terreno?.renderComp.colorFondo || "#000000";
+		return this.tile.terreno?.renderComp.colorFondo || "#000";
 	}
 
 	public get tamañoTile(): string {

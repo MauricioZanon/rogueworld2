@@ -32,7 +32,6 @@ import FlagsFormVC from "./components/flagsFormVC.vue"
 import ModalCargarEntidadVC from "./components/modalCargarEntidadVC.vue"
 import store from "./store/creadorEntidadesStore";
 import { persistirEntidades } from "@/entidades/EntidadRepository";
-import { log } from "util";
 
 @Component({
 	components: {
@@ -57,8 +56,7 @@ export default class CreadorEntidadesVC extends Vue {
 	public guardarEntidad(): void {
 		if(this.esEntidadValida()){
 			persistirEntidades();
-		}
-		else {
+		} else {
 			console.log("entidad invalida");
 		}
 	}
