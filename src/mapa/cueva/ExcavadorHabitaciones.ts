@@ -16,7 +16,7 @@ export default class ExcavadorHabitaciones extends Excavador {
 
     public avanzar(): Tile {
         const tiles: Tile[] = Mapa.obtenerTilesAdyacentesOrtogonales(this.posicion);
-        const tilesExcavables: Tile[] = tiles.filter(tile => tile.terreno.esIntransitable);
+        const tilesExcavables: Tile[] = tiles.filter(tile => tile.terreno.flags.has("INTRANSITABLE"));
         let tileSiguiente: Tile;
         if(tilesExcavables.length) {
             tileSiguiente = RNG.getElementoRandom(tilesExcavables);

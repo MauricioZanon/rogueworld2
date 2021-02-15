@@ -6,37 +6,32 @@ const fs = window.require("electron").remote.require("fs-extra");
 
 export function obtenerEntidades(): Entidad[] {
     const data: string = fs.readFileSync(pathArchivoEntidades);
-    let resultado: Entidad[] = [];
-    if(data) {
-        resultado = JSON.parse(data.toString());
-    }
+    const resultado: Entidad[] = JSON.parse(data.toString());
+    resultado.forEach(entidad => parsearSetDeFlags(entidad));
     return resultado;
 }
 
-export function guardarEntidades(): void {
-    if(entidadValida()){
-        const nuevaEntidad: Entidad = formarEntidad(store.state.entidadSeleccionada);
-        const entidades: Entidad[] = store.state.entidades;
-        if (nuevaEntidad.id >= 0) {
-            sobreescribirEntidadEnLista(entidades, nuevaEntidad);
-        } else {
-            agregarNuevaEntidadALaLista(entidades, nuevaEntidad);
-        }
-        fs.writeFileSync(pathArchivoEntidades, JSON.stringify(entidades), err => {
-            if (err) {
-                console.log("Error al guardar las entidades");
-            } else {
-                console.log("Entidades guardadas correctamente")
-            }
-        });
-    } else {
-        console.log("entidad invalida");
-    }
+function parsearSetDeFlags(entidad: Entidad): void{
+    entidad.flags = new Set(entidad.flags);
 }
 
-function entidadValida(): boolean {
-    const state = store.state;
-    return state.tipo != null && state.nombreCompValido && state.renderCompValido;
+export function persistirEntidades(): void {
+    const nuevaEntidad: Entidad = formarEntidad(store.state.entidadSeleccionada);
+    const entidades: Entidad[] = store.state.entidades;
+    if (nuevaEntidad.id >= 0) {
+        sobreescribirNuevaEntidadEnLista(entidades, nuevaEntidad);
+    } else {
+        agregarNuevaEntidadALaLista(entidades, nuevaEntidad);
+    }
+    const entidadesSinTipo = Array.from(entidades) as any[];
+    entidadesSinTipo.forEach(entidad => entidad.flags = Array.from(entidad.flags));
+    fs.writeFileSync(pathArchivoEntidades, JSON.stringify(entidadesSinTipo), err => {
+        if (err) {
+            console.log("Error al guardar las entidades");
+        } else {
+            console.log("Entidades guardadas correctamente")
+        }
+    });
 }
 
 function formarEntidad(entidad: Entidad): Entidad {
@@ -45,14 +40,11 @@ function formarEntidad(entidad: Entidad): Entidad {
     entidad.nombreComp = state.nombreComp;
     entidad.renderComp = state.renderComp;
     entidad.statsComp = state.statsComp;
-    if(state.esIntransitable) {
-        entidad.esIntransitable = state.esIntransitable;
-    }
-
+    entidad.flags = state.flags;
     return entidad;
 }
 
-function sobreescribirEntidadEnLista(entidades: Entidad[], entidad: Entidad): void {
+function sobreescribirNuevaEntidadEnLista(entidades: Entidad[], entidad: Entidad): void {
     for (let i = 0; i < entidades.length; i++) {
         if (entidades[i].id == entidad.id) {
             entidades[i] = entidad;
