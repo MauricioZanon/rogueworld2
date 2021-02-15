@@ -11,7 +11,6 @@ export function bump(actor: Entidad, direccion: Direccion): void {
     if(tileDestino.actor) {
         Acciones.atacar(actor, tileDestino);
     } else {
-        console.log(Acciones);
         Acciones.avanzar(actor, tileOrigen, tileDestino);
     }
 }

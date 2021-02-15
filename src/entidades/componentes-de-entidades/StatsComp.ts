@@ -1,10 +1,8 @@
 import Componente from "./Componente";
 
 export default class StatsComp implements Componente {
-
     public base?: BaseStats;
     public salud?: HPStats;
-
 }
 
 export type BaseStats = {

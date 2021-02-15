@@ -1,6 +1,8 @@
 <template>
 	<div class="side-bar">
 		{{ playerPos }}
+		<br>
+		{{ playercurrentHp }} / {{ playerMaxHp }}
 	</div>
 </template>
 
@@ -11,6 +13,14 @@ import { Posicion } from "@/mapa/Posicion";
 
 @Component
 export default class SideBarVC extends Vue {
+
+	public get playercurrentHp(): number {
+		return store.state.player.statsComp.salud.actual;
+	}
+
+	public get playerMaxHp(): number {
+		return store.state.player.statsComp.salud.max;
+	}
 
 	public get playerPos(): Posicion {
 		return store.getters.player.posicion as Posicion;

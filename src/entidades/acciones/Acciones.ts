@@ -2,12 +2,12 @@ import { ascender } from "./Ascender";
 import { atacar } from "./Atacar";
 import { avanzar } from './Avanzar';
 import { descender } from "./Descender";
+import { morir } from "./Morir";
 
-const acciones = {
+export default {
     atacar: atacar,
     ascender: ascender,
     avanzar: avanzar,
-    descender: descender
+    descender: descender,
+    morir: morir
 };
-
-export default acciones;
