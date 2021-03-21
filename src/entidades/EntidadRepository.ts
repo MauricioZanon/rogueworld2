@@ -24,7 +24,7 @@ export function persistirEntidades(): void {
         agregarNuevaEntidadALaLista(entidades, nuevaEntidad);
     }
     // No se pueden guardar Sets en un JSON, entonces antes de guardar el Set de Flags lo convierto a un array y lo guardo en la misma variable.
-    // Para hacer esto necesito que 'flags' acepte también arrays, pero hacer eso me obligaría a hacer type checks cada vez que lo uso,
+    // Para hacer esto necesito que 'flags' acepte también arrays, pero eso me obligaría a hacer type checks cada vez que lo uso,
     // asi que fue mas fácil hacer que las entidades sean de tipo any antes de asignarles el array de flags y recién ahi persistirlas.
     const entidadesSinTipo = Array.from(entidades) as any[];
     entidadesSinTipo.forEach(entidad => entidad.flags = Array.from(entidad.flags));

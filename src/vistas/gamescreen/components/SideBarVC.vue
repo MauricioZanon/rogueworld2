@@ -3,6 +3,8 @@
 		{{ playerPos }}
 		<br>
 		{{ playercurrentHp }} / {{ playerMaxHp }}
+		<br>
+		<ConsolaVC></ConsolaVC>
 	</div>
 </template>
 
@@ -10,8 +12,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import store from "@/store/store";
 import { Posicion } from "@/mapa/Posicion";
+import ConsolaVC from "./ConsolaVC.vue";
 
-@Component
+@Component({
+	components: {
+		ConsolaVC
+	}
+})
 export default class SideBarVC extends Vue {
 
 	public get playercurrentHp(): number {
@@ -25,6 +32,7 @@ export default class SideBarVC extends Vue {
 	public get playerPos(): Posicion {
 		return store.getters.player.posicion as Posicion;
 	}
+
 }
 </script>
 

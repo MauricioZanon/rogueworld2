@@ -22,8 +22,9 @@ export default class FlagsFormVC extends Vue {
         EventBus.$on("actualizar-informacion", () => this.actualizar());
 	}
     
+    //TODO refactorizar estos métodos que toglean flags, deberían ser un único método
     @Watch("esIntransitable")
-    public guardarNuevoValorEsIntransitable() {
+    public guardarNuevoValorEsIntransitable(): void {
         if(this.esIntransitable) {
             store.state.flags.add("INTRANSITABLE");
         } else {
@@ -32,7 +33,7 @@ export default class FlagsFormVC extends Vue {
     }
 
     @Watch("esOpaco")
-    public guardarNuevoValorEsOpaco() {
+    public guardarNuevoValorEsOpaco(): void {
         if(this.esOpaco) {
             store.state.flags.add("OPACO");
         } else {

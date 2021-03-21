@@ -1,13 +1,15 @@
 import Vue from "vue"
 import Vuex from "vuex"
 import Entidad from "@/entidades/Entidad"
+import { MensajeConsola } from "../vistas/gamescreen/utils/MensajeConsola";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     player: {} as Entidad,
-    cantidadTiles: 25
+    cantidadTiles: 25,
+    mensajesConsola: [] as MensajeConsola[]
   },
   getters: {
     player(state): Entidad{
@@ -40,6 +42,9 @@ export default new Vuex.Store({
           state.cantidadTiles = 13;
           break;
       }
+    },
+    agregarMensajeALaConsola(state, nuevoMensaje: MensajeConsola): void {
+      state.mensajesConsola.unshift(nuevoMensaje);
     }
   },
   actions: {

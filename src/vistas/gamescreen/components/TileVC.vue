@@ -54,14 +54,16 @@ export default class TileVC extends Vue {
 	text-align: center;
 	font-family: "Courier New", Courier, monospace;
 	font-weight: 700;
-	line-height: 110%;
+	line-height: 130%;
 	user-select: none;
 }
+
 .tile {
-	transition: border 0.7s 0.1s;
+	transition: border 0.7s 0.2s;
 }
+
 .tile:hover {
-	--grosorBorde: 0.2em;
+	--grosorBorde: 0.05em;
 	border-top: var(--grosorBorde) solid #FFFFFF22;
 	border-left: var(--grosorBorde) solid #FFFFFF33;
 	border-right: var(--grosorBorde) solid #00000033;
