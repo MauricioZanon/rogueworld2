@@ -1,13 +1,15 @@
-import { ascender } from "./Ascender";
-import { atacar } from "./Atacar";
-import { avanzar } from "./Avanzar";
-import { descender } from "./Descender";
-import { morir } from "./Morir";
+import Ascender from "./Ascender";
+import Atacar from "./Atacar"
+import Avanzar from "./Avanzar";
+import Bump from "./Bump";
+import Descender from "./Descender"
+import Morir from "./Morir"
 
 export default {
-    atacar: atacar,
-    ascender: ascender,
-    avanzar: avanzar,
-    descender: descender,
-    morir: morir
+    ascender: Ascender,
+    atacar: Atacar,
+    avanzar: Avanzar,
+    bump: Bump,
+    descender: Descender,
+    morir: Morir
 };

@@ -1,5 +1,7 @@
 <template>
-	<div class="tile" :style="{
+	<div class="tile" 
+			@click="procesarClick"
+			:style="{
 			'background-color': colorFondo, 
 			'color': colorSimbolo, 
 			'width': tamañoTile, 
@@ -12,6 +14,8 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import Tile from "@/mapa/Tile"
+import { Direcciones } from "@/mapa/Direcciones";
+import Entidad from "@/entidades/Entidad";
 
 @Component
 export default class TileVC extends Vue {
@@ -21,9 +25,9 @@ export default class TileVC extends Vue {
 	private readonly tamaño: number;
 
 	public get simbolo(): string {
-		return this.tile.actor?.renderComp.simbolo ||
-				this.tile.feature?.renderComp.simbolo ||
-				this.tile.terreno?.renderComp.simbolo || 
+		return this.tile.actor?.renderComp.simbolo ??
+				this.tile.feature?.renderComp.simbolo ??
+				this.tile.terreno?.renderComp.simbolo ?? 
 				"¿";
 	}
 
@@ -44,6 +48,11 @@ export default class TileVC extends Vue {
 
 	public get tamañoFuente(): string {
 		return this.tamaño*0.8 + "vh";
+	}
+
+	public procesarClick(): void {
+		const player: Entidad = this.$store.getters.player;
+		console.log(Direcciones.obtenerDireccionDesde(player.posicion, this.tile.posicion));
 	}
 
 }

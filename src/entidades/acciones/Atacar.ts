@@ -4,7 +4,7 @@ import { MensajeConsola } from "@/vistas/gamescreen/utils/MensajeConsola";
 import Entidad from "../Entidad";
 import Acciones from "./Acciones";
 
-export function atacar(actor: Entidad, tileObjetivo: Tile): void {
+export default (actor: Entidad, tileObjetivo: Tile): void => {
     const actorObjetivo: Entidad = tileObjetivo.actor;
     const dañoTotal = actor.statsComp.base.STR;
     actorObjetivo.statsComp.salud.actual -= dañoTotal;
@@ -12,7 +12,6 @@ export function atacar(actor: Entidad, tileObjetivo: Tile): void {
         Acciones.morir(actorObjetivo);
         const mensaje: MensajeConsola = crearMensajeDeMuerte(actor, actorObjetivo);
         store.commit("agregarMensajeALaConsola", mensaje);
-        console.log(`Has matado al ${actorObjetivo.nombreComp.nombre}!`);
     }
 }
 

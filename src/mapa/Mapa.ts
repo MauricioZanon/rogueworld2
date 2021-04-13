@@ -49,6 +49,7 @@ export default class Mapa {
         ]
     }
 
+    // TODO refactor
     public static obtenerAreaCuadrada(posicionInicial: Posicion, alto: number, ancho: number): Tile[][] {
         const resultado: Tile[][] = [];
         const auxPos = {...posicionInicial};

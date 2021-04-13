@@ -1,9 +1,7 @@
 <template>
-
     <div class="consola">
         <MensajeConsolaVC v-for="(mensaje, index) in mensajes" :key="index" :mensajeConsola="mensaje"></MensajeConsolaVC>
     </div>
-  
 </template>
 
 <script lang="ts">

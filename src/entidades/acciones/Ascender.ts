@@ -3,12 +3,12 @@ import Entidad from "../Entidad";
 import Mapa from "@/mapa/Mapa";
 import { Posicion } from "@/mapa/Posicion";
 
-export function ascender(actor: Entidad): void {
+export default (actor: Entidad): void => {
     const origen: Tile = Mapa.obtenerTile(actor.posicion);
     const destino: Tile = obtenerTileSuperior(origen);
     if(origen.feature?.nombreComp.nombre === "upstairs") {
         origen.actor = null;
-        destino.colocarActor(actor);
+        destino.actor = actor;
     }
 }
 

@@ -1,6 +1,6 @@
 export class MensajeConsola {
 
-    private mensaje: PalabrasEstiladas[] = [];
+    private readonly mensaje: PalabrasEstiladas[] = [];
 
     public agregar(...parteDelMensaje: PalabrasEstiladas[]): void {
         this.mensaje.push(...parteDelMensaje);

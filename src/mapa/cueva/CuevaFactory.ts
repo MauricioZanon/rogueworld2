@@ -63,7 +63,7 @@ export default class CuevaFactory {
     private crearActores(tilesExcavados: Set<Tile>): void {
         const tilesArray: Tile[] = Array.from(tilesExcavados);
         for(let i = 0; i < 20; i++) {
-            RNG.getElementoRandom(tilesArray).colocarActor(EntidadFactory.crearEntidad("goblin"));
+            RNG.getElementoRandom(tilesArray).actor = EntidadFactory.crearEntidad("goblin");
         }
     }
 

@@ -1,10 +1,9 @@
 import store from "@/store/store";
-import { bump } from "@/entidades/acciones/Bump";
 import router from "@/vistas/router/index";
 import Entidad from "@/entidades/Entidad";
 import { SUDOESTE, SUR, SUDESTE, OESTE, ESTE, NOROESTE, NORTE, NORESTE } from "../../../mapa/Direcciones";
-import Acciones from "@/entidades/acciones/Acciones";
 import { MensajeConsola } from "../utils/MensajeConsola";
+import Acciones from "@/entidades/acciones/Acciones";
 
 export type EventoMouse = "mouseup" | "mousedown";
 
@@ -15,35 +14,35 @@ export default class PlayerViewController {
         const player: Entidad = store.getters.player;
         switch(evento.code) {
             case "Numpad1": {
-                bump(player, SUDOESTE);
+                Acciones.bump(player, SUDOESTE);
                 break;
             }
             case "Numpad2": {
-                bump(player, SUR);
+                Acciones.bump(player, SUR);
                 break;
             }
             case "Numpad3": {
-                bump(player, SUDESTE);
+                Acciones.bump(player, SUDESTE);
                 break;
             }
             case "Numpad4": {
-                bump(player, OESTE);
+                Acciones.bump(player, OESTE);
                 break;
             }
             case "Numpad6": {
-                bump(player, ESTE);
+                Acciones.bump(player, ESTE);
                 break;
             }
             case "Numpad7": {
-                bump(player, NOROESTE);
+                Acciones.bump(player, NOROESTE);
                 break;
             }
             case "Numpad8": {
-                bump(player, NORTE);
+                Acciones.bump(player, NORTE);
                 break;
             }
             case "Numpad9": {
-                bump(player, NORESTE);
+                Acciones.bump(player, NORESTE);
                 break;
             }
             case "Space":

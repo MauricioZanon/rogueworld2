@@ -35,4 +35,4 @@ export default class EntidadFactory {
 }
 
 export type nombreEntidad = "grass floor" | "goblin" | "player" | "stone wall" | "dirt floor" | "downstairs" | "upstairs" | 
-"dirt wall" | "wooden floor" | "wooden wall" | "stone floor"
+"dirt wall" | "wooden floor" | "wooden wall" | "stone floor" | "brick wall" | "brick floor"

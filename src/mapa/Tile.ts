@@ -7,15 +7,21 @@ export default class Tile {
     public terreno?: Entidad = null;
     public feature?: Entidad = null;
     public items: Set<Entidad> = new Set();
-    public actor?: Entidad = null;
-
+    private _actor: Entidad = null;
+    
     public constructor(posicion: Posicion) {
         this.posicion = posicion;
     }
 
-    public colocarActor(actor: Entidad): void {
-        if (actor.tipo === Tipo.ACTOR) {
-            this.actor = actor;
+    public get actor(): Entidad {
+        return this._actor;
+    }
+
+    public set actor(actor: Entidad) {
+        if(!actor) {
+            this._actor = null;
+        } else if (actor.tipo === Tipo.ACTOR) {
+            this._actor = actor;
             actor.posicion = this.posicion;
         } else {
             console.log(actor);

@@ -3,9 +3,8 @@ import { Direccion } from "@/mapa/Direcciones"
 import Mapa from "@/mapa/Mapa";
 import Tile from "@/mapa/Tile";
 import Acciones from "./Acciones";
-import "./Avanzar";
 
-export function bump(actor: Entidad, direccion: Direccion): void {
+export default (actor: Entidad, direccion: Direccion): void => {
     const tileOrigen: Tile = Mapa.obtenerTile(actor.posicion);
     const tileDestino: Tile = Mapa.obtenerTile(actor.posicion, direccion);
     if(tileDestino.actor) {

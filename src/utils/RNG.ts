@@ -8,10 +8,17 @@ export default abstract class RNG {
     }
 
     public static getRandomHasta(maximo: number): number {
-        return Math.random()*maximo;
+        return Math.floor(Math.random()*maximo);
     }
 
-    public static getElementoRandom<T>(lista: T[]): T{
+    public static getRandomEntre(minimo: number, maximo: number): number {
+        return RNG.getRandomHasta(maximo - minimo) + minimo;
+    }
+
+    public static getElementoRandom<T>(lista: T[] | Set<T>): T {
+        if(lista instanceof Set) {
+            lista = Array.of(...lista);
+        }
         return lista[Math.floor(RNG.getRandomHasta(lista.length))];
     }
 

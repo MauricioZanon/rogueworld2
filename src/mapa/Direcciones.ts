@@ -1,3 +1,6 @@
+import { TAMAÑO_CHUNK } from "./Chunk";
+import { Posicion } from "./Posicion";
+
 export type Direccion = {
     readonly x: -1 | 0 | 1,
     readonly y: -1 | 0 | 1
@@ -77,6 +80,13 @@ export module Direcciones {
             }
         }
         return resultado;
+    }
+
+    export function obtenerDireccionDesde(pos1: Posicion, pos2: Posicion): Direccion {
+        const dirX = Math.sign(pos2.cx*TAMAÑO_CHUNK + pos2.tx - (pos1.cx*TAMAÑO_CHUNK + pos1.tx));
+        const dirY = Math.sign(pos2.cy*TAMAÑO_CHUNK + pos2.ty - (pos1.cy*TAMAÑO_CHUNK + pos1.ty));
+
+        return { x: dirX, y: dirY } as Direccion;
     }
 
 }

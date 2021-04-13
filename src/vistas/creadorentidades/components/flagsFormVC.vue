@@ -42,7 +42,7 @@ export default class FlagsFormVC extends Vue {
     }
 
 	public actualizar(): void {
-		this.esIntransitable = store.state.flags.has("INTRANSITABLE");
+		this.esIntransitable = store.state.flags.has("INTRANSITABLE");  
 		this.esOpaco = store.state.flags.has("OPACO");
     }
     
