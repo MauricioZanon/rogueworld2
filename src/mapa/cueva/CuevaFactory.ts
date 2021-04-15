@@ -8,11 +8,11 @@ import { TamañoCueva } from "./TamañoCueva";
 import Excavador from "./Excavador";
 import ExcavadorPasillos from "./ExcavadorPasillos";
 import ExcavadorHabitaciones from "./ExcavadorHabitaciones";
-import { nombreEntidad } from "../../entidades/EntidadFactory";
+import { NombreEntidad as NombreEntidad } from "../../entidades/EntidadFactory";
 
 export default class CuevaFactory {
 
-    public crearCuevaConPasillos(preferencias: PreferenciasCuevaConPasillos): void {
+    public crearCueva(preferencias: PreferenciasCuevaConPasillos): void {
         const tilesExcavados: Set<Tile> = new Set<Tile>();
         this.excavarEntrada(preferencias.posicionInicial);
         this.excavarCueva(preferencias, tilesExcavados);
@@ -26,7 +26,7 @@ export default class CuevaFactory {
         
         tile = Mapa.obtenerTile(posicionEntrada);
         tile.feature = EntidadFactory.crearEntidad("upstairs");
-        const nombreTerreno: nombreEntidad = <nombreEntidad> tile.terreno.nombreComp.nombre.replace("wall", "floor");
+        const nombreTerreno: NombreEntidad = <NombreEntidad> tile.terreno.nombreComp.nombre.replace("wall", "floor");
         tile.terreno = EntidadFactory.crearEntidad(nombreTerreno);
     }
     
@@ -79,4 +79,4 @@ export type PreferenciasCuevaConPasillos = PreferenciasCueva & {
     largoMinimo?: number,
     largoMaximo?: number,
     direccionInicial?: Direccion
-};
+}

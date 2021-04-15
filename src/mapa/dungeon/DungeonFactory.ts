@@ -33,6 +33,7 @@ export default class DungeonFactory {
         tileSalida.feature = EntidadFactory.crearEntidad("upstairs");
     }
 
+    // FIXME a veces la escalera de subida queda dentro de una pared
     private crearHabitacionDeEntrada(posicion: Posicion): void {
         const { tamañoMaximo, tamañoMinimo } = this.preferencias.preferenciasHabitacion;
         const ancho = RNG.getRandomEntre(tamañoMinimo, tamañoMaximo);
@@ -46,7 +47,6 @@ export default class DungeonFactory {
         this.habitaciones.push(new HabitacionDungeon(areaHabitacion));
     }
     
-    // TODO defasar el area en X o Y dependiendo de la dirección en la que se construye la habitación
     private crearHabitacion(): void {
         const entrada: Tile = this.encontrarPosibleEntrada();
         const { tamañoMaximo, tamañoMinimo } = this.preferencias.preferenciasHabitacion;
@@ -62,7 +62,6 @@ export default class DungeonFactory {
         }
     }
 
-    // TODO buscar la direccion en la que se debe contruir la habitación
     private encontrarPosibleEntrada(): Tile {
         let entradaEncontrada: Tile;
         while(!entradaEncontrada) {

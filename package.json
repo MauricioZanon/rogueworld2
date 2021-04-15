@@ -13,6 +13,7 @@
   },
   "main": "background.js",
   "dependencies": {
+    "@harlem/core": "^1.2.4",
     "@webvoxel/fast-simplex-noise": "0.0.1-a2",
     "bootstrap": "^4.6.0",
     "chroma-js": "^2.1.1",

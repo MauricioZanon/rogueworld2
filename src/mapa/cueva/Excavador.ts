@@ -1,4 +1,4 @@
-import EntidadFactory, { nombreEntidad } from "@/entidades/EntidadFactory";
+import EntidadFactory, { NombreEntidad } from "@/entidades/EntidadFactory";
 import { Posicion } from "../Posicion";
 import Tile from "../Tile";
 
@@ -9,7 +9,7 @@ export default abstract class Excavador {
 
     protected excavarTile(tile: Tile): void {
         const nombreTerreno: string = tile.terreno.nombreComp.nombre;
-        tile.terreno = EntidadFactory.crearEntidad(<nombreEntidad> nombreTerreno.replace("wall", "floor"));
+        tile.terreno = EntidadFactory.crearEntidad(<NombreEntidad> nombreTerreno.replace("wall", "floor"));
     }
     
 }

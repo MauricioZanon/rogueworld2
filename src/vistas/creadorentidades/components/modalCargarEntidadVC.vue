@@ -54,8 +54,8 @@
 import { Component, Vue } from "vue-property-decorator";
 import { Tipo } from "@/entidades/Tipos";
 import store from "./../store/creadorEntidadesStore";
-import { obtenerEntidades } from "@/entidades/EntidadRepository";
 import EventBus from "../EventBus";
+import EntidadRepository from "@/entidades/EntidadRepository";
 
 @Component({
 	filters: {
@@ -72,7 +72,7 @@ export default class ModalCargarEntidadVC extends Vue {
 	public readonly terrenos: string[] = [];
 
 	public mounted(): void {
-		store.state.entidades = obtenerEntidades();
+		store.state.entidades = EntidadRepository.obtenerEntidades();
 		this.organizarEntidades();
 	}
 

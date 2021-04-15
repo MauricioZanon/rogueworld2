@@ -11,7 +11,7 @@ export function crearMundoInicial(): void {
 
     crearDungeon({cx: 0, cy: 0, cz: 0, tx:0, ty: 0});
     
-    chunk.obtenerTile({tx: 12, ty: 12}).actor = store.getters.player;
+    chunk.obtenerTile({tx: 12, ty: 12}).actor = store.state.player;
 }
 
 export function crearCueva(positionEntrada: Posicion): void {
@@ -22,7 +22,7 @@ export function crearCueva(positionEntrada: Posicion): void {
         largoMinimo: 5,
         chanceDeRotar: 0.15
     }
-    new CuevaFactory().crearCuevaConPasillos(preferenciasCueva);
+    new CuevaFactory().crearCueva(preferenciasCueva);
 }
 
 export function crearDungeon(posicionEntrada: Posicion): void {
@@ -34,6 +34,5 @@ export function crearDungeon(posicionEntrada: Posicion): void {
             tamañoMaximo: 10,
             tamañoMinimo: 5
         }
-
     }).crearDungeon();
 }

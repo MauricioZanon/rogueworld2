@@ -12,7 +12,7 @@ export default class Entidad {
     public flags: Set<Flag>;
     
     // COMPONENTES
-    public nombreComp?: NombreComp;
+    public nombreComp: NombreComp;
     public renderComp?: RenderComp;
     public statsComp?: StatsComp;
 

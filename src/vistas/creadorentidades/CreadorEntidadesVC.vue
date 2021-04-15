@@ -31,7 +31,7 @@ import RenderCompFormVC from "./components/renderCompFormVC.vue"
 import FlagsFormVC from "./components/flagsFormVC.vue"
 import ModalCargarEntidadVC from "./components/modalCargarEntidadVC.vue"
 import store from "./store/creadorEntidadesStore";
-import { persistirEntidades } from "@/entidades/EntidadRepository";
+import EntidadRepository from "@/entidades/EntidadRepository";
 
 @Component({
 	components: {
@@ -55,7 +55,7 @@ export default class CreadorEntidadesVC extends Vue {
 
 	public guardarEntidad(): void {
 		if(this.esEntidadValida()){
-			persistirEntidades();
+			EntidadRepository.persistirEntidades();
 		} else {
 			console.log("entidad invalida");
 		}
@@ -86,4 +86,5 @@ label.checkbox-label {
 	text-decoration: none;
 	display: inline;
 }
+
 </style>

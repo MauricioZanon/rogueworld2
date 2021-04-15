@@ -1,16 +1,16 @@
 import Entidad from "./Entidad";
 import clone from "fast-clone";
-import { obtenerEntidades } from "@/entidades/EntidadRepository";
 import RenderComp from "./componentes-de-entidades/RenderComp";
 import chroma, { Scale } from "chroma-js";
 import RNG from "@/utils/RNG";
+import EntidadRepository from "./EntidadRepository";
 
 export default class EntidadFactory {
-    private static readonly prototipos = EntidadFactory.crearMapaDeEntidades();
+    private static readonly prototipos: Map<string, Entidad> = EntidadFactory.crearMapaDeEntidades();
     
     private static crearMapaDeEntidades(): Map<string, Entidad> {
         const resultado: Map<string, Entidad> = new Map();
-        const entidades: Entidad[] = obtenerEntidades();
+        const entidades: Entidad[] = EntidadRepository.obtenerEntidades();
         entidades.forEach(entidad => {
             entidad.posicion = {cx: 0, cy: 0, cz: 0, tx: 0, ty: 0};
             resultado.set(entidad.nombreComp.nombre, entidad)
@@ -18,7 +18,7 @@ export default class EntidadFactory {
         return resultado;
     }
 
-    public static crearEntidad(nombre: nombreEntidad): Entidad {
+    public static crearEntidad(nombre: NombreEntidad): Entidad {
         const entidadAClonar = EntidadFactory.prototipos.get(nombre);
         const nuevaEntidad: Entidad = clone(entidadAClonar);
         if(nuevaEntidad.renderComp?.colorFondo) {
@@ -34,5 +34,5 @@ export default class EntidadFactory {
     }
 }
 
-export type nombreEntidad = "grass floor" | "goblin" | "player" | "stone wall" | "dirt floor" | "downstairs" | "upstairs" | 
+export type NombreEntidad = "grass floor" | "goblin" | "player" | "stone wall" | "dirt floor" | "downstairs" | "upstairs" | 
 "dirt wall" | "wooden floor" | "wooden wall" | "stone floor" | "brick wall" | "brick floor"
