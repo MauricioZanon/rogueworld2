@@ -1,24 +1,47 @@
-# rogueworld2
+## Electron + TypeScript + React
+Boilerplate for a project using Electron, React and Typescript
 
-## Project setup
-```
+## Installation
+
+Use a package manager of your choice (npm, yarn, etc.) in order to install all dependencies
+
+```bash
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+```bash
+yarn install
 ```
 
-### Lints and fixes files
+## Usage
+In order to run this project 2 scripts will need to be executed `dev:react` and `dev:electron`, run each one in a different terminal and always run `dev:react` before `dev:electron`, or `dev` to run them in order automatically
+
+```bash
+npm run dev:react
 ```
-npm run lint
+```bash
+npm run dev:electron
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+or
+
+```bash
+npm run dev
+```
+
+## Packaging
+To generate a project package run `package`
+
+```bash
+npm run package
+```
+
+
+
+## Contributing
+
+Pull requests are always welcome 😃.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

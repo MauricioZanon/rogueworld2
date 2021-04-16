@@ -1,6 +1,4 @@
-src/background.ts
-src/shims-tsx.d.ts
-src/shims-vue.d.ts
+*/.js
 node_modules
-dist_electron
-public
+dist
+webpack/*.js
