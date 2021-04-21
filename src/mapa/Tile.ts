@@ -1,5 +1,5 @@
-import Entidad from "@/entidades/Entidad";
-import { Tipo } from "@/entidades/Tipos";
+import Entidad from "../entidades/Entidad";
+import { Tipo } from "../entidades/Tipos";
 import { Posicion } from "./Posicion";
 
 export default class Tile {
@@ -8,7 +8,7 @@ export default class Tile {
     public feature?: Entidad = null;
     public items: Set<Entidad> = new Set();
     private _actor: Entidad = null;
-    
+
     public constructor(posicion: Posicion) {
         this.posicion = posicion;
     }
@@ -18,7 +18,7 @@ export default class Tile {
     }
 
     public set actor(actor: Entidad) {
-        if(!actor) {
+        if (!actor) {
             this._actor = null;
         } else if (actor.tipo === Tipo.ACTOR) {
             this._actor = actor;

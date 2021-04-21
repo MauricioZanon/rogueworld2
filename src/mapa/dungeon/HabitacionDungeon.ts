@@ -1,4 +1,4 @@
-import EntidadFactory from "@/entidades/EntidadFactory";
+import EntidadFactory from "../../entidades/EntidadFactory";
 import Tile from "../Tile";
 
 export default class HabitacionDungeon {
@@ -15,14 +15,14 @@ export default class HabitacionDungeon {
         area.forEach2D(tile => {
             this.pisos.add(tile);
             tile.terreno = EntidadFactory.crearEntidad("brick floor");
-        })
+        });
     }
 
     private crearParedes(area: Tile[][]): void {
         area.forEachBorde(tile => {
             this.paredes.add(tile);
             tile.terreno = EntidadFactory.crearEntidad("brick wall");
-        })
+        });
     }
 
 }

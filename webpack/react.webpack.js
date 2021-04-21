@@ -6,7 +6,7 @@ const rootPath = path.resolve(__dirname, '..')
 
 module.exports = {
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
     mainFields: ['main', 'module', 'browser']
   },
   entry: path.resolve(rootPath, 'src', 'App.tsx'),
@@ -24,10 +24,10 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader'
+          MiniCssExtractPlugin.loader,
+          'css-loader'
         ],
-    }
+      }
     ]
   },
   devServer: {

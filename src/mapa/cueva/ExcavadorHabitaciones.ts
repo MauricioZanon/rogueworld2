@@ -1,4 +1,4 @@
-import RNG from "@/utils/RNG";
+import RNG from "../../utils/RNG";
 import Mapa from "../Mapa";
 import { Posicion } from "../Posicion";
 import Tile from "../Tile";
@@ -8,7 +8,7 @@ import Excavador from "./Excavador";
 export default class ExcavadorHabitaciones extends Excavador {
     private readonly preferencias: PreferenciasCuevaConPasillos;
 
-    public constructor(posicionInicial: Posicion, preferencias: PreferenciasCuevaConPasillos){
+    public constructor(posicionInicial: Posicion, preferencias: PreferenciasCuevaConPasillos) {
         super();
         this.posicion = posicionInicial;
         this.preferencias = preferencias;
@@ -18,7 +18,7 @@ export default class ExcavadorHabitaciones extends Excavador {
         const tiles: Tile[] = Mapa.obtenerTilesAdyacentesOrtogonales(this.posicion);
         const tilesExcavables: Tile[] = tiles.filter(tile => tile.terreno.flags.has("INTRANSITABLE"));
         let tileSiguiente: Tile;
-        if(tilesExcavables.length) {
+        if (tilesExcavables.length) {
             tileSiguiente = RNG.getElementoRandom(tilesExcavables);
             this.excavarTile(tileSiguiente);
         } else {
@@ -27,5 +27,5 @@ export default class ExcavadorHabitaciones extends Excavador {
         this.posicion = tileSiguiente.posicion;
         return tileSiguiente;
     }
-    
+
 }

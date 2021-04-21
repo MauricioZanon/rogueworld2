@@ -22,6 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-typescript": "^7.13.0",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
     "@babel/preset-typescript": "^7.9.0",
@@ -30,6 +31,7 @@
     "@commitlint/core": "^9.0.1",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^10.4.3",
+    "@types/chroma-js": "^2.1.3",
     "@types/electron-devtools-installer": "^2.2.0",
     "@types/jest": "^26.0.3",
     "@types/react": "^16.9.34",
@@ -37,9 +39,12 @@
     "@types/styled-components": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^3.4.0",
     "@typescript-eslint/parser": "^3.4.0",
+    "@webvoxel/fast-simplex-noise": "0.0.1-a2",
     "babel-loader": "^8.1.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "commitizen": "^4.1.2",
     "cross-env": "^7.0.2",
+    "css-loader": "^5.0.1",
     "cz-conventional-changelog": "3.2.0",
     "electron": "^8.2.2",
     "electron-builder": "^22.7.0",
@@ -58,6 +63,7 @@
     "husky": "^4.2.5",
     "jest": "^26.1.0",
     "lint-staged": "^10.2.11",
+    "mini-css-extract-plugin": "^1.3.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
     "ts-jest": "^26.1.1",
@@ -65,11 +71,12 @@
     "wait-on": "^5.0.1",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3",
-    "mini-css-extract-plugin": "^1.3.3",
-    "css-loader": "^5.0.1"
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@webvoxel/fast-simplex-noise": "0.0.1-a2",
+    "chroma-js": "^2.1.1",
+    "fast-clone": "^1.5.13",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.1.1"

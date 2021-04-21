@@ -1,5 +1,5 @@
-import Entidad from "@/entidades/Entidad";
-import store from "../vistas/creadorentidades/store/creadorEntidadesStore";
+import { store } from "../vistas/creadorentidades/store/creadorEntidadesStore";
+import Entidad from "./Entidad";
 
 const pathArchivoEntidades = "./src/assets/entidades.json";
 const fs = window.require("electron").remote.require("fs-extra");
@@ -12,14 +12,14 @@ export default class EntidadRepository {
         resultado.forEach(entidad => EntidadRepository.parsearSetDeFlags(entidad));
         return resultado;
     }
-    
-    private static parsearSetDeFlags(entidad: Entidad): void{
+
+    private static parsearSetDeFlags(entidad: Entidad): void {
         entidad.flags = new Set(entidad.flags);
     }
-    
+
     public static persistirEntidades(): void {
-        const nuevaEntidad: Entidad = EntidadRepository.formarEntidad(store.state.entidadSeleccionada);
-        const entidades: Entidad[] = store.state.entidades;
+        const nuevaEntidad: Entidad = EntidadRepository.formarEntidad(store.entidadSeleccionada);
+        const entidades: Entidad[] = store.entidades;
         if (nuevaEntidad.id >= 0) {
             EntidadRepository.sobreescribirNuevaEntidadEnLista(entidades, nuevaEntidad);
         } else {
@@ -34,36 +34,35 @@ export default class EntidadRepository {
             if (err) {
                 console.log("Error al guardar las entidades");
             } else {
-                console.log("Entidades guardadas correctamente")
+                console.log("Entidades guardadas correctamente");
             }
         });
     }
-    
+
     private static formarEntidad(entidad: Entidad): Entidad {
-        const state = store.state;
-        entidad.tipo = state.tipo;
-        entidad.nombreComp = state.nombreComp;
-        entidad.renderComp = state.renderComp;
-        entidad.statsComp = state.statsComp;
-        entidad.flags = state.flags;
+        entidad.tipo = store.tipo;
+        entidad.nombreComp = store.nombreComp;
+        entidad.renderComp = store.renderComp;
+        entidad.statsComp = store.statsComp;
+        entidad.flags = store.flags;
         return entidad;
     }
-    
+
     private static sobreescribirNuevaEntidadEnLista(entidades: Entidad[], entidad: Entidad): void {
         for (let i = 0; i < entidades.length; i++) {
-            if (entidades[i].id == entidad.id) {
-                entidades[i] = entidad;
+            if (entidades[ i ].id == entidad.id) {
+                entidades[ i ] = entidad;
                 return;
             }
         }
     }
-    
+
     private static agregarNuevaEntidadALaLista(entidades: Entidad[], nuevaEntidad: Entidad): void {
         nuevaEntidad.id = EntidadRepository.buscarIdSinUsar(entidades);
         entidades.push(nuevaEntidad);
     }
-    
-    
+
+
     private static buscarIdSinUsar(entidades: Entidad[]): number {
         const ids: number[] = entidades.map(entidad => entidad.id);
         let nuevoId = 1;

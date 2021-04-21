@@ -1,4 +1,4 @@
-import RNG from "@/utils/RNG";
+import RNG from "../../utils/RNG";
 import { Direccion, Direcciones } from "../Direcciones";
 import Mapa from "../Mapa";
 import { Posicion } from "../Posicion";
@@ -13,7 +13,7 @@ export default class ExcavadorPasillos extends Excavador {
     private tilesAvanzadosSinDoblar: number = 0;
     private readonly preferencias: PreferenciasCuevaConPasillos;
 
-    public constructor(posicionInicial: Posicion, direccionPreferida: Direccion, preferencias: PreferenciasCuevaConPasillos){
+    public constructor(posicionInicial: Posicion, direccionPreferida: Direccion, preferencias: PreferenciasCuevaConPasillos) {
         super();
         this.posicion = posicionInicial;
         this.direccionPreferida = direccionPreferida;
@@ -23,7 +23,7 @@ export default class ExcavadorPasillos extends Excavador {
     }
 
     public avanzar(): Tile {
-        if(this.debeRotar()) {
+        if (this.debeRotar()) {
             this.rotar();
         }
         const tileSiguiente: Tile = Mapa.obtenerTile(this.posicion, this.direccionActual);
@@ -42,7 +42,7 @@ export default class ExcavadorPasillos extends Excavador {
         this.tilesAvanzadosSinDoblar = 0;
         this.direccionActual = this.direccionActual != this.direccionPreferida ?
             this.direccionPreferida :
-            RNG.getRandom() >= 0.5 ? 
+            RNG.getRandom() >= 0.5 ?
                 Direcciones.rotarEnSentidoHorario(this.direccionActual, 2) :
                 Direcciones.rotarEnSentidoAntihorario(this.direccionActual, 2);
     }

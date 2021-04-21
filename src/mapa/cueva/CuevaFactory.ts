@@ -1,4 +1,3 @@
-import RNG from "@/utils/RNG";
 import Mapa from "../Mapa";
 import { Posicion } from "../Posicion";
 import Tile from "../Tile";
@@ -9,6 +8,7 @@ import Excavador from "./Excavador";
 import ExcavadorPasillos from "./ExcavadorPasillos";
 import ExcavadorHabitaciones from "./ExcavadorHabitaciones";
 import { NombreEntidad as NombreEntidad } from "../../entidades/EntidadFactory";
+import RNG from "../../utils/RNG";
 
 export default class CuevaFactory {
 
@@ -23,17 +23,17 @@ export default class CuevaFactory {
         let tile: Tile = Mapa.obtenerTile(posicionEntrada);
         tile.feature = EntidadFactory.crearEntidad("downstairs");
         posicionEntrada.cz++;
-        
+
         tile = Mapa.obtenerTile(posicionEntrada);
         tile.feature = EntidadFactory.crearEntidad("upstairs");
         const nombreTerreno: NombreEntidad = <NombreEntidad> tile.terreno.nombreComp.nombre.replace("wall", "floor");
         tile.terreno = EntidadFactory.crearEntidad(nombreTerreno);
     }
-    
+
     private excavarCueva(preferencias: PreferenciasCuevaConPasillos, tilesExcavados: Set<Tile>): void {
-        const direccionInicial: Direccion = preferencias.direccionInicial || RNG.getElementoRandom([NORTE, ESTE, SUR, OESTE]);
+        const direccionInicial: Direccion = preferencias.direccionInicial || RNG.getElementoRandom([ NORTE, ESTE, SUR, OESTE ]);
         const { posicionInicial, tamaño } = preferencias;
-        let excavadores: Excavador[] = [new ExcavadorPasillos(posicionInicial, direccionInicial, preferencias)];
+        let excavadores: Excavador[] = [ new ExcavadorPasillos(posicionInicial, direccionInicial, preferencias) ];
 
         let turnosDesdeUltimoExcavadorNuevo = 0;
         while (tilesExcavados.size < tamaño) {
@@ -42,7 +42,7 @@ export default class CuevaFactory {
                 if (excavador instanceof ExcavadorPasillos) {
                     turnosDesdeUltimoExcavadorNuevo++;
                     if (turnosDesdeUltimoExcavadorNuevo > 25 && RNG.getRandom() > 0.9) {
-                        excavadores = [excavador, ...this.crearNuevosExcavadores(excavador.posicion, preferencias)];
+                        excavadores = [ excavador, ...this.crearNuevosExcavadores(excavador.posicion, preferencias) ];
                         this.crearNuevosExcavadores(excavador.posicion, preferencias);
                         turnosDesdeUltimoExcavadorNuevo = 0;
                     }
@@ -50,19 +50,19 @@ export default class CuevaFactory {
             });
         }
     }
-    
+
     private crearNuevosExcavadores(posicion: Posicion, preferencias: PreferenciasCuevaConPasillos): Excavador[] {
-        return [new ExcavadorHabitaciones(posicion, preferencias),
-                new ExcavadorHabitaciones(posicion, preferencias),
-                new ExcavadorHabitaciones(posicion, preferencias),
-                new ExcavadorHabitaciones(posicion, preferencias),
-                new ExcavadorHabitaciones(posicion, preferencias),
-                new ExcavadorHabitaciones(posicion, preferencias)];
+        return [ new ExcavadorHabitaciones(posicion, preferencias),
+        new ExcavadorHabitaciones(posicion, preferencias),
+        new ExcavadorHabitaciones(posicion, preferencias),
+        new ExcavadorHabitaciones(posicion, preferencias),
+        new ExcavadorHabitaciones(posicion, preferencias),
+        new ExcavadorHabitaciones(posicion, preferencias) ];
     }
 
     private crearActores(tilesExcavados: Set<Tile>): void {
         const tilesArray: Tile[] = Array.from(tilesExcavados);
-        for(let i = 0; i < 20; i++) {
+        for (let i = 0; i < 20; i++) {
             RNG.getElementoRandom(tilesArray).actor = EntidadFactory.crearEntidad("goblin");
         }
     }
@@ -71,12 +71,12 @@ export default class CuevaFactory {
 
 type PreferenciasCueva = {
     tamaño: TamañoCueva,
-    posicionInicial: Posicion
-}
+    posicionInicial: Posicion;
+};
 
 export type PreferenciasCuevaConPasillos = PreferenciasCueva & {
     chanceDeRotar?: 0.05 | 0.1 | 0.15 | 0.2 | 0.25 | 0.3,
     largoMinimo?: number,
     largoMaximo?: number,
-    direccionInicial?: Direccion
-}
+    direccionInicial?: Direccion;
+};
