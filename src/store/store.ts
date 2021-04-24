@@ -1,10 +1,12 @@
+import { NombreVista } from "../App";
 import Entidad from "../entidades/Entidad";
 import { MensajeConsola } from "../vistas/gamescreen/utils/MensajeConsola";
 
 export const state = {
     player: {} as Entidad,
     cantidadTiles: 25,
-    mensajesConsola: [] as MensajeConsola[]
+    mensajesConsola: [] as MensajeConsola[],
+    vistaActual: "main screen" as NombreVista
 };
 
 export function usarComoPlayer(nuevoPlayer: Entidad): void {

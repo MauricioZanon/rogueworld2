@@ -1,9 +1,8 @@
-import store from "@/store/store";
-import router from "@/vistas/router/index";
-import Entidad from "@/entidades/Entidad";
+import Acciones from "../../../entidades/acciones/Acciones";
+import Entidad from "../../../entidades/Entidad";
 import { SUDOESTE, SUR, SUDESTE, OESTE, ESTE, NOROESTE, NORTE, NORESTE } from "../../../mapa/Direcciones";
 import { MensajeConsola } from "../utils/MensajeConsola";
-import Acciones from "@/entidades/acciones/Acciones";
+import { agregarMensajeALaConsola, state } from '../../../store/store';
 
 export type EventoMouse = "mouseup" | "mousedown";
 
@@ -11,8 +10,8 @@ export default class PlayerViewController {
 
     public static resolverKeyDown(evento: KeyboardEvent): void {
         const mensaje: MensajeConsola = new MensajeConsola();
-        const player: Entidad = store.getters.player;
-        switch(evento.code) {
+        const player: Entidad = state.player;
+        switch (evento.code) {
             case "Numpad1": {
                 Acciones.bump(player, SUDOESTE);
                 break;
@@ -46,22 +45,22 @@ export default class PlayerViewController {
                 break;
             }
             case "Space":
-                mensaje.agregar({texto: "Mensaje", color: "red", negrita: true },
-                                {texto: "Mensaje", color: "purple", negrita: true },
-                                {texto: "Mensaje", color: "green", negrita: true },
-                                {texto: "Mensaje", color: "yellow", negrita: true },
-                                {texto: "Mensaje", color: "blue", negrita: true },
-                                {texto: "Mensaje"});
-                store.commit("agregarMensajeALaConsola", mensaje);
+                mensaje.agregar({ texto: "Mensaje", color: "red", negrita: true },
+                    { texto: "Mensaje", color: "purple", negrita: true },
+                    { texto: "Mensaje", color: "green", negrita: true },
+                    { texto: "Mensaje", color: "yellow", negrita: true },
+                    { texto: "Mensaje", color: "blue", negrita: true },
+                    { texto: "Mensaje" });
+                agregarMensajeALaConsola(mensaje);
                 break;
             case "Escape": {
-                void router.push({name: "MainScreen"});
+                // cambiarVista("menu principal");
                 break;
             }
             case "IntlBackslash": {
-                if(evento.shiftKey) {
+                if (evento.shiftKey) {
                     Acciones.descender(player);
-                }else {
+                } else {
                     Acciones.ascender(player);
                 }
                 break;
@@ -69,12 +68,12 @@ export default class PlayerViewController {
             default: {
                 console.log(evento.code);
             }
-            
+
         }
     }
 
     public static resolverEventoMouse(nombreEvento: EventoMouse): void {
-        switch(nombreEvento) {
+        switch (nombreEvento) {
             case "mousedown":
                 break;
             case "mouseup":

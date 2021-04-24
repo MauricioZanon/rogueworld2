@@ -1,7 +1,8 @@
 import Tile from "../../mapa/Tile";
-import store from "../../store/store";
+import { MensajeConsola } from "../../vistas/gamescreen/utils/MensajeConsola";
 import Entidad from "../Entidad";
 import Acciones from "./Acciones";
+import { agregarMensajeALaConsola } from '../../store/store';
 
 export default (actor: Entidad, tileObjetivo: Tile): void => {
     const actorObjetivo: Entidad = tileObjetivo.actor;
@@ -10,7 +11,7 @@ export default (actor: Entidad, tileObjetivo: Tile): void => {
     if (actorObjetivo.statsComp.salud.actual <= 0) {
         Acciones.morir(actorObjetivo);
         const mensaje: MensajeConsola = crearMensajeDeMuerte(actor, actorObjetivo);
-        store.commit("agregarMensajeALaConsola", mensaje);
+        agregarMensajeALaConsola(mensaje);
     }
 };
 

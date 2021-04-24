@@ -1,0 +1,84 @@
+/* GAME SCREEN */
+
+.player-view {
+    width: 100vh;
+    height: 100vh;
+    float: left;
+    background-color: black;
+    border-right: 1px gray;
+    cursor: default;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+/* TILE */
+
+.ascii {
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 700;
+    line-height: 130%;
+    user-select: none;
+}
+
+.tile {
+    transition: border 0.7s 0.2s;
+    box-sizing: border-box;
+}
+
+.tile:hover {
+    --grosorBorde: 0.05em;
+    border-top: var(--grosorBorde) solid #FFFFFF22;
+    border-left: var(--grosorBorde) solid #FFFFFF33;
+    border-right: var(--grosorBorde) solid #00000033;
+    border-bottom: var(--grosorBorde) solid #00000022;
+}
+
+/* MENSAJE CONSOLE */
+
+.mensaje-consola {
+    font-size: 14px;
+}
+
+/* CONSOLA */
+
+::-webkit-scrollbar {
+    width: 4px;              
+}
+  
+::-webkit-scrollbar-track {
+    background: black;        
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #c1c1ec;    
+    border-radius: 20px;       
+}
+
+.consola {
+    width: auto;
+    height: 30%;
+
+    padding: 0 5px;
+    margin:0 3%;
+    color:white;
+    background-color: black;
+    text-align: left;
+
+    border-radius: 10px;
+    border: 10px double #111;
+    
+    overflow-y: scroll;
+}
+
+/* SIDE BAR */
+
+.side-bar {
+	color: white;
+	font-size: 1rem;
+	background-color: black;
+	height: 100vh;
+	float: right;
+	width: 25%;
+}
