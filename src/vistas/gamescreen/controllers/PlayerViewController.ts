@@ -3,6 +3,7 @@ import Entidad from "../../../entidades/Entidad";
 import { SUDOESTE, SUR, SUDESTE, OESTE, ESTE, NOROESTE, NORTE, NORESTE } from "../../../mapa/Direcciones";
 import { MensajeConsola } from "../utils/MensajeConsola";
 import { agregarMensajeALaConsola, state } from '../../../store/store';
+import PlayerViewVC from '../components/PlayerViewVC';
 
 export type EventoMouse = "mouseup" | "mousedown";
 

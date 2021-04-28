@@ -20,6 +20,7 @@
     font-weight: 700;
     line-height: 130%;
     user-select: none;
+    /* text-shadow: #0006 5px -4px 3px; TODO este shadow solo para lo que no sea terreno */
 }
 
 .tile {

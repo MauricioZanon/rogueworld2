@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MainScreen from './vistas/menuprincipal/MainScreen';
 import GameScreenVC from './vistas/gamescreen/GameScreenVC';
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 import "./styles.css";
 
 const mainElement = document.createElement('div');
@@ -11,7 +11,6 @@ document.body.appendChild(mainElement);
 
 export type NombreVista = "menu principal" | "game screen" | "creador de entidades";
 export class App extends React.Component {
-
 
     render() {
         return (
@@ -26,15 +25,15 @@ export class App extends React.Component {
 
 }
 
-function tick() {
-    ReactDOM.render(<App></App>, mainElement);
-}
+// function tick() {
+ReactDOM.render(<App></App>, mainElement);
+// }
 
-setInterval(tick, 1000);
+// setInterval(tick, 1000);
 
-
-
-
+/*
+    FUNCIONES AUXILIARES PARA ARRAYS
+*/
 declare global {
     interface Array<T> {
         forEach2D(callback: (i: T extends readonly (infer ElementType)[] ? ElementType : never) => void): void;
