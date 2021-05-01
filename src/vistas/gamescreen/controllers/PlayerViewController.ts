@@ -4,6 +4,7 @@ import { SUDOESTE, SUR, SUDESTE, OESTE, ESTE, NOROESTE, NORTE, NORESTE } from ".
 import { MensajeConsola } from "../utils/MensajeConsola";
 import { agregarMensajeALaConsola, state } from '../../../store/store';
 import PlayerViewVC from '../components/PlayerViewVC';
+import { store } from "../../../redux/store";
 
 export type EventoMouse = "mouseup" | "mousedown";
 
@@ -46,13 +47,16 @@ export default class PlayerViewController {
                 break;
             }
             case "Space":
-                mensaje.agregar({ texto: "Mensaje", color: "red", negrita: true },
-                    { texto: "Mensaje", color: "purple", negrita: true },
-                    { texto: "Mensaje", color: "green", negrita: true },
-                    { texto: "Mensaje", color: "yellow", negrita: true },
-                    { texto: "Mensaje", color: "blue", negrita: true },
+                mensaje.agregar({ texto: "Mensaje", estilos: { color: "red", fontWeight: "bold" } },
+                    { texto: "Mensaje", estilos: { color: "purple", fontWeight: "bold" } },
+                    { texto: "Mensaje", estilos: { color: "green", fontWeight: "bold" } },
+                    { texto: "Mensaje", estilos: { color: "yellow", fontWeight: "bold" } },
+                    { texto: "Mensaje", estilos: { color: "blue", fontWeight: "bold" } },
                     { texto: "Mensaje" });
-                agregarMensajeALaConsola(mensaje);
+                store.dispatch({
+                    type: "agregarMensajeConsola",
+                    payload: mensaje
+                });
                 break;
             case "Escape": {
                 // cambiarVista("menu principal");

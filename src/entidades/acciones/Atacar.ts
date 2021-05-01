@@ -3,6 +3,7 @@ import { MensajeConsola } from "../../vistas/gamescreen/utils/MensajeConsola";
 import Entidad from "../Entidad";
 import Acciones from "./Acciones";
 import { agregarMensajeALaConsola } from '../../store/store';
+import { store } from "../../redux/store";
 
 export default (actor: Entidad, tileObjetivo: Tile): void => {
     const actorObjetivo: Entidad = tileObjetivo.actor;
@@ -11,7 +12,10 @@ export default (actor: Entidad, tileObjetivo: Tile): void => {
     if (actorObjetivo.statsComp.salud.actual <= 0) {
         Acciones.morir(actorObjetivo);
         const mensaje: MensajeConsola = crearMensajeDeMuerte(actor, actorObjetivo);
-        agregarMensajeALaConsola(mensaje);
+        store.dispatch({
+            type: "agregarMensajeConsola",
+            payload: mensaje
+        });
     }
 };
 
@@ -19,10 +23,10 @@ function crearMensajeDeMuerte(atacante: Entidad, objetivo: Entidad): MensajeCons
     const mensaje = new MensajeConsola();
     const nombreAtacante = atacante.nombreComp.nombre;
     const nombreObjetivo = objetivo.nombreComp.nombre;
-    mensaje.agregar({ texto: nombreAtacante, color: "blue", negrita: true },
-        { texto: " ha matado al ", color: "white" },
-        { texto: nombreObjetivo, color: "red", negrita: true },
-        { texto: "!", color: "white" });
+    mensaje.agregar({ texto: nombreAtacante, estilos: { color: "blue", fontWeight: "bold" } },
+        { texto: " ha matado al ", estilos: { color: "white" } },
+        { texto: nombreObjetivo, estilos: { color: "red", fontWeight: "bold" } },
+        { texto: "!", estilos: { color: "white" } });
 
     return mensaje;
 }

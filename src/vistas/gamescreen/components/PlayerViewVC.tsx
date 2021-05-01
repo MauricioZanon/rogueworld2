@@ -4,7 +4,6 @@ import Mapa from "../../../mapa/Mapa";
 import { Posicion, modificarTx, modificarTy } from "../../../mapa/Posicion";
 import Tile from "../../../mapa/Tile";
 import TileVC from "./TileVC";
-import obtenerCentroPantalla from '../../../redux/actions/obtenerCentroPantalla';
 
 type PlayerViewVCState = {
 	cantidadTiles: number;

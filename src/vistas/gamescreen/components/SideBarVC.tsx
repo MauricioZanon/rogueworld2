@@ -12,7 +12,7 @@ export default class SideBarVC extends React.Component {
 				<br />
 				{ this.playercurrentHp() } / { this.playerMaxHp() }
 				<br />
-				<ConsolaVC mensajes={ state.mensajesConsola }></ConsolaVC>
+				<ConsolaVC></ConsolaVC>
 			</div>
 		);
 	}

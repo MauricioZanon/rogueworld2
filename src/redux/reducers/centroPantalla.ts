@@ -1,8 +1,15 @@
 import { Posicion } from '../../mapa/Posicion';
 
-const defaultState = { cx: 0, cy: 0, cz: 0, tx: 0, ty: 0 } as Posicion;
+export type CentroPantallaActions = "obtenerCentroPantalla" | "setCentroPantalla";
+type CentroPantallaState = Posicion;
+type Action = {
+    type: CentroPantallaActions,
+    payload?: Posicion;
+};
 
-export default function reducer(state = defaultState, { type, payload }) {
+const defaultState: CentroPantallaState = { cx: 0, cy: 0, cz: 0, tx: 12, ty: 12 };
+
+export default function reducer(state = defaultState, { type, payload }: Action): CentroPantallaState {
     switch (type) {
         case "obtenerCentroPantalla":
             return state;

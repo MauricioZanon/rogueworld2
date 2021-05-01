@@ -1,9 +1,12 @@
 import { combineReducers, createStore } from "redux";
-import centroPantalla from "./reducers/centroPantalla";
+import centroPantalla, { CentroPantallaActions } from "./reducers/centroPantalla";
+import mensajesConsola, { MensajesConsolaActions } from "./reducers/mensajesConsola";
 
 const reducer = combineReducers({
-    centroPantalla
+    centroPantalla,
+    mensajesConsola
 });
 
-
 export const store = createStore(reducer);
+
+export type StoreAction = CentroPantallaActions | MensajesConsolaActions

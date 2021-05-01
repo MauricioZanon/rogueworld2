@@ -1,3 +1,4 @@
+import { CSSProperties } from 'styled-components';
 export class MensajeConsola {
 
     private readonly mensaje: PalabrasEstiladas[] = [];
@@ -13,7 +14,6 @@ export class MensajeConsola {
 }
 
 export type PalabrasEstiladas = {
-    texto: string, 
-    color?: string, 
-    negrita?: boolean
-}
+    texto: string,
+    estilos?: CSSProperties;
+};
