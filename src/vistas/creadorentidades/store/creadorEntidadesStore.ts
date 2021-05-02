@@ -1,10 +1,9 @@
-import NombreComp from "../../../entidades/componentes-de-entidades/NombreComp";
-import RenderComp from "../../../entidades/componentes-de-entidades/RenderComp";
-import StatsComp from "../../../entidades/componentes-de-entidades/StatsComp";
-import Entidad from "../../../entidades/Entidad";
-import { Flag } from "../../../entidades/Flags";
-import { Tipo } from "../../../entidades/Tipos";
-
+import NombreComp from '../../../entidades/componentes-de-entidades/NombreComp'
+import RenderComp from '../../../entidades/componentes-de-entidades/RenderComp'
+import StatsComp from '../../../entidades/componentes-de-entidades/StatsComp'
+import Entidad from '../../../entidades/Entidad'
+import { Flag } from '../../../entidades/Flags'
+import { Tipo } from '../../../entidades/Tipos'
 
 export const store = {
   entidadSeleccionada: {} as Entidad,
@@ -17,17 +16,17 @@ export const store = {
   statsComp: {} as StatsComp,
   statsCompValido: true,
   flags: new Set<Flag>()
-};;
+}
 
-  // mutations: {
-  //   seleccionarEntidad(state, nombre: string): void {
-  //     const entidad: Entidad = state.entidades.find(entidad => entidad.nombreComp.nombre === nombre);
-  //     state.entidadSeleccionada = entidad;
+// mutations: {
+//   seleccionarEntidad(state, nombre: string): void {
+//     const entidad: Entidad = state.entidades.find(entidad => entidad.nombreComp.nombre === nombre);
+//     state.entidadSeleccionada = entidad;
 
-  //     state.tipo = entidad.tipo;
-  //     state.nombreComp = entidad.nombreComp || {} as NombreComp;
-  //     state.renderComp = entidad.renderComp || {} as RenderComp;
-  //     state.statsComp = entidad.statsComp || {} as StatsComp;
-  //     state.flags = entidad.flags;
-  //   }
-  // }
+//     state.tipo = entidad.tipo;
+//     state.nombreComp = entidad.nombreComp || {} as NombreComp;
+//     state.renderComp = entidad.renderComp || {} as RenderComp;
+//     state.statsComp = entidad.statsComp || {} as StatsComp;
+//     state.flags = entidad.flags;
+//   }
+// }

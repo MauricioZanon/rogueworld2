@@ -1,3 +1,3 @@
-export type Flag = 
-    "INTRANSITABLE" | 
-    "OPACO";
+export type Flag =
+    'INTRANSITABLE' |
+    'OPACO';
