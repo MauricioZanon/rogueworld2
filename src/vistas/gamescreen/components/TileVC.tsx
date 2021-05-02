@@ -15,38 +15,30 @@ export default class TileVC extends React.Component<TileProps> {
 	public render(): JSX.Element {
 		return (
 			<div className="tile" onClick={ this.procesarClick } style={ this.generarEstilos() }>
-				<div className="ascii">{ this.obtenerSimbolo() }</div>
+				<div className="ascii">{ this.props.tile.simbolo }</div>
 			</div>
 		);
 	}
 
+	shouldComponentUpdate(nextProps: TileProps): boolean {
+		const tileActual = this.props.tile;
+		const tileProximo = nextProps.tile;
+		return tileActual.simbolo != tileProximo.simbolo ||
+			tileActual.colorSimbolo != tileProximo.colorSimbolo ||
+			tileActual.colorFondo != tileProximo.colorFondo ||
+			this.props.tamaño != nextProps.tamaño;
+	}
+
 	private generarEstilos(): CSSProperties {
+		const tile = this.props.tile;
 		return {
-			backgroundColor: this.obtenerColorFondo(),
-			color: this.obtenerColorSimbolo(),
+			backgroundColor: tile.colorFondo,
+			color: tile.colorSimbolo,
 			fontSize: this.obtenerTamañoFuente(),
 			width: this.obtenerTamañoTile(),
 			height: this.obtenerTamañoTile()
 		};
 	};
-
-	private obtenerSimbolo(): string {
-		return this.props.tile.actor?.renderComp.simbolo ??
-			this.props.tile.feature?.renderComp.simbolo ??
-			this.props.tile.terreno?.renderComp.simbolo ??
-			"¿";
-	}
-
-	private obtenerColorSimbolo(): string {
-		return this.props.tile.actor?.renderComp.colorSimbolo ||
-			this.props.tile.feature?.renderComp.colorSimbolo ||
-			this.props.tile.terreno?.renderComp.colorSimbolo ||
-			"#fff";
-	}
-
-	private obtenerColorFondo(): string {
-		return this.props.tile.terreno?.renderComp.colorFondo || "#000";
-	}
 
 	private obtenerTamañoTile(): string {
 		return this.props.tamaño + "vh";
