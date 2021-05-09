@@ -10,7 +10,7 @@ import { MensajeConsola } from '../utils/MensajeConsola';
 export type EventoMouse = 'mouseup' | 'mousedown';
 
 export default class PlayerViewController {
-  public static resolverKeyDown(evento: KeyboardEvent): void {
+  public static resolverKeyDown (evento: KeyboardEvent): void {
     const mensaje: MensajeConsola = new MensajeConsola();
     const player: Entidad = state.player;
     switch (evento.code) {
@@ -47,7 +47,7 @@ export default class PlayerViewController {
         break;
       }
       case 'Space':
-        Mapa.obtenerTile(player.posicion).terreno = EntidadFactory.crearEntidad("brick floor");
+        Mapa.obtenerTile(player.posicion).terreno = EntidadFactory.crearEntidad('brick floor');
         mensaje.agregar({ texto: 'Mensaje', estilos: { color: 'red', fontWeight: 'bold' } },
           { texto: 'Mensaje', estilos: { color: 'purple', fontWeight: 'bold' } },
           { texto: 'Mensaje', estilos: { color: 'green', fontWeight: 'bold' } },
@@ -77,7 +77,7 @@ export default class PlayerViewController {
     }
   }
 
-  public static resolverEventoMouse(nombreEvento: EventoMouse): void {
+  public static resolverEventoMouse (nombreEvento: EventoMouse): void {
     switch (nombreEvento) {
       case 'mousedown':
         break;

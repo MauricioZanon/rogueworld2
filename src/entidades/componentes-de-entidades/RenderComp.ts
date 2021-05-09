@@ -1,4 +1,4 @@
-import Componente from './Componente'
+import Componente from './Componente';
 
 export default class RenderComp implements Componente {
   public constructor (

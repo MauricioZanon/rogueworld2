@@ -1,13 +1,13 @@
-import { CSSProperties } from 'styled-components'
+import { CSSProperties } from 'styled-components';
 export class MensajeConsola {
     private readonly mensaje: PalabrasEstiladas[] = [];
 
     public agregar (...parteDelMensaje: PalabrasEstiladas[]): void {
-      this.mensaje.push(...parteDelMensaje)
+      this.mensaje.push(...parteDelMensaje);
     }
 
     public getMensaje (): PalabrasEstiladas[] {
-      return this.mensaje
+      return this.mensaje;
     }
 }
 

@@ -1,4 +1,4 @@
-import { MensajeConsola } from '../../vistas/gamescreen/utils/MensajeConsola'
+import { MensajeConsola } from '../../vistas/gamescreen/utils/MensajeConsola';
 
 export type MensajesConsolaActions = 'agregarMensajeConsola' | 'obtenerMensajesConsola';
 type MensajesConsolaState = MensajeConsola[];
@@ -7,15 +7,15 @@ type Action = {
     payload?: MensajeConsola;
 };
 
-const defaultState: MensajesConsolaState = []
+const defaultState: MensajesConsolaState = [];
 
 export default function reducer (state: MensajesConsolaState = defaultState, action: Action): MensajesConsolaState {
   switch (action.type) {
     case 'obtenerMensajesConsola':
-      return state
+      return state;
     case 'agregarMensajeConsola':
-      state = [...state, action.payload]
+      state = [...state, action.payload];
     default:
-      return state
+      return state;
   }
 }

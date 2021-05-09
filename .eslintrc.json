@@ -6,7 +6,7 @@
     "jest": true
   },
   "extends": [
-    "standard",
+    // "standard"
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint"
@@ -26,18 +26,11 @@
   ],
   "rules": {
     "react/prop-types": "off",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "ts": "never",
-        "tsx": "never"
-      }
-    ]
+    "semi": "warn"
   },
   "settings": {
     "import/resolver": {
-      "typescript": {} 
+      "typescript": {}
     }
   }
 }

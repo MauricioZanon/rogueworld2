@@ -11,7 +11,7 @@ document.body.appendChild(mainElement);
 
 export type NombreVista = 'menu principal' | 'game screen' | 'creador de entidades';
 export class App extends React.Component {
-  render(): JSX.Element {
+  render (): JSX.Element {
     return (
       <Router>
         <div>
@@ -41,7 +41,7 @@ declare global {
   }
 }
 
-Array.prototype.forEach2D = function <T>(callback: (i: T extends readonly (infer ElementType)[] ? ElementType : never) => void): void {
+Array.prototype.forEach2D = function <T> (callback: (i: T extends readonly (infer ElementType)[] ? ElementType : never) => void): void {
   for (let i = 0; i < this.length; i++) {
     for (let j = 0; j < this[0].length; j++) {
       callback(this[i][j]);
@@ -49,7 +49,7 @@ Array.prototype.forEach2D = function <T>(callback: (i: T extends readonly (infer
   }
 };
 
-Array.prototype.forEachBorde = function <T>(callback: (i: T extends readonly (infer ElementType)[] ? ElementType : never) => void): void {
+Array.prototype.forEachBorde = function <T> (callback: (i: T extends readonly (infer ElementType)[] ? ElementType : never) => void): void {
   const anchoMax = this.length - 1;
   const altoMax = this[0].length - 1;
 
@@ -63,7 +63,7 @@ Array.prototype.forEachBorde = function <T>(callback: (i: T extends readonly (in
   }
 };
 
-Array.prototype.includes2D = function <T>(callback: (i: T extends readonly (infer ElementType)[] ? ElementType : never) => boolean): boolean {
+Array.prototype.includes2D = function <T> (callback: (i: T extends readonly (infer ElementType)[] ? ElementType : never) => boolean): boolean {
   for (let i = 0; i < this.length; i++) {
     for (let j = 0; j < this[0].length; j++) {
       if (callback(this[i][j])) {

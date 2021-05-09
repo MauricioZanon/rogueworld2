@@ -1,9 +1,9 @@
-import React, { MouseEventHandler } from 'react'
-import EntidadFactory from '../../entidades/EntidadFactory'
-import { crearMundoInicial } from '../../mapa/builder/WorldBuilder'
-import './styles.css'
-import { usarComoPlayer } from '../../store/store'
-import { Link } from 'react-router-dom'
+import React, { MouseEventHandler } from 'react';
+import EntidadFactory from '../../entidades/EntidadFactory';
+import { crearMundoInicial } from '../../mapa/builder/WorldBuilder';
+import './styles.css';
+import { usarComoPlayer } from '../../store/store';
+import { Link } from 'react-router-dom';
 
 export default class MainScreen extends React.Component {
   public render (): JSX.Element {
@@ -14,7 +14,7 @@ export default class MainScreen extends React.Component {
         <button className="boton boton-creador-de-entidades">Entity creator</button>
         <button className="boton boton-salir">Exit</button>
       </div>
-    )
+    );
   }
 
   private crearBoton (texto: string, path: string, clases: string, funcionOnclick: MouseEventHandler): JSX.Element {
@@ -24,11 +24,11 @@ export default class MainScreen extends React.Component {
           { texto }
         </Link>
       </button>
-    )
+    );
   }
 
   private comenzarNuevoJuego (): void {
-    usarComoPlayer(EntidadFactory.crearEntidad('player'))
-    crearMundoInicial()
+    usarComoPlayer(EntidadFactory.crearEntidad('player'));
+    crearMundoInicial();
   }
 }
