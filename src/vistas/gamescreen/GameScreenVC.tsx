@@ -19,4 +19,8 @@ export default class GameScreenVC extends React.Component {
       </Provider >
     );
   }
+
+  shouldComponentUpdate(): boolean {
+    return false;
+  }
 }

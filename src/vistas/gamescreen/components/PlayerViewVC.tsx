@@ -10,19 +10,19 @@ type PlayerViewVCProps = { centroPantalla: Posicion; };
 type PlayerViewVCState = { cantidadTiles: number; };
 
 class PlayerViewVC extends React.Component<PlayerViewVCProps, PlayerViewVCState> {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       cantidadTiles: 25
     };
   }
 
-  shouldComponentUpdate (nextProps: PlayerViewVCProps, nextState: PlayerViewVCState): boolean {
+  shouldComponentUpdate(nextProps: PlayerViewVCProps, nextState: PlayerViewVCState): boolean {
     return this.props.centroPantalla !== nextProps.centroPantalla ||
-			this.state.cantidadTiles !== nextState.cantidadTiles;
+      this.state.cantidadTiles !== nextState.cantidadTiles;
   }
 
-  public render (): JSX.Element {
+  public render(): JSX.Element {
     return (
       <div className="player-view" onWheelCapture={ () => this.setState({ cantidadTiles: 35 }) }>
         { this.generarTiles() }
@@ -52,21 +52,21 @@ class PlayerViewVC extends React.Component<PlayerViewVCProps, PlayerViewVCState>
   // 	}
   // }
 
-  private generarTiles (): JSX.Element[][] {
+  private generarTiles(): JSX.Element[][] {
     return this.obtenerMapa().map((columna, index) => this.generarColumna(columna, index));
   }
 
-  private generarColumna (columna: Tile[], indexColumna: number): JSX.Element[] {
+  private generarColumna(columna: Tile[], indexColumna: number): JSX.Element[] {
     return columna.map((tile, indexFila) => {
       return <TileVC tamaño={ this.tamañoTile() } tile={ tile } key={ indexColumna + '-' + indexFila }></TileVC>;
     });
   }
 
-  private obtenerMapa (): Tile[][] {
+  private obtenerMapa(): Tile[][] {
     return Mapa.obtenerAreaCuadrada(this.pos00(), this.state.cantidadTiles, this.state.cantidadTiles);
   }
 
-  private pos00 (): Posicion {
+  private pos00(): Posicion {
     const resultado: Posicion = { ...this.props.centroPantalla };
     const delta: number = Math.ceil(-(this.state.cantidadTiles / 2));
     modificarTx(resultado, delta);
@@ -74,7 +74,7 @@ class PlayerViewVC extends React.Component<PlayerViewVCProps, PlayerViewVCState>
     return resultado;
   }
 
-  private tamañoTile (): number {
+  private tamañoTile(): number {
     return 100 / this.state.cantidadTiles;
   }
 }

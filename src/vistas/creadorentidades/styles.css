@@ -1,0 +1,26 @@
+.contenedor-horizontal {
+	display: flex;
+}
+
+.formulario-creador-entidades {
+	text-align: initial;
+	background-color: white;
+	display: flex;
+}
+
+.formulario-creador-entidades input {
+	margin: 3px;
+}
+
+.formulario-creador-entidades label {
+	font-weight: bold;
+	font-size: 15px;
+	text-decoration: underline;
+	margin-bottom: 0px;
+	display: block;
+}
+
+.formulario-creador-entidades label.checkbox-label {
+	text-decoration: none;
+	display: inline;
+}

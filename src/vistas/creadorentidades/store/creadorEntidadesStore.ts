@@ -6,16 +6,16 @@ import { Flag } from '../../../entidades/Flags';
 import { Tipo } from '../../../entidades/Tipos';
 
 export const store = {
-  entidadSeleccionada: {} as Entidad,
-  tipo: null as Tipo,
-  entidades: [] as Entidad[],
-  nombreComp: {} as NombreComp,
-  nombreCompValido: false,
-  renderComp: {} as RenderComp,
-  renderCompValido: true,
-  statsComp: {} as StatsComp,
-  statsCompValido: true,
-  flags: new Set<Flag>()
+	entidadSeleccionada: {} as Entidad,
+	tipo: null as Tipo,
+	entidades: [] as Entidad[],
+	nombreComp: {} as NombreComp,
+	nombreCompValido: false,
+	renderComp: {} as RenderComp,
+	renderCompValido: true,
+	statsComp: {} as StatsComp,
+	statsCompValido: true,
+	flags: new Set<Flag>()
 };
 
 // mutations: {
