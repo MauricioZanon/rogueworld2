@@ -2,8 +2,8 @@ import React, { MouseEventHandler } from 'react';
 import EntidadFactory from '../../entidades/EntidadFactory';
 import { crearMundoInicial } from '../../mapa/builder/WorldBuilder';
 import './styles.css';
-import { usarComoPlayer } from '../../store/store';
 import { Link } from 'react-router-dom';
+import { useStore } from '../../store/store';
 
 export default class MainScreen extends React.Component {
   public render(): JSX.Element {
@@ -28,7 +28,7 @@ export default class MainScreen extends React.Component {
   }
 
   private comenzarNuevoJuego(): void {
-    usarComoPlayer(EntidadFactory.crearEntidad('player'));
+    useStore.getState().usarComoPlayer(EntidadFactory.crearEntidad('player'));
     crearMundoInicial();
   }
 }

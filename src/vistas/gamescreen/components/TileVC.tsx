@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { CSSProperties } from 'styled-components';
 import Entidad from '../../../entidades/Entidad';
 import { Direcciones } from '../../../mapa/Direcciones';
 import Tile from '../../../mapa/Tile';
-import { state } from '../../../store/store';
-import { CSSProperties } from 'styled-components';
 
 type TileProps = {
   tile: Tile,
@@ -11,17 +10,6 @@ type TileProps = {
 };
 
 export default function TileVC(props: TileProps): JSX.Element {
-
-  useEffect(() => { }, [props.tile.simbolo, props.tile.colorSimbolo, props.tile.colorFondo]);
-
-  // shouldComponentUpdate (nextProps: TileProps): boolean {
-  //   const tileActual = props.tile;
-  //   const tileProximo = nextProps.tile;
-  //   return tileActual.simbolo != tileProximo.simbolo ||
-  // 		tileActual.colorSimbolo != tileProximo.colorSimbolo ||
-  // 		tileActual.colorFondo != tileProximo.colorFondo ||
-  // 		props.tamaño != nextProps.tamaño;
-  // }
 
   function generarEstilos(): CSSProperties {
     const tile = props.tile;
@@ -42,13 +30,8 @@ export default function TileVC(props: TileProps): JSX.Element {
     return props.tamaño * 0.8 + 'vh';
   }
 
-  function procesarClick(): void {
-    const player: Entidad = state.player;
-    console.log(Direcciones.obtenerDireccionDesde(player.posicion, props.tile.posicion));
-  }
-
   return (
-    <div className="tile" onClick={ procesarClick } style={ generarEstilos() }>
+    <div className="tile" style={ generarEstilos() }>
       <div className="ascii">{ props.tile.simbolo }</div>
     </div>
   );

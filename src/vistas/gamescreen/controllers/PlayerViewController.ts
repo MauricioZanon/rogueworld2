@@ -3,24 +3,25 @@ import Entidad from '../../../entidades/Entidad';
 import EntidadFactory from '../../../entidades/EntidadFactory';
 import { ESTE, NORESTE, NOROESTE, NORTE, OESTE, SUDESTE, SUDOESTE, SUR } from '../../../mapa/Direcciones';
 import Mapa from '../../../mapa/Mapa';
-import { store } from '../../../redux/store';
-import { state } from '../../../store/store';
 import { MensajeConsola } from '../utils/MensajeConsola';
+import { useStore } from '../../../store/store';
 
 export type EventoMouse = 'mouseup' | 'mousedown';
 
-let accionesHabilitadas = true;
 
 export default class PlayerViewController {
 
+  private static accionesHabilitadas = true;
   public static resolverKeyDown(evento: KeyboardEvent): void {
-    if (accionesHabilitadas) {
+    if (PlayerViewController.accionesHabilitadas) {
 
-      accionesHabilitadas = false;
-      window.setTimeout(() => accionesHabilitadas = true, 32);
+      PlayerViewController.accionesHabilitadas = false;
+      window.setTimeout(() => PlayerViewController.accionesHabilitadas = true, 32);
 
       const mensaje: MensajeConsola = new MensajeConsola();
-      const player: Entidad = state.player;
+      const player = useStore.getState().player;
+      const agregarMensajeConsola = useStore.getState().agregarMensajeALaConsola;
+
       switch (evento.code) {
         case 'Numpad1': {
           Acciones.bump(player, SUDOESTE);
@@ -62,10 +63,7 @@ export default class PlayerViewController {
             { texto: 'Mensaje', estilos: { color: 'yellow', fontWeight: 'bold' } },
             { texto: 'Mensaje', estilos: { color: 'blue', fontWeight: 'bold' } },
             { texto: 'Mensaje' });
-          store.dispatch({
-            type: 'agregarMensajeConsola',
-            payload: mensaje
-          });
+          agregarMensajeConsola(mensaje);
           break;
         case 'Escape': {
           // cambiarVista("menu principal");

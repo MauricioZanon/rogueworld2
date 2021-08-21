@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Mapa from '../../../mapa/Mapa';
 import { Posicion, modificarTx, modificarTy } from '../../../mapa/Posicion';
 import Tile from '../../../mapa/Tile';
@@ -9,7 +8,7 @@ type PlayerViewVCProps = { centroPantalla: Posicion; };
 
 type PlayerViewVCState = { cantidadTiles: number; };
 
-class PlayerViewVC extends React.Component<PlayerViewVCProps, PlayerViewVCState> {
+export default class PlayerViewVC extends React.Component<PlayerViewVCProps, PlayerViewVCState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -78,9 +77,3 @@ class PlayerViewVC extends React.Component<PlayerViewVCProps, PlayerViewVCState>
     return 100 / this.state.cantidadTiles;
   }
 }
-
-export default connect((state: { centroPantalla: Posicion; }) => {
-  return {
-    centroPantalla: state.centroPantalla
-  };
-})(PlayerViewVC);

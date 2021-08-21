@@ -1,29 +1,21 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { MensajeConsola } from '../utils/MensajeConsola';
+import { useStore } from '../../../store/store';
 import MensajeConsolaVC from './MensajeConsolaVC';
 
-class ConsolaVC extends React.Component<{ mensajesConsola: MensajeConsola[]; }> {
-    private mensajes: JSX.Element[] = [];
+export default function ConsolaVC() {
 
-    render () {
-      this.actualizarMensajes();
-      return (
-        <div className="consola">
-          { this.mensajes }
-        </div>
-      );
-    }
+	const mensajes = useStore(state => state.mensajesConsola);
 
-    private actualizarMensajes (): void {
-      if (this.props.mensajesConsola.length) {
-        this.mensajes.push(<MensajeConsolaVC mensaje={ this.props.mensajesConsola[0] }></MensajeConsolaVC>);
-      }
-    }
+	function crearMensajes(): JSX.Element[] | JSX.Element {
+		if (mensajes.length) {
+			return mensajes.map(mensaje => <MensajeConsolaVC mensaje={ mensaje }></MensajeConsolaVC>);
+		}
+		return <></>;
+	}
+
+	return (
+		<div className="consola">
+			{ crearMensajes() }
+		</div>
+	);
 }
-
-export default connect((state: { mensajesConsola: MensajeConsola[]; }) => {
-  return {
-    mensajesConsola: state.mensajesConsola
-  };
-})(ConsolaVC);
