@@ -1,3 +1,4 @@
+import create from 'zustand';
 import NombreComp from '../../../entidades/componentes-de-entidades/NombreComp';
 import RenderComp from '../../../entidades/componentes-de-entidades/RenderComp';
 import StatsComp from '../../../entidades/componentes-de-entidades/StatsComp';
@@ -5,7 +6,20 @@ import Entidad from '../../../entidades/Entidad';
 import { Flag } from '../../../entidades/Flags';
 import { Tipo } from '../../../entidades/Tipos';
 
-export const store = {
+type State = {
+	entidadSeleccionada: Entidad,
+	tipo: Tipo;
+	entidades: Entidad[];
+	nombreComp: NombreComp;
+	nombreCompValido: false;
+	renderComp: RenderComp;
+	renderCompValido: true;
+	statsComp: StatsComp;
+	statsCompValido: true;
+	flags: Set<Flag>;
+};
+
+export const useStore = create<State>(set => ({
 	entidadSeleccionada: {} as Entidad,
 	tipo: null as Tipo,
 	entidades: [] as Entidad[],
@@ -16,7 +30,7 @@ export const store = {
 	statsComp: {} as StatsComp,
 	statsCompValido: true,
 	flags: new Set<Flag>()
-};
+}));
 
 // mutations: {
 //   seleccionarEntidad(state, nombre: string): void {
