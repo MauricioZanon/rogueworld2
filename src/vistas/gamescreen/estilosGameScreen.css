@@ -1,16 +1,14 @@
 /* GAME SCREEN */
 
 .player-view {
-    width: 100vh;
+    width: 75%;
     height: 100vh;
     float: left;
-    background-color: black;
     border-right: 1px gray;
-    cursor: default;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-  }
+}
 
 /* TILE */
 
@@ -36,25 +34,30 @@
     border-bottom: var(--grosorBorde) solid #00000022;
 }
 
-/* MENSAJE CONSOLE */
+/* SIDE BAR */
 
-.mensaje-consola {
-    font-size: 14px;
+.side-bar {
+    color: white;
+    font-size: 1rem;
+    background-color: black;
+    height: 100vh;
+    float: right;
+    width: 25%;
 }
 
 /* CONSOLA */
 
 ::-webkit-scrollbar {
-    width: 4px;              
+    width: 4px;
 }
-  
+
 ::-webkit-scrollbar-track {
-    background: black;        
+    background: black;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #c1c1ec;    
-    border-radius: 20px;       
+    background-color: #c1c1ec;
+    border-radius: 20px;
 }
 
 .consola {
@@ -62,24 +65,19 @@
     height: 30%;
 
     padding: 0 5px;
-    margin:0 3%;
-    color:white;
+    margin: 0 3%;
+    color: white;
     background-color: black;
     text-align: left;
 
     border-radius: 10px;
     border: 10px double #111;
-    
+
     overflow-y: scroll;
 }
 
-/* SIDE BAR */
+/* MENSAJE CONSOLA */
 
-.side-bar {
-	color: white;
-	font-size: 1rem;
-	background-color: black;
-	height: 100vh;
-	float: right;
-	width: 25%;
+.mensaje-consola {
+    font-size: 14px;
 }

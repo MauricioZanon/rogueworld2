@@ -26,7 +26,8 @@
   ],
   "rules": {
     "react/prop-types": "off",
-    "semi": "warn"
+    "semi": "warn",
+    "react/display-name": "off"
   },
   "settings": {
     "import/resolver": {
