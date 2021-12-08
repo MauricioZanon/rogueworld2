@@ -9,12 +9,6 @@
 		"lint": "eslint --ext .ts,.tsx src/ --fix",
 		"electron:serve": "wait-on http-get://localhost:4000/ && npm run dev:electron",
 		"start:electron": "electron .",
-		"build": "npm-run-all build:electron build:react",
-		"build:run": "npm-run-all build start:electron",
-		"build:electron": "webpack --config webpack/electron.webpack.js",
-		"build:react": "webpack --config webpack/react.webpack.js",
-		"package": "npm-run-all build package:dist",
-		"package:dist": "electron-builder --dir",
 		"test": "jest"
 	},
 	"author": "Mauricio Zanon",
