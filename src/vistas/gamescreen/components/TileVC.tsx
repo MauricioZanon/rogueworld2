@@ -1,7 +1,5 @@
 import React from 'react';
 import { CSSProperties } from 'styled-components';
-import Entidad from '../../../entidades/Entidad';
-import { Direcciones } from '../../../mapa/Direcciones';
 import Tile from '../../../mapa/Tile';
 
 type TileProps = {

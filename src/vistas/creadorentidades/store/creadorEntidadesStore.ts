@@ -19,7 +19,7 @@ type State = {
 	flags: Set<Flag>;
 };
 
-export const useStore = create<State>(set => ({
+export const useStore = create<State>(() => ({
 	entidadSeleccionada: {} as Entidad,
 	tipo: null as Tipo,
 	entidades: [] as Entidad[],

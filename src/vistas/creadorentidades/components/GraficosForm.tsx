@@ -1,5 +1,4 @@
 import React, { ChangeEvent, useState } from "react";
-import { Component } from "react";
 import RenderComp from "../../../entidades/componentes-de-entidades/RenderComp";
 import Entidad from '../../../entidades/Entidad';
 
@@ -7,13 +6,13 @@ type GraficosFormProps = {
 	entidad: Entidad;
 };
 
-type GraficosFormState = {
-	esVisible: boolean,
-	tieneColorFondo: boolean,
-	simbolo: string,
-	colorSimbolo: string,
-	colorFondo?: string;
-};
+// type GraficosFormState = {
+// 	esVisible: boolean,
+// 	tieneColorFondo: boolean,
+// 	simbolo: string,
+// 	colorSimbolo: string,
+// 	colorFondo?: string;
+// };
 
 export function GraficosForm(props: GraficosFormProps): JSX.Element {
 

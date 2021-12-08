@@ -11,13 +11,13 @@ export default class MainScreen extends React.Component {
       <div className="menu">
         { this.crearBoton('New game', 'game screen', 'boton-new-game', this.comenzarNuevoJuego) }
         <button className="boton boton-load-game">Load game</button>
-        { this.crearBoton('Entity creator', 'creador de entidades', 'boton-creador-de-entidades', () => { }) }
+        { this.crearBoton('Entity creator', 'creador de entidades', 'boton-creador-de-entidades') }
         <button className="boton boton-salir">Exit</button>
       </div>
     );
   }
 
-  private crearBoton(texto: string, path: string, clases: string, funcionOnclick: MouseEventHandler): JSX.Element {
+  private crearBoton(texto: string, path: string, clases: string, funcionOnclick?: MouseEventHandler): JSX.Element {
     return (
       <button onClick={ funcionOnclick } className={ 'boton ' + clases }>
         <Link to={ path }>

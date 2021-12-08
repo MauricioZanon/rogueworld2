@@ -4,7 +4,7 @@ import { Posicion } from '../../../mapa/Posicion';
 import { useStore } from '../../../store/store';
 import Entidad from '../../../entidades/Entidad';
 
-export default function SideBarVC() {
+export default function SideBarVC(): JSX.Element {
 
 	const player: Entidad = useStore(state => state.player);
 

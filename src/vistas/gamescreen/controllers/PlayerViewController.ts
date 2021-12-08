@@ -1,10 +1,9 @@
 import Acciones from '../../../entidades/acciones/Acciones';
-import Entidad from '../../../entidades/Entidad';
 import EntidadFactory from '../../../entidades/EntidadFactory';
 import { ESTE, NORESTE, NOROESTE, NORTE, OESTE, SUDESTE, SUDOESTE, SUR } from '../../../mapa/Direcciones';
 import Mapa from '../../../mapa/Mapa';
-import { MensajeConsola } from '../utils/MensajeConsola';
 import { useStore } from '../../../store/store';
+import { MensajeConsola } from '../utils/MensajeConsola';
 
 export type EventoMouse = 'mouseup' | 'mousedown';
 

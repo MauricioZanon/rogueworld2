@@ -14,7 +14,7 @@ export const ESTE: Direccion = { x: 1, y: 0 };
 export const SUDOESTE: Direccion = { x: -1, y: 1 };
 export const SUR: Direccion = { x: 0, y: 1 };
 export const SUDESTE: Direccion = { x: 1, y: 1 };
-export module Direcciones {
+export namespace Direcciones {
 
   export function rotarEnSentidoHorario(direccion: Direccion, repeticiones = 1): Direccion {
     let resultado: Direccion = direccion;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import StatsComp, { BaseStats, HPStats } from "../../../entidades/componentes-de-entidades/StatsComp";
 import Entidad from "../../../entidades/Entidad";
 
@@ -51,9 +51,9 @@ export default function StatsForm(props: StatsFormProps): JSX.Element {
         }
     }
 
-    function validarComponente(): boolean {
-        return baseStatsValidos() && saludValida();
-    }
+    // function validarComponente(): boolean {
+    //     return baseStatsValidos() && saludValida();
+    // }
 
     function baseStatsValidos(): boolean {
         if (tieneStatsBase) {
