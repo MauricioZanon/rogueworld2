@@ -3,7 +3,7 @@ import clone from 'fast-clone';
 import RenderComp from './componentes-de-entidades/RenderComp';
 import chroma, { Scale } from 'chroma-js';
 import EntidadRepository from './EntidadRepository';
-import RNG from '../utils/RNG';
+import RNG from '../utils/RNG/RNG';
 
 export default class EntidadFactory {
     private static readonly prototipos: Map<string, Entidad> = EntidadFactory.crearMapaDeEntidades();

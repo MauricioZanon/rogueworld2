@@ -8,7 +8,7 @@ import Excavador from './Excavador';
 import ExcavadorPasillos from './ExcavadorPasillos';
 import ExcavadorHabitaciones from './ExcavadorHabitaciones';
 
-import RNG from '../../utils/RNG';
+import RNG from '../../utils/RNG/RNG';
 
 export default class CuevaFactory {
   public crearCueva (preferencias: PreferenciasCuevaConPasillos): void {

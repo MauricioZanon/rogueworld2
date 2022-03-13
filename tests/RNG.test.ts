@@ -1,4 +1,4 @@
-import RNG from '../src/utils/RNG';
+import RNG from '../src/utils/RNG/RNG';
 
 describe("ranmonHasta", () => {
 	test("con maximo positivo | devuelve numeros random hasta el maximo", () => {

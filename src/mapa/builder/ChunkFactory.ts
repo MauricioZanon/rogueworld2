@@ -1,5 +1,5 @@
 import EntidadFactory from '../../entidades/EntidadFactory';
-import RNG from '../../utils/RNG';
+import RNG from '../../utils/RNG/RNG';
 import Chunk, { TAMAÑO_CHUNK } from '../Chunk';
 import { ChunkPos } from '../Posicion';
 import Tile from '../Tile';

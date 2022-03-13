@@ -2,7 +2,7 @@ import { Posicion, modificarTx, modificarTy } from '../Posicion';
 import EntidadFactory from '../../entidades/EntidadFactory';
 import Tile from '../Tile';
 import HabitacionDungeon from './HabitacionDungeon';
-import RNG from '../../utils/RNG';
+import RNG from '../../utils/RNG/RNG';
 import { Direcciones } from '../Direcciones';
 import Mapa from '../Mapa';
 

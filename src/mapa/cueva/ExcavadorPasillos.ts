@@ -1,4 +1,4 @@
-import RNG from '../../utils/RNG';
+import RNG from '../../utils/RNG/RNG';
 import { Direccion, Direcciones } from '../Direcciones';
 import Mapa from '../Mapa';
 import { Posicion } from '../Posicion';
