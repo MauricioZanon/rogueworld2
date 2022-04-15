@@ -24,3 +24,24 @@
 	text-decoration: none;
 	display: inline;
 }
+
+.columna-entidades {
+	align-items: center;
+	text-align: center;
+	border: 3px solid black;
+	border-radius: 3px;
+}
+
+.opcion:hover {
+	background-color: lightblue;
+	transition: ease-in-out 0.4s;
+	font-weight: bolder;
+}
+
+.opcion {
+	border-radius: 15px;
+	text-align: center;
+	transition: ease-in-out 0.4s;
+	cursor: pointer;
+	user-select: none;
+}

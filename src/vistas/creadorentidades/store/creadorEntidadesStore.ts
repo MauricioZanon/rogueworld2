@@ -5,11 +5,14 @@ import StatsComp from '../../../entidades/componentes-de-entidades/StatsComp';
 import Entidad from '../../../entidades/Entidad';
 import { Flag } from '../../../entidades/Flags';
 import { Tipo } from '../../../entidades/Tipos';
+import EntidadRepository from '../../../entidades/EntidadRepository';
 
 type State = {
-	entidadSeleccionada: Entidad,
+	entidadSeleccionada: Entidad;
+	setEntidadSeleccionada: (nuevaEntidad: Entidad) => void;
 	tipo: Tipo;
 	entidades: Entidad[];
+	cargarEntidades: () => void;
 	nombreComp: NombreComp;
 	nombreCompValido: false;
 	renderComp: RenderComp;
@@ -19,10 +22,12 @@ type State = {
 	flags: Set<Flag>;
 };
 
-export const useStore = create<State>(() => ({
+export const useStore = create<State>(set => ({
 	entidadSeleccionada: {} as Entidad,
+	setEntidadSeleccionada: (nuevaEntidad: Entidad) => set(() => ({ entidadSeleccionada: nuevaEntidad })),
 	tipo: null as Tipo,
 	entidades: [] as Entidad[],
+	cargarEntidades: () => set(() => ({ entidades: EntidadRepository.obtenerEntidades() })),
 	nombreComp: {} as NombreComp,
 	nombreCompValido: false,
 	renderComp: {} as RenderComp,
@@ -31,16 +36,3 @@ export const useStore = create<State>(() => ({
 	statsCompValido: true,
 	flags: new Set<Flag>()
 }));
-
-// mutations: {
-//   seleccionarEntidad(state, nombre: string): void {
-//     const entidad: Entidad = state.entidades.find(entidad => entidad.nombreComp.nombre === nombre);
-//     state.entidadSeleccionada = entidad;
-
-//     state.tipo = entidad.tipo;
-//     state.nombreComp = entidad.nombreComp || {} as NombreComp;
-//     state.renderComp = entidad.renderComp || {} as RenderComp;
-//     state.statsComp = entidad.statsComp || {} as StatsComp;
-//     state.flags = entidad.flags;
-//   }
-// }
