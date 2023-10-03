@@ -1,6 +1,6 @@
-import RNG from '../src/utils/RNG/RNG';
+import RNG from '../../../src/utils/RNG/RNG';
 
-describe("ranmonHasta", () => {
+describe("randomHasta", () => {
 	test("con maximo positivo | devuelve numeros random hasta el maximo", () => {
 		const maximo = 5;
 		for (let i = 0; i < 100; i++) {

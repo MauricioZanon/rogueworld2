@@ -1,15 +1,15 @@
 import { useStore } from '../vistas/creadorentidades/store/creadorEntidadesStore';
 import Entidad from './Entidad';
+import fs from "fs";
 
 const pathArchivoEntidades = './src/assets/entidades.json';
-const fs = window.require('electron').remote.require('fs-extra');
 
 export default class EntidadRepository {
 
 	public static obtenerEntidades(): Entidad[] {
-		const data: string = fs.readFileSync(pathArchivoEntidades);
+		const data: string = fs.readFileSync(pathArchivoEntidades, "utf8");
 		const resultado: Entidad[] = JSON.parse(data.toString());
-		resultado.forEach(entidad => EntidadRepository.parsearSetDeFlags(entidad));
+		resultado.forEach(EntidadRepository.parsearSetDeFlags);
 		return resultado;
 	}
 
@@ -30,13 +30,7 @@ export default class EntidadRepository {
 		// asi que fue mas fácil hacer que las entidades sean de tipo any antes de asignarles el array de flags y recién ahi persistirlas.
 		const entidadesSinTipo = Array.from(entidades) as any[];
 		entidadesSinTipo.forEach(entidad => entidad.flags = Array.from(entidad.flags));
-		fs.writeFileSync(pathArchivoEntidades, JSON.stringify(entidadesSinTipo), err => {
-			if (err) {
-				console.log('Error al guardar las entidades');
-			} else {
-				console.log('Entidades guardadas correctamente');
-			}
-		});
+		fs.writeFileSync(pathArchivoEntidades, JSON.stringify(entidadesSinTipo));
 	}
 
 	private static sobreescribirNuevaEntidadEnLista(entidades: Entidad[], entidad: Entidad): void {

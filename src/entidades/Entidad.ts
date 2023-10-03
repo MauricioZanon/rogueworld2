@@ -2,8 +2,8 @@ import { Tipo } from './Tipos';
 import NombreComp from './componentes-de-entidades/NombreComp';
 import RenderComp from './componentes-de-entidades/RenderComp';
 import StatsComp from './componentes-de-entidades/StatsComp';
-import { Flag } from './Flags';
 import { Posicion } from '../mapa/Posicion';
+import { Flag } from '../types/types';
 
 export default class Entidad {
     public id: number;

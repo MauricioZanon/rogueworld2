@@ -19,11 +19,12 @@ jerarquiaDeTipos.set(Tipo.ITEM, null);
 jerarquiaDeTipos.set(Tipo.CONSUMIBLE, Tipo.ITEM);
 jerarquiaDeTipos.set(Tipo.EQUIPO, Tipo.ITEM);
 
+//TODO refactor esta función, no queda claro como funciona
 export function esSubTipoDe (hijo: Tipo, padre: Tipo): boolean {
   let tipoActual: Tipo = hijo;
 
-  while (tipoActual && tipoActual != padre) {
+  while (tipoActual && tipoActual !== padre) {
     tipoActual = jerarquiaDeTipos.get(tipoActual);
   }
-  return tipoActual != null;
+  return tipoActual !== null;
 }

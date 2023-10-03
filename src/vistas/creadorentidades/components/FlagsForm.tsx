@@ -1,6 +1,6 @@
 import React from "react";
 import Entidad from '../../../entidades/Entidad';
-import { Flag } from '../../../entidades/Flags';
+import { Flag } from '../../../types/types';
 
 type FlagsFormProps = {
     entidad: Entidad;

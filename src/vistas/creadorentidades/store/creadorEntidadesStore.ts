@@ -3,9 +3,9 @@ import NombreComp from '../../../entidades/componentes-de-entidades/NombreComp';
 import RenderComp from '../../../entidades/componentes-de-entidades/RenderComp';
 import StatsComp from '../../../entidades/componentes-de-entidades/StatsComp';
 import Entidad from '../../../entidades/Entidad';
-import { Flag } from '../../../entidades/Flags';
 import { Tipo } from '../../../entidades/Tipos';
 import EntidadRepository from '../../../entidades/EntidadRepository';
+import { Flag } from '../../../types/types';
 
 type State = {
 	entidadSeleccionada: Entidad;
