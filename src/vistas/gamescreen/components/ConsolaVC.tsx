@@ -4,7 +4,7 @@ import MensajeConsolaVC from './MensajeConsolaVC';
 
 export default function ConsolaVC(): JSX.Element {
 
-	const mensajes = useStore(state => state.mensajesConsola);
+	const mensajes = useStore((state) => state.mensajesConsola);
 
 	function crearMensajes(): JSX.Element[] | JSX.Element {
 		if (mensajes.length) {

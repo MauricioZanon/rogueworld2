@@ -6,25 +6,25 @@ import { PreferenciasCuevaConPasillos } from './CuevaFactory';
 import Excavador from './Excavador';
 
 export default class ExcavadorHabitaciones extends Excavador {
-    private readonly preferencias: PreferenciasCuevaConPasillos;
+	private readonly preferencias: PreferenciasCuevaConPasillos;
 
-    public constructor (posicionInicial: Posicion, preferencias: PreferenciasCuevaConPasillos) {
-      super();
-      this.posicion = posicionInicial;
-      this.preferencias = preferencias;
-    }
+	public constructor (posicionInicial: Posicion, preferencias: PreferenciasCuevaConPasillos) {
+		super();
+		this.posicion = posicionInicial;
+		this.preferencias = preferencias;
+	}
 
-    public avanzar (): Tile {
-      const tiles: Tile[] = Mapa.obtenerTilesAdyacentesOrtogonales(this.posicion);
-      const tilesExcavables: Tile[] = tiles.filter(tile => tile.terreno.flags.has('INTRANSITABLE'));
-      let tileSiguiente: Tile;
-      if (tilesExcavables.length) {
-        tileSiguiente = RNG.getElementoRandom(tilesExcavables);
-        this.excavarTile(tileSiguiente);
-      } else {
-        tileSiguiente = RNG.getElementoRandom(tiles);
-      }
-      this.posicion = tileSiguiente.posicion;
-      return tileSiguiente;
-    }
+	public avanzar (): Tile {
+		const tiles: Tile[] = Mapa.obtenerTilesAdyacentesOrtogonales(this.posicion);
+		const tilesExcavables: Tile[] = tiles.filter((tile) => tile.terreno.flags.has('INTRANSITABLE'));
+		let tileSiguiente: Tile;
+		if (tilesExcavables.length) {
+			tileSiguiente = RNG.getElementoRandom(tilesExcavables);
+			this.excavarTile(tileSiguiente);
+		} else {
+			tileSiguiente = RNG.getElementoRandom(tiles);
+		}
+		this.posicion = tileSiguiente.posicion;
+		return tileSiguiente;
+	}
 }

@@ -29,12 +29,12 @@ export default class EntidadRepository {
 		// Para hacer esto necesito que 'flags' acepte también arrays, pero eso me obligaría a hacer type checks cada vez que lo uso,
 		// asi que fue mas fácil hacer que las entidades sean de tipo any antes de asignarles el array de flags y recién ahi persistirlas.
 		const entidadesSinTipo = Array.from(entidades) as any[];
-		entidadesSinTipo.forEach(entidad => entidad.flags = Array.from(entidad.flags));
+		entidadesSinTipo.forEach((entidad) => entidad.flags = Array.from(entidad.flags));
 		fs.writeFileSync(pathArchivoEntidades, JSON.stringify(entidadesSinTipo));
 	}
 
 	private static sobreescribirNuevaEntidadEnLista(entidades: Entidad[], entidad: Entidad): void {
-		for (let i = 0; i < entidades.length; i++) {
+		for (let i = 0;i < entidades.length;i++) {
 			if (entidades[i].id === entidad.id) {
 				entidades[i] = entidad;
 				return;
@@ -48,7 +48,7 @@ export default class EntidadRepository {
 	}
 
 	private static buscarIdSinUsar(entidades: Entidad[]): number {
-		const ids: number[] = entidades.map(entidad => entidad.id);
+		const ids: number[] = entidades.map((entidad) => entidad.id);
 		let nuevoId = 1;
 		while (ids.includes(nuevoId)) {
 			nuevoId++;

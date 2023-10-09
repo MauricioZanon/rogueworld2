@@ -75,7 +75,7 @@ export default class DungeonFactory {
 	}
 
 	private encontrarPos00DeNuevaHabitacion(entrada: Tile, ancho: number, alto: number): Posicion {
-		const tileHabitacionAdyacente = Mapa.obtenerTilesAdyacentesOrtogonales(entrada.posicion).find(t => t.terreno.nombreComp.nombre.includes('floor'));
+		const tileHabitacionAdyacente = Mapa.obtenerTilesAdyacentesOrtogonales(entrada.posicion).find((t) => t.terreno.nombreComp.nombre.includes('floor'));
 		const direccionDeLaHabitacion = Direcciones.obtenerDireccionDesde(tileHabitacionAdyacente.posicion, entrada.posicion);
 		const pos00: Posicion = { ...entrada.posicion };
 
@@ -99,8 +99,8 @@ export default class DungeonFactory {
 	private entradaAHabitacionValida(tile: Tile): boolean {
 		const adyacentes: Tile[] = Mapa.obtenerTilesAdyacentesOrtogonales(tile.posicion);
 		let cantidadDePisosAdyacentes = 0;
-		adyacentes.forEach(tile => {
-			if (tile.terreno.nombreComp.nombre.includes('floor')) {
+		adyacentes.forEach((t) => {
+			if (t.terreno.nombreComp.nombre.includes('floor')) {
 				cantidadDePisosAdyacentes++;
 			}
 		});
@@ -109,7 +109,7 @@ export default class DungeonFactory {
 	}
 
 	private validarAreaParaHabitacion(area: Tile[][]): boolean {
-		return !area.includes2D(tile => tile.terreno?.nombreComp.nombre.includes('floor'));
+		return !area.includes2D((tile) => tile.terreno?.nombreComp.nombre.includes('floor'));
 	}
 }
 

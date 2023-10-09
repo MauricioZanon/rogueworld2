@@ -1,38 +1,120 @@
 {
   "env": {
-    "browser": true,
-    "es2020": true,
-    "node": true,
-    "jest": true
+	"browser": true,
+	"es2020": true,
+	"node": true,
+	"jest": true
   },
   "extends": [
-    // "standard"
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint"
+	// "standard"
+	"plugin:react/recommended",
+	"plugin:@typescript-eslint/recommended",
+	"prettier/@typescript-eslint"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 11,
-    "sourceType": "module"
+	"ecmaFeatures": {
+	  "jsx": true
+	},
+	"ecmaVersion": 11,
+	"sourceType": "module"
   },
   "plugins": [
-    "react",
-    "prettier",
-    "@typescript-eslint"
+	"react",
+	"prettier",
+	"@typescript-eslint"
   ],
   "rules": {
-    "react/prop-types": "off",
-    "semi": "warn",
-    "react/display-name": "off",
-    "@typescript-eslint/no-namespace": "off"
+		/* Lista completa de reglas:
+	https://eslint.org/docs/latest/rules/ */
+	"linebreak-style": [
+		"warn",
+		"unix"
+	],
+	"no-constructor-return": "warn", 
+	"no-duplicate-imports": "warn", 
+	"no-self-compare": "warn", 
+	"no-unreachable-loop": "warn", 
+	"default-param-last": "warn", 
+	"no-lone-blocks": "warn", 
+	"no-lonely-if": "warn", 
+	"no-nested-ternary": "warn", 
+	"no-shadow": "warn", 
+	"no-unneeded-ternary": "warn", 
+	"no-useless-return": "warn", 
+	"no-var": "warn", 
+	"prefer-const": "warn", 
+	"array-bracket-spacing": ["warn", "never"], 
+	"arrow-parens": ["warn", "always"], 
+	"arrow-spacing": "warn", 
+	"brace-style": ["warn", "1tbs"], 
+	"comma-spacing": ["warn", { "before": false, "after": true }], 
+	"func-call-spacing": ["warn", "never"], 
+	"indent": ["warn", "tab", { 
+			"SwitchCase": 1 
+		}
+	],
+	"key-spacing": ["warn", { 
+			"beforeColon": false, 
+			"afterColon": true , 
+			"mode": "minimum"
+		}
+	],
+	"max-statements-per-line": ["warn", { "max": 1 }], 
+	"no-multi-spaces": ["warn", { 
+			"ignoreEOLComments": false 
+		}
+	],
+	"no-multiple-empty-lines": ["warn", { "max": 1, "maxEOF": 1 }], 
+	"no-trailing-spaces": ["warn", { 
+			"skipBlankLines": true, 
+			"ignoreComments": true 
+		}
+	],
+	"semi-spacing": ["warn", {"before": false, "after": false}], 
+	"no-plusplus": "off", 
+	"no-continue": "off",
+	"no-console": "off",
+	"no-undef": "error",
+	"prefer-template": "off",
+	"max-len": "off",
+	"arrow-body-style": "off",
+	"object-curly-newline": "off",
+	"no-tabs": "off",
+	"no-mixed-spaces-and-tabs": "warn",
+	"comma-dangle": ["warn", {
+		"arrays": "always-multiline",
+		"exports": "always-multiline",
+		"objects": "always-multiline"
+		}],
+	"no-unused-expressions": "warn",
+	"no-mixed-operators": "warn",
+	"prefer-destructuring": "off",
+	"no-prototype-builtins": "off",
+	"no-useless-escape": "off",
+	"no-case-declarations": "warn",
+	"no-redeclare": "off",
+	"no-irregular-whitespace": "warn",
+	"use-isnan": "warn",
+	"no-dupe-keys": "warn",
+	"no-misleading-character-class": "warn",
+	"no-unreachable": "warn",
+	"no-fallthrough": "warn",
+	"no-duplicate-case": "warn",
+	"no-empty": "warn",
+	"no-const-assign": "error",
+	"no-self-assign": "error",
+	"no-ex-assign": "error",
+	"no-inner-declarations": "warn",
+	"no-async-promise-executor": "off",
+	"react/prop-types": "off",
+	"semi": "warn",
+	"react/display-name": "off",
+	"@typescript-eslint/no-namespace": "off"
   },
   "settings": {
-    "import/resolver": {
-      "typescript": {}
-    }
+	"import/resolver": {
+	  "typescript": {}
+	}
   }
 }

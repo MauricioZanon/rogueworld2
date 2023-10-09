@@ -22,7 +22,7 @@ type State = {
 	flags: Set<Flag>;
 };
 
-export const useStore = create<State>(set => ({
+export const useStore = create<State>((set) => ({
 	entidadSeleccionada: {} as Entidad,
 	setEntidadSeleccionada: (nuevaEntidad: Entidad) => set(() => ({ entidadSeleccionada: nuevaEntidad })),
 	tipo: null as Tipo,
@@ -34,5 +34,5 @@ export const useStore = create<State>(set => ({
 	renderCompValido: true,
 	statsComp: {} as StatsComp,
 	statsCompValido: true,
-	flags: new Set<Flag>()
+	flags: new Set<Flag>(),
 }));

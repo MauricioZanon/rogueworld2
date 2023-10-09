@@ -15,7 +15,7 @@ type State = {
 	setCentroPantalla: (nuevoCentro: Posicion) => void;
 };
 
-export const useStore = create<State>(set => ({
+export const useStore = create<State>((set) => ({
 	player: {} as Entidad,
 	usarComoPlayer: (nuevoPlayer: Entidad) => set(() => ({ player: nuevoPlayer })),
 	mensajesConsola: [],
@@ -25,5 +25,5 @@ export const useStore = create<State>(set => ({
 	vistaActual: 'main screen' as NombreVista,
 
 	centroPantalla: { tx: 0, ty: 0, cx: 0, cy: 0, cz: 0 } as Posicion,
-	setCentroPantalla: (nuevoCentro: Posicion) => set(() => ({ centroPantalla: nuevoCentro }))
+	setCentroPantalla: (nuevoCentro: Posicion) => set(() => ({ centroPantalla: nuevoCentro })),
 }));

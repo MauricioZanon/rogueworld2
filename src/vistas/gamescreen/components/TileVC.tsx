@@ -16,7 +16,7 @@ export default function TileVC(props: TileProps): JSX.Element {
 			color: tile.colorSimbolo,
 			fontSize: obtenerTamañoFuente(),
 			width: obtenerTamañoTile(),
-			height: obtenerTamañoTile()
+			height: obtenerTamañoTile(),
 		};
 	}
 
@@ -25,7 +25,7 @@ export default function TileVC(props: TileProps): JSX.Element {
 	}
 
 	function obtenerTamañoFuente(): string {
-		return props.tamaño * 0.8 + 'vh';
+		return (props.tamaño * 0.8) + 'vh';
 	}
 
 	return (

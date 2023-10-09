@@ -1,6 +1,4 @@
-import { materialCells, materialRenderers } from "@jsonforms/material-renderers";
-import { JsonForms } from "@jsonforms/react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import shallow from "zustand/shallow";
 import Entidad from "../../entidades/Entidad";
 import { ModalCargarEntidad } from "./components/modalCargarEntidad";
@@ -11,29 +9,28 @@ export function CreadorEntidades(): JSX.Element {
 
 	const [modalCargarEntidadVisible, setModalCargarEntidadVisible] = useState(false);
 
-	const { entidadSeleccionada, setEntidadSeleccionada } = useStore(state => ({
+	const { entidadSeleccionada, setEntidadSeleccionada } = useStore((state) => ({
 		entidadSeleccionada: state.entidadSeleccionada,
-		setEntidadSeleccionada: state.setEntidadSeleccionada
+		setEntidadSeleccionada: state.setEntidadSeleccionada,
 	}), shallow);
 
 	function crearNuevaEntidad(): void {
 		setEntidadSeleccionada(new Entidad());
 	}
 
-	function crearFormulario(): JSX.Element {
-		if (entidadSeleccionada) {
-			const properties = {
-				data: entidadSeleccionada,
-				renderers: materialRenderers,
-				cells: materialCells
-			};
+	// function crearFormulario(): JSX.Element {
+	// 	if (entidadSeleccionada) {
+	// 		const properties = {
+	// 			data: entidadSeleccionada,
+	// 			renderers: materialRenderers,
+	// 			cells: materialCells,
+	// 		};
 
-			return < JsonForms { ...properties } />;
-		}
-		else {
-			return <></>;
-		}
-	}
+	// 		return < JsonForms { ...properties } />;
+	// 	} else {
+	// 		return <></>;
+	// 	}
+	// }
 
 	// function guardarEntidad(): void {
 	// 	if (esEntidadValida()) {
@@ -53,7 +50,6 @@ export function CreadorEntidades(): JSX.Element {
 			<button onClick={ () => setModalCargarEntidadVisible(true) }>Cargar entidad</button>
 
 			{/* { crearFormulario() } */ }
-
 
 			<div className="container formulario-creador-entidades">
 				<span className="contenedor-horizontal">

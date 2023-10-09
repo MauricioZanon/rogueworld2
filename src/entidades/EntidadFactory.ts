@@ -13,7 +13,7 @@ export default class EntidadFactory {
 	private static crearMapaDeEntidades(): ListaEntidades {
 		const resultado = {} as ListaEntidades;
 		const entidades: Entidad[] = EntidadRepository.obtenerEntidades();
-		entidades.forEach(entidad => {
+		entidades.forEach((entidad) => {
 			entidad.posicion = { cx: 0, cy: 0, cz: 0, tx: 0, ty: 0 };
 			resultado[entidad.nombreComp.nombre] = entidad;
 		});

@@ -6,10 +6,10 @@ import Descender from './Descender';
 import Morir from './Morir';
 
 export default {
-  ascender: Ascender,
-  atacar: Atacar,
-  avanzar: Avanzar,
-  bump: Bump,
-  descender: Descender,
-  morir: Morir
+	ascender: Ascender,
+	atacar: Atacar,
+	avanzar: Avanzar,
+	bump: Bump,
+	descender: Descender,
+	morir: Morir,
 };

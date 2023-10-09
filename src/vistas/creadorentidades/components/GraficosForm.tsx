@@ -18,11 +18,9 @@ export function GraficosForm(props: GraficosFormProps): JSX.Element {
 
 	const [esVisible, setEsVisible] = useState(false);
 	const [tieneColorFondo, setTieneColorFondo] = useState(false);
-	const [simbolo, setSimbolo] = useState("");
-	const [colorSimbolo, setColorSimbolo] = useState("");
-	const [colorFondo, setColorFondo] = useState("");
-
-
+	const [simbolo] = useState("");
+	const [colorSimbolo] = useState("");
+	const [colorFondo] = useState("");
 
 	function actualizarExistenciadeGraficComp(event: ChangeEvent<HTMLInputElement>) {
 		const nuevoValor: boolean = event.target.value === "true";

@@ -6,7 +6,7 @@ import Entidad from '../../../entidades/Entidad';
 
 export default function SideBarVC(): JSX.Element {
 
-	const player: Entidad = useStore(state => state.player);
+	const player: Entidad = useStore((state) => state.player);
 
 	function playercurrentHp(): number {
 		return player.statsComp.salud.actual;

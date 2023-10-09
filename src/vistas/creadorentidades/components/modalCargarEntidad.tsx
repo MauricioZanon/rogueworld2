@@ -19,10 +19,10 @@ type EntidadesPorTipo = {
 
 export function ModalCargarEntidad(props: ModalCargarEntidadProps): JSX.Element {
 
-	const { setEntidadSeleccionada, cargarEntidades } = useStore(state => ({
+	const { setEntidadSeleccionada, cargarEntidades } = useStore((state) => ({
 		entidades: state.entidades,
 		setEntidadSeleccionada: state.setEntidadSeleccionada,
-		cargarEntidades: state.cargarEntidades
+		cargarEntidades: state.cargarEntidades,
 	}), shallow);
 
 	const entidades = EntidadRepository.obtenerEntidades();
@@ -37,9 +37,9 @@ export function ModalCargarEntidad(props: ModalCargarEntidadProps): JSX.Element 
 		const nuevoEntidadesPorTipo: EntidadesPorTipo = {
 			ACTOR: [],
 			FEATURE: [],
-			TERRENO: []
+			TERRENO: [],
 		};
-		entidades.forEach(entidad => {
+		entidades.forEach((entidad) => {
 			switch (entidad.tipo) {
 				case Tipo.FEATURE:
 					nuevoEntidadesPorTipo.FEATURE.push(entidad);

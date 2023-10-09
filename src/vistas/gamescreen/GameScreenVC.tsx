@@ -8,7 +8,7 @@ import './estilosGameScreen.css';
 export default function GameScreenVC(): JSX.Element {
 
 	window.addEventListener('keypress', PlayerViewController.resolverKeyDown);
-	const centroPantalla = useStore(state => state.centroPantalla);
+	const centroPantalla = useStore((state) => state.centroPantalla);
 
 	console.count("GAMESCREEN");
 

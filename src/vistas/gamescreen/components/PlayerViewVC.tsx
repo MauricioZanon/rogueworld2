@@ -1,17 +1,16 @@
 import { Graphics } from '@pixi/graphics';
-import { Application } from 'pixi.js';
+import * as PIXI from 'pixi.js';
 import React, { useEffect, useState } from 'react';
 import Mapa from '../../../mapa/Mapa';
 import { Posicion, modificarTx, modificarTy } from '../../../mapa/Posicion';
 import Tile from '../../../mapa/Tile';
-import * as PIXI from 'pixi.js';
 import $ from "jquery";
 
 type PlayerViewProps = {
 	centroPantalla: Posicion;
 };
 
-let app: Application;
+let app: PIXI.Application;
 
 let cantidadTilesX: number;
 let cantidadTilesY: number;
@@ -35,7 +34,7 @@ export default function PlayerViewVC(props: PlayerViewProps): JSX.Element {
 	function crearApp() {
 		app = new PIXI.Application({
 			antialias: true,
-			view: $(".player-view")[0] as HTMLCanvasElement
+			view: $(".player-view")[0] as HTMLCanvasElement,
 		});
 		document.body.appendChild(app.view);
 	}
@@ -47,9 +46,9 @@ export default function PlayerViewVC(props: PlayerViewProps): JSX.Element {
 
 	function inicializarFondos(): void {
 		fondos = [];
-		for (let i = 0; i < cantidadTilesX; i++) {
+		for (let i = 0;i < cantidadTilesX;i++) {
 			fondos[i] = [];
-			for (let j = 0; j < cantidadTilesY; j++) {
+			for (let j = 0;j < cantidadTilesY;j++) {
 				const fondo = new Graphics();
 				fondo.beginFill(0x000000);
 				fondo.drawRect(tamañoTiles * i, tamañoTiles * j, tamañoTiles, tamañoTiles);
@@ -62,9 +61,9 @@ export default function PlayerViewVC(props: PlayerViewProps): JSX.Element {
 
 	function inicializarSimbolos(): void {
 		simbolos = [];
-		for (let i = 0; i < cantidadTilesX; i++) {
+		for (let i = 0;i < cantidadTilesX;i++) {
 			simbolos[i] = [];
-			for (let j = 0; j < cantidadTilesY; j++) {
+			for (let j = 0;j < cantidadTilesY;j++) {
 				const ascii = new PIXI.Text("");
 				ascii.position.set(tamañoTiles * i, tamañoTiles * j);
 				fondos[i][j].addChild(ascii);
@@ -76,8 +75,8 @@ export default function PlayerViewVC(props: PlayerViewProps): JSX.Element {
 	function generarTiles(): void {
 		const tiles = obtenerMapa();
 
-		for (let i = 0; i < tiles.length; i++) {
-			for (let j = 0; j < tiles[0].length; j++) {
+		for (let i = 0;i < tiles.length;i++) {
+			for (let j = 0;j < tiles[0].length;j++) {
 				const tile = tiles[i][j];
 
 				actualizarFondo(tile, tamañoTiles, i, j);
@@ -117,7 +116,7 @@ export default function PlayerViewVC(props: PlayerViewProps): JSX.Element {
 			fill: tile.colorSimbolo,
 			fontFamily: "Courier New",
 			align: "center",
-			fontSize: tamaño
+			fontSize: tamaño,
 		};
 		ascii.anchor.x = -0.5;
 		return ascii;

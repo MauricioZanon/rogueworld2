@@ -1,17 +1,18 @@
 import { CSSProperties } from 'styled-components';
+
 export class MensajeConsola {
-    private readonly mensaje: PalabrasEstiladas[] = [];
+	private readonly mensaje: PalabrasEstiladas[] = [];
 
-    public agregar (...parteDelMensaje: PalabrasEstiladas[]): void {
-      this.mensaje.push(...parteDelMensaje);
-    }
+	public agregar (...parteDelMensaje: PalabrasEstiladas[]): void {
+		this.mensaje.push(...parteDelMensaje);
+	}
 
-    public getMensaje (): PalabrasEstiladas[] {
-      return this.mensaje;
-    }
+	public getMensaje (): PalabrasEstiladas[] {
+		return this.mensaje;
+	}
 }
 
 export type PalabrasEstiladas = {
-    texto: string,
-    estilos?: CSSProperties;
+	texto: string,
+	estilos?: CSSProperties;
 };
