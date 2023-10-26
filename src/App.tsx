@@ -28,11 +28,11 @@ export class App extends React.Component {
 	}
 }
 
-function tick() {
-	ReactDOM.render(<App></App>, mainElement);
-}
+// function tick() {
+ReactDOM.render(<App></App>, mainElement);
+// }
 
-setInterval(tick, 33);
+// setInterval(tick, 33);
 
 /*
 	FUNCIONES AUXILIARES PARA ARRAYS

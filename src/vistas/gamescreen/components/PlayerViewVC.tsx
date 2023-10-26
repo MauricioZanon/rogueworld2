@@ -5,10 +5,8 @@ import Mapa from '../../../mapa/Mapa';
 import { Posicion, modificarTx, modificarTy } from '../../../mapa/Posicion';
 import Tile from '../../../mapa/Tile';
 import $ from "jquery";
-
-type PlayerViewProps = {
-	centroPantalla: Posicion;
-};
+import { useStore } from '../../../store/store';
+import Entidad from '../../../entidades/Entidad';
 
 let app: PIXI.Application;
 
@@ -17,9 +15,10 @@ let cantidadTilesY: number;
 let fondos: Graphics[][];
 let simbolos: PIXI.Text[][];
 
-export default function PlayerViewVC(props: PlayerViewProps): JSX.Element {
+export default function PlayerViewVC(): JSX.Element {
 
 	const [tamañoTiles, setTamañoTiles] = useState(25);
+	const player: Entidad = useStore((state) => state.player);
 
 	useEffect(() => {
 		if (!app) {
@@ -27,8 +26,8 @@ export default function PlayerViewVC(props: PlayerViewProps): JSX.Element {
 			calcularCantidadDeTiles();
 			inicializarFondos();
 			inicializarSimbolos();
+			app.ticker.add(generarTiles);
 		}
-		generarTiles();
 	});
 
 	function crearApp() {
@@ -60,45 +59,50 @@ export default function PlayerViewVC(props: PlayerViewProps): JSX.Element {
 	}
 
 	function inicializarSimbolos(): void {
+		console.count("inicializar simbollos");
 		simbolos = [];
 		for (let i = 0;i < cantidadTilesX;i++) {
 			simbolos[i] = [];
 			for (let j = 0;j < cantidadTilesY;j++) {
 				const ascii = new PIXI.Text("");
 				ascii.position.set(tamañoTiles * i, tamañoTiles * j);
-				fondos[i][j].addChild(ascii);
-				ascii.anchor.x = -0.25;
-				ascii.anchor.y = 0.15;
+				ascii.anchor.set(0.5);
+				ascii.x += tamañoTiles / 2;
+				ascii.y += tamañoTiles / 2;
 				ascii.style = {
-					fontFamily: "Courier New",
+					fontFamily: "\"Courier New\", Courier, monospace",
+					fontWeight: "bolder",
 					align: "center",
 					fontSize: tamañoTiles,
+					dropShadowAlpha: 0.66,
+					dropShadowAngle: 0,
+					dropShadowDistance: 2,
+					padding: 55,
 				};
 				simbolos[i][j] = ascii;
+				fondos[i][j].addChild(ascii);
 			}
 		}
 	}
 
 	function generarTiles(): void {
 		const tiles = obtenerMapa();
-
 		for (let i = 0;i < tiles.length;i++) {
 			for (let j = 0;j < tiles[0].length;j++) {
 				const tile = tiles[i][j];
-
 				actualizarFondo(tile, i, j);
 				actualizarAscii(tile, i, j);
-
 			}
 		}
 	}
 
 	function obtenerMapa(): Tile[][] {
-		return Mapa.obtenerAreaCuadrada(pos00(), cantidadTilesY, cantidadTilesX);
+		return Mapa.obtenerAreaCuadrada(calcularPos00(), cantidadTilesY, cantidadTilesX);
 	}
 
-	function pos00(): Posicion {
-		const resultado: Posicion = { ...props.centroPantalla };
+	function calcularPos00(): Posicion {
+		const centroPantalla = player.posicion;
+		const resultado: Posicion = { ...centroPantalla };
 		const deltaX: number = Math.ceil(-(cantidadTilesX / 2));
 		const deltaY: number = Math.ceil(-(cantidadTilesY / 2));
 		modificarTx(resultado, deltaX);
@@ -120,6 +124,7 @@ export default function PlayerViewVC(props: PlayerViewProps): JSX.Element {
 		const ascii = simbolos[i][j];
 		ascii.text = tile.simbolo;
 		ascii.style.fill = tile.colorSimbolo;
+		ascii.style.dropShadow = !!tile.actor;
 		return ascii;
 	}
 
