@@ -10,30 +10,6 @@
     flex-direction: column;
 }
 
-/* TILE */
-
-.ascii {
-    text-align: center;
-    font-family: "Courier New", Courier, monospace;
-    font-weight: 700;
-    line-height: 130%;
-    user-select: none;
-    /* text-shadow: #0006 5px -4px 3px; TODO este shadow solo para lo que no sea terreno */
-}
-
-.tile {
-    transition: border 0.7s 0.2s;
-    box-sizing: border-box;
-}
-
-.tile:hover {
-    --grosorBorde: 0.05em;
-    border-top: var(--grosorBorde) solid #FFFFFF22;
-    border-left: var(--grosorBorde) solid #FFFFFF33;
-    border-right: var(--grosorBorde) solid #00000033;
-    border-bottom: var(--grosorBorde) solid #00000022;
-}
-
 /* SIDE BAR */
 
 .side-bar {
