@@ -16,7 +16,7 @@ type State = {
 };
 
 export const useStore = create<State>((set) => ({
-	player: {} as Entidad,
+	player: null as Entidad,
 	usarComoPlayer: (nuevoPlayer: Entidad) => set(() => ({ player: nuevoPlayer })),
 	mensajesConsola: [],
 	agregarMensajeALaConsola: (nuevoMensaje: MensajeConsola) => set((state) => {
