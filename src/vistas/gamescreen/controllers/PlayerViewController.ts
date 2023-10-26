@@ -75,9 +75,6 @@ export default class PlayerViewController {
 					}
 					break;
 				}
-				default: {
-					console.log(evento.code);
-				}
 			}
 		}
 	}

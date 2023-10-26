@@ -67,6 +67,13 @@ export default function PlayerViewVC(props: PlayerViewProps): JSX.Element {
 				const ascii = new PIXI.Text("");
 				ascii.position.set(tamañoTiles * i, tamañoTiles * j);
 				fondos[i][j].addChild(ascii);
+				ascii.anchor.x = -0.25;
+				ascii.anchor.y = 0.15;
+				ascii.style = {
+					fontFamily: "Courier New",
+					align: "center",
+					fontSize: tamañoTiles,
+				};
 				simbolos[i][j] = ascii;
 			}
 		}
@@ -79,8 +86,8 @@ export default function PlayerViewVC(props: PlayerViewProps): JSX.Element {
 			for (let j = 0;j < tiles[0].length;j++) {
 				const tile = tiles[i][j];
 
-				actualizarFondo(tile, tamañoTiles, i, j);
-				actualizarAscii(tile, tamañoTiles, i, j);
+				actualizarFondo(tile, i, j);
+				actualizarAscii(tile, i, j);
 
 			}
 		}
@@ -99,26 +106,20 @@ export default function PlayerViewVC(props: PlayerViewProps): JSX.Element {
 		return resultado;
 	}
 
-	function actualizarFondo(tile: Tile, tamaño: number, i: number, j: number): Graphics {
+	function actualizarFondo(tile: Tile, i: number, j: number): Graphics {
 		const color = Number(`0x${ tile.colorFondo.substr(1, 6) }`);
 		const fondo = fondos[i][j] || new Graphics();
 		fondo.clear();
 		fondo.beginFill(color);
-		fondo.drawRect(tamaño * i, tamaño * j, tamaño, tamaño);
+		fondo.drawRect(tamañoTiles * i, tamañoTiles * j, tamañoTiles, tamañoTiles);
 		fondo.endFill();
 		return fondo;
 	}
 
-	function actualizarAscii(tile: Tile, tamaño: number, i: number, j: number): PIXI.Text {
-		const ascii = simbolos[i][j] || new PIXI.Text("");
+	function actualizarAscii(tile: Tile, i: number, j: number): PIXI.Text {
+		const ascii = simbolos[i][j];
 		ascii.text = tile.simbolo;
-		ascii.style = {
-			fill: tile.colorSimbolo,
-			fontFamily: "Courier New",
-			align: "center",
-			fontSize: tamaño,
-		};
-		ascii.anchor.x = -0.5;
+		ascii.style.fill = tile.colorSimbolo;
 		return ascii;
 	}
 

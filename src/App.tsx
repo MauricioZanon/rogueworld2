@@ -12,6 +12,7 @@ mainElement.setAttribute('id', 'root');
 document.body.appendChild(mainElement);
 
 export type NombreVista = 'menu principal' | 'game screen' | 'creador de entidades';
+
 export class App extends React.Component {
 	render(): JSX.Element {
 		return (
@@ -27,11 +28,11 @@ export class App extends React.Component {
 	}
 }
 
-// function tick() {
-ReactDOM.render(<App></App>, mainElement);
-// }
+function tick() {
+	ReactDOM.render(<App></App>, mainElement);
+}
 
-// setInterval(tick, 1000);
+setInterval(tick, 33);
 
 /*
 	FUNCIONES AUXILIARES PARA ARRAYS

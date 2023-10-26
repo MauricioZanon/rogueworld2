@@ -4,6 +4,7 @@ import { crearMundoInicial } from '../../mapa/builder/WorldBuilder';
 import './styles.css';
 import { Link } from 'react-router-dom';
 import { useStore } from '../../store/store';
+import { NombreVista } from '../../App';
 
 export default class MainScreen extends React.Component {
 	public render(): JSX.Element {
@@ -17,7 +18,7 @@ export default class MainScreen extends React.Component {
 		);
 	}
 
-	private crearBoton(texto: string, path: string, clases: string, funcionOnclick?: MouseEventHandler): JSX.Element {
+	private crearBoton(texto: string, path: NombreVista, clases: string, funcionOnclick?: MouseEventHandler): JSX.Element {
 		return (
 			<button onClick={ funcionOnclick } className={ 'boton ' + clases }>
 				<Link to={ path }>
