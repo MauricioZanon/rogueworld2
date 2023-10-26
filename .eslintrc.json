@@ -27,10 +27,6 @@
   "rules": {
 		/* Lista completa de reglas:
 	https://eslint.org/docs/latest/rules/ */
-	"linebreak-style": [
-		"warn",
-		"unix"
-	],
 	"no-constructor-return": "warn", 
 	"no-duplicate-imports": "warn", 
 	"no-self-compare": "warn", 
