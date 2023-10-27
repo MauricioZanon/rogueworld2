@@ -59,7 +59,6 @@ export default function PlayerViewVC(): JSX.Element {
 	}
 
 	function inicializarSimbolos(): void {
-		console.count("inicializar simbollos");
 		simbolos = [];
 		for (let i = 0;i < cantidadTilesX;i++) {
 			simbolos[i] = [];
@@ -110,22 +109,19 @@ export default function PlayerViewVC(): JSX.Element {
 		return resultado;
 	}
 
-	function actualizarFondo(tile: Tile, i: number, j: number): Graphics {
-		const color = Number(`0x${ tile.colorFondo.substr(1, 6) }`);
-		const fondo = fondos[i][j] || new Graphics();
-		fondo.clear();
-		fondo.beginFill(color);
-		fondo.drawRect(tamañoTiles * i, tamañoTiles * j, tamañoTiles, tamañoTiles);
-		fondo.endFill();
-		return fondo;
+	function actualizarFondo(tile: Tile, i: number, j: number): void {
+		const color = Number(`0x${ tile.colorFondo.substring(1, 7) }`);
+		fondos[i][j].clear()
+			.beginFill(color)
+			.drawRect(tamañoTiles * i, tamañoTiles * j, tamañoTiles, tamañoTiles)
+			.endFill();
 	}
 
-	function actualizarAscii(tile: Tile, i: number, j: number): PIXI.Text {
+	function actualizarAscii(tile: Tile, i: number, j: number): void {
 		const ascii = simbolos[i][j];
 		ascii.text = tile.simbolo;
 		ascii.style.fill = tile.colorSimbolo;
 		ascii.style.dropShadow = !!tile.actor;
-		return ascii;
 	}
 
 	return <canvas className="player-view" onWheelCapture={ () => setTamañoTiles(35) }></canvas >;
