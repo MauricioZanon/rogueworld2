@@ -26,7 +26,7 @@ export default function PlayerViewVC(): JSX.Element {
 			calcularCantidadDeTiles();
 			inicializarFondos();
 			inicializarSimbolos();
-			app.ticker.add(generarTiles);
+			app.ticker.add(dibujarTiles);
 		}
 	});
 
@@ -84,7 +84,7 @@ export default function PlayerViewVC(): JSX.Element {
 		}
 	}
 
-	function generarTiles(): void {
+	function dibujarTiles(): void {
 		const tiles = obtenerMapa();
 		for (let i = 0;i < tiles.length;i++) {
 			for (let j = 0;j < tiles[0].length;j++) {
@@ -100,8 +100,7 @@ export default function PlayerViewVC(): JSX.Element {
 	}
 
 	function calcularPos00(): Posicion {
-		const centroPantalla = player.posicion;
-		const resultado: Posicion = { ...centroPantalla };
+		const resultado: Posicion = { ...player.posicion };
 		const deltaX: number = Math.ceil(-(cantidadTilesX / 2));
 		const deltaY: number = Math.ceil(-(cantidadTilesY / 2));
 		modificarTx(resultado, deltaX);
@@ -109,16 +108,16 @@ export default function PlayerViewVC(): JSX.Element {
 		return resultado;
 	}
 
-	function actualizarFondo(tile: Tile, i: number, j: number): void {
+	function actualizarFondo(tile: Tile, x: number, y: number): void {
 		const color = Number(`0x${ tile.colorFondo.substring(1, 7) }`);
-		fondos[i][j].clear()
+		fondos[x][y].clear()
 			.beginFill(color)
-			.drawRect(tamañoTiles * i, tamañoTiles * j, tamañoTiles, tamañoTiles)
+			.drawRect(tamañoTiles * x, tamañoTiles * y, tamañoTiles, tamañoTiles)
 			.endFill();
 	}
 
-	function actualizarAscii(tile: Tile, i: number, j: number): void {
-		const ascii = simbolos[i][j];
+	function actualizarAscii(tile: Tile, x: number, y: number): void {
+		const ascii = simbolos[x][y];
 		ascii.text = tile.simbolo;
 		ascii.style.fill = tile.colorSimbolo;
 		ascii.style.dropShadow = !!tile.actor;

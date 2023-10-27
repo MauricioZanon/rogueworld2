@@ -109,7 +109,7 @@ export default class DungeonFactory {
 	}
 
 	private validarAreaParaHabitacion(area: Tile[][]): boolean {
-		return !area.includes2D((tile) => tile.terreno?.nombreComp.nombre.includes('floor'));
+		return !area.flat().some((tile) => tile.terreno?.nombreComp.nombre.includes('floor'));
 	}
 }
 
