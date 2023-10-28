@@ -92,20 +92,15 @@ export default class DungeonFactory {
 			const x = -RNG.getRandomEntre(1, alto - 3);
 			modificarTx(pos00, x);
 		}
-
+		
 		return pos00;
 	}
 
 	private entradaAHabitacionValida(tile: Tile): boolean {
 		const adyacentes: Tile[] = Mapa.obtenerTilesAdyacentesOrtogonales(tile.posicion);
-		let cantidadDePisosAdyacentes = 0;
-		adyacentes.forEach((t) => {
-			if (t.terreno.nombreComp.nombre.includes('floor')) {
-				cantidadDePisosAdyacentes++;
-			}
-		});
+		const pisosAdyacentes = adyacentes.filter((t) => t.terreno.nombreComp.nombre.includes('floor'));
 
-		return cantidadDePisosAdyacentes == 1;
+		return pisosAdyacentes.length === 1;
 	}
 
 	private validarAreaParaHabitacion(area: Tile[][]): boolean {
