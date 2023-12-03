@@ -141,6 +141,7 @@ function crearTablaDeDistancias(): number[][] {
 	const tabla = [];
 		
 	for(let x = 0; x < 40; x++) {
+		tabla[x] = [];
 		for(let y = 0; y < 40; y++) {
 			tabla[x][y] = Math.sqrt((x*x) + (y*y));
 		}
