@@ -18,7 +18,8 @@ let simbolos: PIXI.Text[][];
 
 export default function PlayerViewVC(): JSX.Element {
 
-	const [tamañoTiles, setTamañoTiles] = useState(15);
+	// tamañoTiles debe ser un número par
+	const [tamañoTiles, setTamañoTiles] = useState(18);
 	const player: Entidad = useStore((state) => state.player);
 
 	useEffect(() => {
