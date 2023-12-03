@@ -1,5 +1,5 @@
 import Mapa from '../Mapa';
-import { Posicion } from '../Posicion';
+import { PosicionLocal } from '../Posicion';
 import Tile from '../Tile';
 import EntidadFactory, { NombreEntidad } from '../../entidades/EntidadFactory';
 import { Direccion, NORTE, SUR, OESTE, ESTE } from '../Direcciones';
@@ -18,7 +18,7 @@ export default class CuevaFactory {
 		this.crearActores(tilesExcavados);
 	}
 
-	private excavarEntrada (posicionEntrada: Posicion): void {
+	private excavarEntrada (posicionEntrada: PosicionLocal): void {
 		let tile: Tile = Mapa.obtenerTile(posicionEntrada);
 		tile.feature = EntidadFactory.crearEntidad('downstairs');
 		posicionEntrada.cz++;
@@ -50,7 +50,7 @@ export default class CuevaFactory {
 		}
 	}
 
-	private crearNuevosExcavadores (posicion: Posicion, preferencias: PreferenciasCuevaConPasillos): Excavador[] {
+	private crearNuevosExcavadores (posicion: PosicionLocal, preferencias: PreferenciasCuevaConPasillos): Excavador[] {
 		return [new ExcavadorHabitaciones(posicion, preferencias),
 			new ExcavadorHabitaciones(posicion, preferencias),
 			new ExcavadorHabitaciones(posicion, preferencias),
@@ -69,7 +69,7 @@ export default class CuevaFactory {
 
 type PreferenciasCueva = {
     tamaño: TamañoCueva,
-    posicionInicial: Posicion;
+    posicionInicial: PosicionLocal;
 };
 
 export type PreferenciasCuevaConPasillos = PreferenciasCueva & {

@@ -2,11 +2,12 @@ import { Graphics } from '@pixi/graphics';
 import * as PIXI from 'pixi.js';
 import React, { useEffect, useState } from 'react';
 import Mapa from '../../../mapa/Mapa';
-import { Posicion, modificarTx, modificarTy } from '../../../mapa/Posicion';
+import { PosicionLocal, modificarTx, modificarTy } from '../../../mapa/Posicion';
 import Tile from '../../../mapa/Tile';
 import $ from "jquery";
 import { useStore } from '../../../store/store';
 import Entidad from '../../../entidades/Entidad';
+import EntidadFactory from '../../../entidades/EntidadFactory';
 
 let app: PIXI.Application;
 
@@ -17,7 +18,7 @@ let simbolos: PIXI.Text[][];
 
 export default function PlayerViewVC(): JSX.Element {
 
-	const [tamañoTiles, setTamañoTiles] = useState(25);
+	const [tamañoTiles, setTamañoTiles] = useState(15);
 	const player: Entidad = useStore((state) => state.player);
 
 	useEffect(() => {
@@ -45,9 +46,9 @@ export default function PlayerViewVC(): JSX.Element {
 
 	function inicializarFondos(): void {
 		fondos = [];
-		for (let i = 0;i < cantidadTilesX;i++) {
+		for (let i = 0; i < cantidadTilesX; i++) {
 			fondos[i] = [];
-			for (let j = 0;j < cantidadTilesY;j++) {
+			for (let j = 0; j < cantidadTilesY; j++) {
 				const fondo = new Graphics();
 				fondo.beginFill(0x000000);
 				fondo.drawRect(tamañoTiles * i, tamañoTiles * j, tamañoTiles, tamañoTiles);
@@ -60,9 +61,9 @@ export default function PlayerViewVC(): JSX.Element {
 
 	function inicializarSimbolos(): void {
 		simbolos = [];
-		for (let i = 0;i < cantidadTilesX;i++) {
+		for (let i = 0; i < cantidadTilesX; i++) {
 			simbolos[i] = [];
-			for (let j = 0;j < cantidadTilesY;j++) {
+			for (let j = 0; j < cantidadTilesY; j++) {
 				const ascii = new PIXI.Text("");
 				ascii.position.set(tamañoTiles * i, tamañoTiles * j);
 				ascii.anchor.set(0.5);
@@ -86,11 +87,18 @@ export default function PlayerViewVC(): JSX.Element {
 
 	function dibujarTiles(): void {
 		const tiles = obtenerMapa();
-		for (let i = 0;i < tiles.length;i++) {
-			for (let j = 0;j < tiles[0].length;j++) {
+		for (let i = 0; i < tiles.length; i++) {
+			for (let j = 0; j < tiles[0].length; j++) {
 				const tile = tiles[i][j];
-				actualizarFondo(tile, i, j);
-				actualizarAscii(tile, i, j);
+				// if(player.visionComp.tilesVisibles?.includes(tile)) {
+				// 	tile.terreno = EntidadFactory.crearEntidad("brick wall");
+				// }
+				if(player.visionComp.tilesVisibles?.includes(tile)) {
+					actualizarFondo(tile, i, j);
+					actualizarAscii(tile, i, j);
+				} else {
+					borrarTile(i, j);
+				}
 			}
 		}
 	}
@@ -99,8 +107,8 @@ export default function PlayerViewVC(): JSX.Element {
 		return Mapa.obtenerAreaCuadrada(calcularPos00(), cantidadTilesY, cantidadTilesX);
 	}
 
-	function calcularPos00(): Posicion {
-		const resultado: Posicion = { ...player.posicion };
+	function calcularPos00(): PosicionLocal {
+		const resultado: PosicionLocal = { ...player.posicion };
 		const deltaX: number = Math.ceil(-(cantidadTilesX / 2));
 		const deltaY: number = Math.ceil(-(cantidadTilesY / 2));
 		modificarTx(resultado, deltaX);
@@ -121,6 +129,11 @@ export default function PlayerViewVC(): JSX.Element {
 		ascii.text = tile.simbolo;
 		ascii.style.fill = tile.colorSimbolo;
 		ascii.style.dropShadow = !!tile.actor;
+	}
+
+	function borrarTile(x: number, y: number): void {
+		fondos[x][y].clear();
+		simbolos[x][y].text = "";
 	}
 
 	return <canvas className="player-view" onWheelCapture={ () => setTamañoTiles(35) }></canvas >;

@@ -1,6 +1,7 @@
 import { Direccion } from '../../mapa/Direcciones';
 import Mapa from '../../mapa/Mapa';
 import Tile from '../../mapa/Tile';
+import { calcularFOV } from '../../utils/FOV/FOV';
 import Entidad from '../Entidad';
 import Acciones from './Acciones';
 
@@ -11,5 +12,6 @@ export default (actor: Entidad, direccion: Direccion): void => {
 		Acciones.atacar(actor, tileDestino);
 	} else {
 		Acciones.avanzar(actor, tileOrigen, tileDestino);
+		calcularFOV(actor);
 	}
 };

@@ -2,7 +2,7 @@ import create from 'zustand';
 import { NombreVista } from '../App';
 import Entidad from '../entidades/Entidad';
 import { MensajeConsola } from '../vistas/gamescreen/utils/MensajeConsola';
-import { Posicion } from '../mapa/Posicion';
+import { PosicionLocal } from '../mapa/Posicion';
 
 type State = {
 	player: Entidad,
@@ -11,8 +11,8 @@ type State = {
 	agregarMensajeALaConsola: (nuevoMensaje: MensajeConsola) => void,
 	vistaActual: NombreVista;
 
-	centroPantalla: Posicion;
-	setCentroPantalla: (nuevoCentro: Posicion) => void;
+	centroPantalla: PosicionLocal;
+	setCentroPantalla: (nuevoCentro: PosicionLocal) => void;
 };
 
 export const useStore = create<State>((set) => ({
@@ -24,6 +24,6 @@ export const useStore = create<State>((set) => ({
 	}),
 	vistaActual: 'main screen' as NombreVista,
 
-	centroPantalla: { tx: 0, ty: 0, cx: 0, cy: 0, cz: 0 } as Posicion,
-	setCentroPantalla: (nuevoCentro: Posicion) => set(() => ({ centroPantalla: nuevoCentro })),
+	centroPantalla: { tx: 0, ty: 0, cx: 0, cy: 0, cz: 0 } as PosicionLocal,
+	setCentroPantalla: (nuevoCentro: PosicionLocal) => set(() => ({ centroPantalla: nuevoCentro })),
 }));

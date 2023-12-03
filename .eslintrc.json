@@ -109,7 +109,7 @@
 			"warn",
 			{
 				"before": false,
-				"after": false
+				"after": true
 			}
 		],
 		"no-plusplus": "off",

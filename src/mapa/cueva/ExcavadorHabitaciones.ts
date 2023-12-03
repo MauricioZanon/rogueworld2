@@ -1,6 +1,6 @@
 import RNG from '../../utils/RNG/RNG';
 import Mapa from '../Mapa';
-import { Posicion } from '../Posicion';
+import { PosicionLocal } from '../Posicion';
 import Tile from '../Tile';
 import { PreferenciasCuevaConPasillos } from './CuevaFactory';
 import Excavador from './Excavador';
@@ -8,7 +8,7 @@ import Excavador from './Excavador';
 export default class ExcavadorHabitaciones extends Excavador {
 	private readonly preferencias: PreferenciasCuevaConPasillos;
 
-	public constructor (posicionInicial: Posicion, preferencias: PreferenciasCuevaConPasillos) {
+	public constructor (posicionInicial: PosicionLocal, preferencias: PreferenciasCuevaConPasillos) {
 		super();
 		this.posicion = posicionInicial;
 		this.preferencias = preferencias;

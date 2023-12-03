@@ -1,4 +1,4 @@
-import { Posicion, modificarTx, modificarTy } from '../Posicion';
+import { PosicionLocal, modificarTx, modificarTy } from '../Posicion';
 import EntidadFactory from '../../entidades/EntidadFactory';
 import Tile from '../Tile';
 import HabitacionDungeon from './HabitacionDungeon';
@@ -33,7 +33,7 @@ export default class DungeonFactory {
 	}
 
 	// FIXME a veces la escalera de subida queda dentro de una pared
-	private crearHabitacionDeEntrada(posicion: Posicion): void {
+	private crearHabitacionDeEntrada(posicion: PosicionLocal): void {
 		const { tamañoMaximo, tamañoMinimo } = this.preferencias.preferenciasHabitacion;
 		const ancho = RNG.getRandomEntre(tamañoMinimo, tamañoMaximo);
 		const alto = RNG.getRandomEntre(tamañoMinimo, tamañoMaximo);
@@ -74,10 +74,10 @@ export default class DungeonFactory {
 		return entradaEncontrada;
 	}
 
-	private encontrarPos00DeNuevaHabitacion(entrada: Tile, ancho: number, alto: number): Posicion {
+	private encontrarPos00DeNuevaHabitacion(entrada: Tile, ancho: number, alto: number): PosicionLocal {
 		const tileHabitacionAdyacente = Mapa.obtenerTilesAdyacentesOrtogonales(entrada.posicion).find((t) => t.terreno.nombreComp.nombre.includes('floor'));
 		const direccionDeLaHabitacion = Direcciones.obtenerDireccionDesde(tileHabitacionAdyacente.posicion, entrada.posicion);
-		const pos00: Posicion = { ...entrada.posicion };
+		const pos00: PosicionLocal = { ...entrada.posicion };
 
 		if (direccionDeLaHabitacion.x < 0) {
 			modificarTx(pos00, -(alto - 1));
@@ -109,7 +109,7 @@ export default class DungeonFactory {
 }
 
 export type PreferenciasDungeon = {
-	posicionEntrada: Posicion,
+	posicionEntrada: PosicionLocal,
 	preferenciasHabitacion: PreferenciasHabitacionDungeon,
 	preferenciasPasillos?: PreferenciasPasillosDungeon;
 };

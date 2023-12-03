@@ -54,7 +54,7 @@ export default class PlayerViewController {
 					break;
 				}
 				case 'Space':
-					Mapa.obtenerTile(player.posicion).terreno = EntidadFactory.crearEntidad('brick floor');
+					Mapa.obtenerTile(player.posicion).terreno = EntidadFactory.crearEntidad('brick wall');
 					mensaje.agregar({ texto: 'Mensaje', estilos: { color: 'red', fontWeight: 'bold' } },
 						{ texto: 'Mensaje', estilos: { color: 'purple', fontWeight: 'bold' } },
 						{ texto: 'Mensaje', estilos: { color: 'green', fontWeight: 'bold' } },

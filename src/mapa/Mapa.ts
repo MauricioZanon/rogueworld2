@@ -1,7 +1,7 @@
 import { crearChunk } from './builder/ChunkFactory';
 import Chunk from './Chunk';
 import { Direccion, NORTE, OESTE, ESTE, SUR, NOROESTE, NORESTE, SUDESTE, SUDOESTE } from './Direcciones';
-import { toString, aplicarDireccion, ChunkPos, modificarTx, modificarTy, Posicion } from './Posicion';
+import { toString, aplicarDireccion, ChunkPos, modificarTx, modificarTy, PosicionLocal } from './Posicion';
 import Tile from './Tile';
 
 export default class Mapa {
@@ -16,14 +16,14 @@ export default class Mapa {
 		return chunk;
 	}
 
-	public static obtenerTile (posicion: Posicion, direccion?: Direccion): Tile {
+	public static obtenerTile (posicion: PosicionLocal, direccion?: Direccion): Tile {
 		if (direccion) {
 			posicion = aplicarDireccion(posicion, direccion);
 		}
 		return this.obtenerChunk(posicion).obtenerTile(posicion);
 	}
 
-	public static obtenerTilesAdyacentesOrtogonales (posicion: Posicion): Tile[] {
+	public static obtenerTilesAdyacentesOrtogonales (posicion: PosicionLocal): Tile[] {
 		return [
 			this.obtenerTile(posicion, NORTE),
 			this.obtenerTile(posicion, OESTE),
@@ -32,7 +32,7 @@ export default class Mapa {
 		];
 	}
 
-	public static obtenerTilesAdyacentesDiagonales (posicion: Posicion): Tile[] {
+	public static obtenerTilesAdyacentesDiagonales (posicion: PosicionLocal): Tile[] {
 		return [
 			this.obtenerTile(posicion, NOROESTE),
 			this.obtenerTile(posicion, SUDOESTE),
@@ -41,7 +41,7 @@ export default class Mapa {
 		];
 	}
 
-	public static obtenerTilesAdyacentes (posicion: Posicion): Tile[] {
+	public static obtenerTilesAdyacentes (posicion: PosicionLocal): Tile[] {
 		return [
 			...this.obtenerTilesAdyacentesOrtogonales(posicion),
 			...this.obtenerTilesAdyacentesDiagonales(posicion),
@@ -49,9 +49,14 @@ export default class Mapa {
 	}
 
 	// TODO refactor
-	public static obtenerAreaCuadrada (posicionInicial: Posicion, alto: number, ancho: number): Tile[][] {
+	public static obtenerAreaCuadrada (posicionInicial: PosicionLocal, alto: number, ancho: number, centrado = false): Tile[][] {
 		const resultado: Tile[][] = [];
-		const auxPos = { ...posicionInicial };
+		const copiaPos = { ...posicionInicial };
+		if(centrado) {
+			modificarTx(copiaPos, -Math.floor(ancho/2));
+			modificarTy(copiaPos, -Math.floor(alto/2));
+		}
+		const auxPos = {...copiaPos};
 		for (let i = 0;i < ancho;i++) {
 			resultado[i] = [];
 			for (let j = 0;j < alto;j++) {
@@ -59,8 +64,8 @@ export default class Mapa {
 				modificarTy(auxPos, 1);
 			}
 			modificarTx(auxPos, 1);
-			auxPos.cy = posicionInicial.cy;
-			auxPos.ty = posicionInicial.ty;
+			auxPos.cy = copiaPos.cy;
+			auxPos.ty = copiaPos.ty;
 		}
 		return resultado;
 	}

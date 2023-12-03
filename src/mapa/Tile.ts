@@ -1,9 +1,9 @@
 import Entidad from '../entidades/Entidad';
 import { Tipo } from '../entidades/Tipos';
-import { Posicion } from './Posicion';
+import { PosicionLocal } from './Posicion';
 
 export default class Tile {
-	public readonly posicion: Posicion;
+	public readonly posicion: PosicionLocal;
 	private _terreno?: Entidad = null;
 	private _feature?: Entidad = null;
 	private _actor: Entidad = null;
@@ -12,7 +12,7 @@ export default class Tile {
 	public colorSimbolo: string;
 	public colorFondo: string;
 
-	public constructor(posicion: Posicion) {
+	public constructor(posicion: PosicionLocal) {
 		this.posicion = posicion;
 	}
 

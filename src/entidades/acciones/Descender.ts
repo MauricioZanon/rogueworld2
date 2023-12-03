@@ -1,5 +1,5 @@
 import Mapa from '../../mapa/Mapa';
-import { Posicion } from '../../mapa/Posicion';
+import { PosicionLocal } from '../../mapa/Posicion';
 import Tile from '../../mapa/Tile';
 import Entidad from '../Entidad';
 
@@ -13,7 +13,7 @@ export default (actor: Entidad): void => {
 };
 
 function obtenerTileInferior (origen: Tile): Tile {
-	const posicionDestino: Posicion = { ...origen.posicion };
+	const posicionDestino: PosicionLocal = { ...origen.posicion };
 	posicionDestino.cz++;
 	return Mapa.obtenerTile(posicionDestino);
 }

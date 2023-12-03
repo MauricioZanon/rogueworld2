@@ -1,7 +1,7 @@
 import RNG from '../../utils/RNG/RNG';
 import { Direccion, Direcciones } from '../Direcciones';
 import Mapa from '../Mapa';
-import { Posicion } from '../Posicion';
+import { PosicionLocal } from '../Posicion';
 import Tile from '../Tile';
 import { PreferenciasCuevaConPasillos } from './CuevaFactory';
 import Excavador from './Excavador';
@@ -12,7 +12,7 @@ export default class ExcavadorPasillos extends Excavador {
 	private tilesAvanzadosSinDoblar = 0;
 	private readonly preferencias: PreferenciasCuevaConPasillos;
 
-	public constructor(posicionInicial: Posicion, direccionPreferida: Direccion, preferencias: PreferenciasCuevaConPasillos) {
+	public constructor(posicionInicial: PosicionLocal, direccionPreferida: Direccion, preferencias: PreferenciasCuevaConPasillos) {
 		super();
 		this.posicion = posicionInicial;
 		this.direccionPreferida = direccionPreferida;

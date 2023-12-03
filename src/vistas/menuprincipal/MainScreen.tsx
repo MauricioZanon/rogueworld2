@@ -5,6 +5,7 @@ import './styles.css';
 import { Link } from 'react-router-dom';
 import { useStore } from '../../store/store';
 import { NombreVista } from '../../App';
+import { calcularFOV } from '../../utils/FOV/FOV';
 
 export default class MainScreen extends React.Component {
 	public render(): JSX.Element {
@@ -29,7 +30,10 @@ export default class MainScreen extends React.Component {
 	}
 
 	private comenzarNuevoJuego(): void {
-		useStore.getState().usarComoPlayer(EntidadFactory.crearEntidad('player'));
+		const player = EntidadFactory.crearEntidad('player');
+		useStore.getState().usarComoPlayer(player);
+		calcularFOV(player);
+
 		crearMundoInicial();
 	}
 }

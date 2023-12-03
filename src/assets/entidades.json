@@ -22,6 +22,9 @@
 		"nombreComp": {
 			"nombre": "goblin"
 		},
+		"visionComp": {
+			"rango": 9
+		},
 		"statsComp": {
 			"base": {
 				"STR": "6",
@@ -47,6 +50,9 @@
 		"renderComp": {
 			"simbolo": "@",
 			"colorSimbolo": "#ffffff"
+		},
+		"visionComp": {
+			"rango": 19
 		},
 		"id": 2,
 		"statsComp": {

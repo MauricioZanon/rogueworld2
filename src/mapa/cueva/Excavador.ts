@@ -1,10 +1,10 @@
 import EntidadFactory from '../../entidades/EntidadFactory';
 import { NombreEntidad } from '../../types/types';
-import { Posicion } from '../Posicion';
+import { PosicionLocal } from '../Posicion';
 import Tile from '../Tile';
 
 export default abstract class Excavador {
-	public posicion: Posicion;
+	public posicion: PosicionLocal;
 	public abstract avanzar(): Tile;
 
 	protected excavarTile (tile: Tile): void {
