@@ -5,8 +5,6 @@ import Mapa from '../../../mapa/Mapa';
 import { useStore } from '../../../store/store';
 import { MensajeConsola } from '../utils/MensajeConsola';
 
-export type EventoMouse = 'mouseup' | 'mousedown';
-
 export default class PlayerViewController {
 
 	private static accionesHabilitadas = true;
@@ -79,12 +77,4 @@ export default class PlayerViewController {
 		}
 	}
 
-	public static resolverEventoMouse(nombreEvento: EventoMouse): void {
-		switch (nombreEvento) {
-			case 'mousedown':
-				break;
-			case 'mouseup':
-				break;
-		}
-	}
 }
