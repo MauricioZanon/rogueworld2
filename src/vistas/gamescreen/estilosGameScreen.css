@@ -1,6 +1,6 @@
 /* GAME SCREEN */
 
-.player-view {
+#player-view-container>canvas {
     width: 75%;
     height: 100vh;
     float: left;

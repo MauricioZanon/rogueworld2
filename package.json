@@ -79,7 +79,7 @@
 		"chroma-js": "^2.1.1",
 		"fast-clone": "^1.5.13",
 		"jquery": "^3.6.0",
-		"pixi.js": "^6.2.0",
+		"pixi.js": "^7.4.0",
 		"react": "^17.0.0",
 		"react-bootstrap": "^2.2.1",
 		"react-dom": "^17.0.0",
