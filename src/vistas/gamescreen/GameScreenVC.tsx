@@ -17,6 +17,7 @@ let cantidadTilesX: number;
 let cantidadTilesY: number;
 let fondos: PIXI.Graphics[][];
 let simbolos: PIXI.Text[][];
+let tiles: Tile[][];
 
 export default function GameScreenVC(): JSX.Element {
 
@@ -25,7 +26,7 @@ export default function GameScreenVC(): JSX.Element {
 		crearMundoInicial();
 		useStore.getState().usarComoPlayer(EntidadFactory.crearEntidad('player'));
 	}
- 
+	
 	//TODO remover listener al destruir componente
 	window.addEventListener('keypress', PlayerViewController.resolverKeyDown);
 
@@ -47,7 +48,6 @@ export default function GameScreenVC(): JSX.Element {
 		app = new PIXI.Application({
 			antialias: true,
 		});
-		app.stage.on("click", () => console.log("asdasd"));
 		document.getElementById("player-view-container").appendChild(app.view as unknown as Node);
 	}
 	
@@ -67,21 +67,28 @@ export default function GameScreenVC(): JSX.Element {
 				fondo.endFill();
 				app.stage.addChild(fondo);
 				fondos[i][j] = fondo;
+
+				fondo.eventMode = 'static';
+				fondo.on("click", () => onClick(i, j));
 			}
 		}
 	}
-	
+
+	function onClick(i: number, j: number): void {
+		console.log(tiles[i][j]);
+	}
+
 	function inicializarSimbolos(): void {
 		simbolos = [];
 		for (let i = 0; i < cantidadTilesX; i++) {
 			simbolos[i] = [];
 			for (let j = 0; j < cantidadTilesY; j++) {
-				const ascii = new PIXI.Text("");
-				ascii.position.set(tamañoTiles * i, tamañoTiles * j);
-				ascii.anchor.set(0.5);
-				ascii.x += tamañoTiles / 2;
-				ascii.y += tamañoTiles / 2;
-				ascii.style = {
+				const simbolo = new PIXI.Text("");
+				simbolo.position.set(tamañoTiles * i, tamañoTiles * j);
+				simbolo.anchor.set(0.5);
+				simbolo.x += tamañoTiles / 2;
+				simbolo.y += tamañoTiles / 2;
+				simbolo.style = {
 					fontFamily: "\"Courier New\", Courier, monospace",
 					fontWeight: "bolder",
 					align: "center",
@@ -91,14 +98,14 @@ export default function GameScreenVC(): JSX.Element {
 					dropShadowDistance: 2,
 					padding: 55,
 				};
-				simbolos[i][j] = ascii;
-				fondos[i][j].addChild(ascii);
+				simbolos[i][j] = simbolo;
+				fondos[i][j].addChild(simbolo);
 			}
 		}
 	}
 	
 	function dibujarTiles(): void {
-		const tiles = obtenerMapa();
+		tiles = obtenerMapa();
 		for (let i = 0; i < tiles.length; i++) {
 			for (let j = 0; j < tiles[0].length; j++) {
 				const tile = tiles[i][j];
@@ -126,9 +133,8 @@ export default function GameScreenVC(): JSX.Element {
 	}
 	
 	function actualizarFondo(tile: Tile, x: number, y: number): void {
-		const color = Number(`0x${ tile.colorFondo.substring(1, 7) }`);
 		fondos[x][y].clear()
-			.beginFill(color)
+			.beginFill(tile.colorFondo)
 			.drawRect(tamañoTiles * x, tamañoTiles * y, tamañoTiles, tamañoTiles)
 			.endFill();
 	}
