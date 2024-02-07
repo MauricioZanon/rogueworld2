@@ -14,11 +14,12 @@ export const ESTE: Direccion = { x: 1, y: 0 };
 export const SUDOESTE: Direccion = { x: -1, y: 1 };
 export const SUR: Direccion = { x: 0, y: 1 };
 export const SUDESTE: Direccion = { x: 1, y: 1 };
+
 export namespace Direcciones {
 
 	export function rotarEnSentidoHorario(direccion: Direccion, repeticiones = 1): Direccion {
 		let resultado: Direccion = direccion;
-		for (let i = 0;i < repeticiones;i++) {
+		for (let i = 0; i < repeticiones; i++) {
 			switch (resultado) {
 				case NOROESTE:
 					resultado = NORTE;
@@ -51,7 +52,7 @@ export namespace Direcciones {
 
 	export function rotarEnSentidoAntihorario(direccion: Direccion, repeticiones = 1): Direccion {
 		let resultado: Direccion = direccion;
-		for (let i = 0;i < repeticiones;i++) {
+		for (let i = 0; i < repeticiones; i++) {
 			switch (resultado) {
 				case NOROESTE:
 					resultado = OESTE;
