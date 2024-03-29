@@ -25,7 +25,7 @@ export default class Tile {
 			this._actor = null;
 		} else if (actor.tipo === Tipo.ACTOR) {
 			this._actor = actor;
-			actor.posicion = this.posicion;
+			this._actor.posicion = this.posicion;
 		} else {
 			console.log(actor);
 			throw new Error('Se intentó colocar una entidad no actor en el slot de actor ' + actor.nombreComp.nombre);
@@ -66,23 +66,12 @@ export default class Tile {
 	}
 
 	private actualizarGraficos(): void {
-		this.simbolo = this._actor?.renderComp.simbolo ??
-		this._feature?.renderComp.simbolo ??
-		this._terreno?.renderComp.simbolo ??
-		'¿';
-
-		this.colorSimbolo = this._actor?.renderComp.colorSimbolo ||
-		this._feature?.renderComp.colorSimbolo ||
-		this._terreno?.renderComp.colorSimbolo ||
-		'#fff';
-
-		this.colorFondo = this._terreno?.renderComp.colorFondo || '#000';
+		this.simbolo = (this._actor ?? this._feature ?? this._terreno)?.renderComp.simbolo ?? '¿';
+		this.colorSimbolo = (this._actor ?? this._feature ?? this._terreno)?.renderComp.colorSimbolo ?? '#fff';
+		this.colorFondo = this._terreno?.renderComp.colorFondo ?? '#000';
 	}
 
 	public toString(): string {
-		return this._actor?.nombreComp.nombre ||
-		this._feature?.nombreComp.nombre ||
-		this._terreno?.nombreComp.nombre ||
-		"There's nothing here";
+		return (this._actor ?? this._feature ?? this._terreno)?.nombreComp.nombre || "There's nothing here";
 	}
 }
