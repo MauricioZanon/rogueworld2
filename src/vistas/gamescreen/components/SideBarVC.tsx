@@ -3,6 +3,7 @@ import ConsolaVC from './ConsolaVC';
 import { PosicionLocal } from '../../../mapa/Posicion';
 import { useStore } from '../../../store/store';
 import Entidad from '../../../entidades/Entidad';
+import { Tiempo } from '../../../utils/tiempo/Tiempo';
 
 export default function SideBarVC(): JSX.Element {
 
@@ -27,6 +28,8 @@ export default function SideBarVC(): JSX.Element {
 			{ posicion() }
 			<br />
 			{ playercurrentHp() } / { playerMaxHp() }
+			<br />
+			{ Tiempo.obtenerHora() }
 			<br />
 			<ConsolaVC></ConsolaVC>
 		</div>

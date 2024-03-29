@@ -148,7 +148,6 @@
 		"no-const-assign": "error",
 		"no-self-assign": "error",
 		"no-ex-assign": "error",
-		"no-inner-declarations": "warn",
 		"no-async-promise-executor": "off",
 		"react/prop-types": "off",
 		"semi": "warn",

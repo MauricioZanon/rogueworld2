@@ -3,6 +3,7 @@ import { MensajeConsola } from '../../vistas/gamescreen/utils/MensajeConsola';
 import Entidad from '../Entidad';
 import Acciones from './Acciones';
 import { useStore } from '../../store/store';
+import { Tiempo } from '../../utils/tiempo/Tiempo';
 
 export default (actor: Entidad, tileObjetivo: Tile): void => {
 
@@ -14,6 +15,7 @@ export default (actor: Entidad, tileObjetivo: Tile): void => {
 		const mensaje: MensajeConsola = crearMensajeDeMuerte(actor, actorObjetivo);
 		useStore.getState().agregarMensajeALaConsola(mensaje);
 	}
+	Tiempo.avanzar(2000);
 
 };
 

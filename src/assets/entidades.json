@@ -109,7 +109,7 @@
 		},
 		"renderComp": {
 			"simbolo": ">",
-			"colorSimbolo": "#444"
+			"colorSimbolo": "#444444"
 		},
 		"id": 5,
 		"flags": []
@@ -121,7 +121,7 @@
 		},
 		"renderComp": {
 			"simbolo": "<",
-			"colorSimbolo": "#444"
+			"colorSimbolo": "#444444"
 		},
 		"id": 6,
 		"flags": []

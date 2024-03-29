@@ -1,6 +1,8 @@
 import Mapa from '../../mapa/Mapa';
 import { PosicionLocal } from '../../mapa/Posicion';
 import Tile from '../../mapa/Tile';
+import { useStore } from '../../store/store';
+import { Tiempo } from '../../utils/tiempo/Tiempo';
 import Entidad from '../Entidad';
 
 export default (actor: Entidad): void => {
@@ -9,6 +11,8 @@ export default (actor: Entidad): void => {
 	if (origen.feature?.nombreComp.nombre === 'upstairs') {
 		origen.actor = null;
 		destino.actor = actor;
+		useStore.getState().setCentroPantalla(destino.posicion);
+		Tiempo.avanzar(1000);
 	}
 };
 

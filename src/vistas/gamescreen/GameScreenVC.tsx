@@ -10,6 +10,7 @@ import { useStore } from '../../store/store';
 import SideBarVC from './components/SideBarVC';
 import PlayerViewController from './controllers/PlayerViewController';
 import './estilosGameScreen.css';
+import { Tiempo } from '../../utils/tiempo/Tiempo';
 
 let app: PIXI.Application;
 
@@ -18,7 +19,10 @@ let cantidadTilesY: number;
 let fondos: PIXI.Graphics[][];
 let simbolos: PIXI.Text[][];
 let tiles: Tile[][];
-
+const luzBase = {
+	decimal: 0,
+	hexa: "",
+};
 export default function GameScreenVC(): JSX.Element {
 
 	// Esto está como parche para que funcione el hot reload
@@ -105,6 +109,7 @@ export default function GameScreenVC(): JSX.Element {
 	}
 	
 	function dibujarTiles(): void {
+		calcularLuzBase();
 		tiles = obtenerMapa();
 		for (let i = 0; i < tiles.length; i++) {
 			for (let j = 0; j < tiles[0].length; j++) {
@@ -117,6 +122,13 @@ export default function GameScreenVC(): JSX.Element {
 				}
 			}
 		}
+	}
+
+	function calcularLuzBase(): void {
+		const playerBajoTierra = player.posicion.cz > 0;
+		// TODO cambiar el 1 y FF a 0 y 00 cuando se implementen las fuentes de luz
+		luzBase.decimal = playerBajoTierra ? 1 : Tiempo.obtenerLuzNatural();
+		luzBase.hexa = playerBajoTierra ? "FF" : (Math.floor(luzBase.decimal * 255)).toString(16).replace("#", "");
 	}
 	
 	function obtenerMapa(): Tile[][] {
@@ -134,7 +146,7 @@ export default function GameScreenVC(): JSX.Element {
 	
 	function actualizarFondo(tile: Tile, x: number, y: number): void {
 		fondos[x][y].clear()
-			.beginFill(tile.colorFondo)
+			.beginFill(tile.colorFondo, luzBase.decimal)
 			.drawRect(tamañoTiles * x, tamañoTiles * y, tamañoTiles, tamañoTiles)
 			.endFill();
 	}
@@ -142,7 +154,7 @@ export default function GameScreenVC(): JSX.Element {
 	function actualizarAscii(tile: Tile, x: number, y: number): void {
 		const ascii = simbolos[x][y];
 		ascii.text = tile.simbolo;
-		ascii.style.fill = tile.colorSimbolo;
+		ascii.style.fill = tile.colorSimbolo + luzBase.hexa;
 		ascii.style.dropShadow = !!tile.actor;
 	}
 	
