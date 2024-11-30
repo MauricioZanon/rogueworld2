@@ -1,7 +1,7 @@
 import create from 'zustand';
-import NombreComp from '../../../entidades/componentes-de-entidades/NombreComp';
-import RenderComp from '../../../entidades/componentes-de-entidades/RenderComp';
-import StatsComp from '../../../entidades/componentes-de-entidades/StatsComp';
+import NombreComp from '../../../entidades/componentes/NombreComp';
+import RenderComp from '../../../entidades/componentes/RenderComp';
+import StatsComp from '../../../entidades/componentes/StatsComp';
 import Entidad from '../../../entidades/Entidad';
 import { Tipo } from '../../../entidades/Tipos';
 import EntidadRepository from '../../../entidades/EntidadRepository';

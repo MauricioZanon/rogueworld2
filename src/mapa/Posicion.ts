@@ -1,10 +1,24 @@
 import { Direccion } from './Direcciones';
 import { TAMAÑO_CHUNK } from './Chunk';
 
+/**
+ * Las coordenadas del chunk dentro del world map
+ */
 export type ChunkPos = {cx: number, cy: number, cz: number};
+
+/**
+ * Las coordenadas del tile dentro del chunk
+ */
 export type TilePos = {tx: number, ty: number};
+
+/**
+ * Las coordenadas del chunk y las coordenadas del tile dentro del mismo
+ */
 export type PosicionLocal = ChunkPos & TilePos;
 
+/**
+ * Las coordenadas del tile relativo al world map
+ */
 export type PosicionGlobal = {x: number, y: number, z: number}
 
 export function toString (posicion: ChunkPos): string {

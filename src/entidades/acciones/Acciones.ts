@@ -4,6 +4,7 @@ import Avanzar from './Avanzar';
 import Bump from './Bump';
 import Descender from './Descender';
 import Morir from './Morir';
+import TerminarTurno from './TerminarTurno';
 
 export default {
 	ascender: Ascender,
@@ -11,5 +12,6 @@ export default {
 	avanzar: Avanzar,
 	bump: Bump,
 	descender: Descender,
+	terminarTurno: TerminarTurno,
 	morir: Morir,
 };

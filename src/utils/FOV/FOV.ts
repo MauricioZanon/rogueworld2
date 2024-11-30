@@ -3,7 +3,7 @@ const distancias = crearTablaDeDistancias();
 // private static HashMap<Direction, int[]> octantsByDirection = createOctantsByDirections();
 
 import Entidad from '../../entidades/Entidad';
-import { VisionComp } from '../../entidades/componentes-de-entidades/VisionComp';
+import { VisionComp } from '../../entidades/componentes/VisionComp';
 import Mapa from '../../mapa/Mapa';
 import { PosicionGlobal, obtenerGlobal, obtenerLocal } from '../../mapa/Posicion';
 import Tile from '../../mapa/Tile';

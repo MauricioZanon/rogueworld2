@@ -1,10 +1,12 @@
 import { Tipo } from './Tipos';
-import NombreComp from './componentes-de-entidades/NombreComp';
-import RenderComp from './componentes-de-entidades/RenderComp';
-import StatsComp from './componentes-de-entidades/StatsComp';
+import NombreComp from './componentes/NombreComp';
+import RenderComp from './componentes/RenderComp';
+import StatsComp from './componentes/StatsComp';
 import { PosicionLocal } from '../mapa/Posicion';
 import { Flag } from '../types/types';
-import { VisionComp } from './componentes-de-entidades/VisionComp';
+import { VisionComp } from './componentes/VisionComp';
+import AIComp from './componentes/AIComp';
+import MovimientoComp from './componentes/MovimientoComp';
 
 export default class Entidad {
 	public id: number;
@@ -17,6 +19,8 @@ export default class Entidad {
 	public renderComp?: RenderComp;
 	public statsComp?: StatsComp;
 	public visionComp?: VisionComp;
+	public aiComp?: AIComp;
+	public movimientoComp?: MovimientoComp;
 
 	public constructor (id?: number, tipo?: Tipo) {
 		this.id = id;

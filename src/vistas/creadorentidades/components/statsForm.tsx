@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import StatsComp, { BaseStats, HPStats } from "../../../entidades/componentes-de-entidades/StatsComp";
+import StatsComp, { BaseStats, HPStats } from "../../../entidades/componentes/StatsComp";
 import Entidad from "../../../entidades/Entidad";
 
 type StatsFormProps = {

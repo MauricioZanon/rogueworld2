@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import RenderComp from "../../../entidades/componentes-de-entidades/RenderComp";
+import RenderComp from "../../../entidades/componentes/RenderComp";
 import Entidad from '../../../entidades/Entidad';
 
 type GraficosFormProps = {

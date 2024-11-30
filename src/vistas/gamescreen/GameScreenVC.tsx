@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Entidad from '../../entidades/Entidad';
 import EntidadFactory from '../../entidades/EntidadFactory';
 import Mapa from '../../mapa/Mapa';
-import { PosicionLocal, modificarTx, modificarTy } from '../../mapa/Posicion';
+import { PosicionLocal, modificarTx, modificarTy, obtenerGlobal, obtenerLocal } from '../../mapa/Posicion';
 import Tile from '../../mapa/Tile';
 import { crearMundoInicial } from '../../mapa/builder/WorldBuilder';
 import { useStore } from '../../store/store';
@@ -11,6 +11,8 @@ import SideBarVC from './components/SideBarVC';
 import PlayerViewController from './controllers/PlayerViewController';
 import './estilosGameScreen.css';
 import { Tiempo } from '../../utils/tiempo/Tiempo';
+import { aStar } from '../../utils/path-finding/AStar';
+import { EventManager } from '../../utils/event-manager/eventManager';
 
 let app: PIXI.Application;
 
@@ -23,6 +25,7 @@ const luzBase = {
 	decimal: 0,
 	hexa: "",
 };
+
 export default function GameScreenVC(): JSX.Element {
 
 	// Esto está como parche para que funcione el hot reload
@@ -44,9 +47,15 @@ export default function GameScreenVC(): JSX.Element {
 			calcularCantidadDeTiles();
 			inicializarFondos();
 			inicializarSimbolos();
-			app.ticker.add(dibujarTiles);
+			app.ticker.maxFPS = 15;
+			app.ticker.add(gameLoop);
 		}
 	});
+
+	function gameLoop(): void {
+		dibujarTiles();
+		EventManager.avanzar();
+	}
 	
 	function crearApp() {
 		app = new PIXI.Application({
@@ -79,7 +88,9 @@ export default function GameScreenVC(): JSX.Element {
 	}
 
 	function onClick(i: number, j: number): void {
-		console.log(tiles[i][j]);
+		const path = aStar(obtenerGlobal(player.posicion), obtenerGlobal(tiles[i][j].posicion));
+		player.movimientoComp.path = path.map((t) => Mapa.obtenerTile(obtenerLocal(t)));
+		// EventManager.avanzar();
 	}
 
 	function inicializarSimbolos(): void {
@@ -116,7 +127,7 @@ export default function GameScreenVC(): JSX.Element {
 				const tile = tiles[i][j];
 				if(player.visionComp.tilesVisibles?.includes(tile)) {
 					actualizarFondo(tile, i, j);
-					actualizarAscii(tile, i, j);
+					actualizarSimbolo(tile, i, j);
 				} else {
 					borrarTile(i, j);
 				}
@@ -151,11 +162,11 @@ export default function GameScreenVC(): JSX.Element {
 			.endFill();
 	}
 	
-	function actualizarAscii(tile: Tile, x: number, y: number): void {
-		const ascii = simbolos[x][y];
-		ascii.text = tile.simbolo;
-		ascii.style.fill = tile.colorSimbolo + luzBase.hexa;
-		ascii.style.dropShadow = !!tile.actor;
+	function actualizarSimbolo(tile: Tile, x: number, y: number): void {
+		const simbolo = simbolos[x][y];
+		simbolo.text = tile.simbolo;
+		simbolo.style.fill = tile.colorSimbolo + luzBase.hexa;
+		simbolo.style.dropShadow = !!tile.actor;
 	}
 	
 	function borrarTile(x: number, y: number): void {

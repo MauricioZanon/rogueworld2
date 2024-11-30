@@ -40,7 +40,15 @@
 				"regeneracion": "1"
 			}
 		},
-		"flags": []
+		"flags": [],
+		"aiComp": {
+			"idle": "randomWalk",
+			"combat": "meleeCombat",
+			"searching": "searching"
+		},
+		"movimientoComp": {
+			"tipoMovimiento": "walk"
+		}
 	},
 	{
 		"tipo": "ACTOR",
@@ -70,7 +78,15 @@
 				"regeneracion": "0.1"
 			}
 		},
-		"flags": []
+		"flags": [],
+		"aiComp": {
+			"idle": "playerIdle",
+			"combat": "playerCombat",
+			"searching": "playerSearching"
+		},
+		"movimientoComp": {
+			"tipoMovimiento": "walk"
+		}
 	},
 	{
 		"tipo": "TERRENO",

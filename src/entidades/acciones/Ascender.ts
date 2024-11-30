@@ -2,8 +2,8 @@ import Mapa from '../../mapa/Mapa';
 import { PosicionLocal } from '../../mapa/Posicion';
 import Tile from '../../mapa/Tile';
 import { useStore } from '../../store/store';
-import { Tiempo } from '../../utils/tiempo/Tiempo';
 import Entidad from '../Entidad';
+import Acciones from './Acciones';
 
 export default (actor: Entidad): void => {
 	const origen: Tile = Mapa.obtenerTile(actor.posicion);
@@ -12,7 +12,7 @@ export default (actor: Entidad): void => {
 		origen.actor = null;
 		destino.actor = actor;
 		useStore.getState().setCentroPantalla(destino.posicion);
-		Tiempo.avanzar(1000);
+		Acciones.terminarTurno(actor);
 	}
 };
 

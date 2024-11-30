@@ -1,6 +1,6 @@
+import fs from "fs";
 import { useStore } from '../vistas/creadorentidades/store/creadorEntidadesStore';
 import Entidad from './Entidad';
-import fs from "fs";
 
 const pathArchivoEntidades = './src/assets/entidades.json';
 
@@ -34,7 +34,7 @@ export default class EntidadRepository {
 	}
 
 	private static sobreescribirNuevaEntidadEnLista(entidades: Entidad[], entidad: Entidad): void {
-		for (let i = 0;i < entidades.length;i++) {
+		for (let i = 0; i < entidades.length; i++) {
 			if (entidades[i].id === entidad.id) {
 				entidades[i] = entidad;
 				return;

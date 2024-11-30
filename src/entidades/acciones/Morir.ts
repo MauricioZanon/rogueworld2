@@ -3,4 +3,7 @@ import Entidad from '../Entidad';
 
 export default (entidad: Entidad): void => {
 	Mapa.obtenerTile(entidad.posicion).actor = null;
+	if(entidad.aiComp) {
+		entidad.aiComp.estaActivo = false;
+	}
 };

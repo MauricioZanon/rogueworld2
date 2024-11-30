@@ -1,10 +1,12 @@
 import Entidad from './Entidad';
 import clone from 'fast-clone';
-import RenderComp from './componentes-de-entidades/RenderComp';
+import RenderComp from './componentes/RenderComp';
 import chroma, { Scale } from 'chroma-js';
 import EntidadRepository from './EntidadRepository';
 import RNG from '../utils/RNG/RNG';
 import { NombreEntidad, ListaEntidades } from '../types/types';
+import AIComp from './componentes/AIComp';
+import { EventManager } from '../utils/event-manager/eventManager';
 
 export default class EntidadFactory {
 
@@ -17,6 +19,7 @@ export default class EntidadFactory {
 			entidad.posicion = { cx: 0, cy: 0, cz: 0, tx: 0, ty: 0 };
 			resultado[entidad.nombreComp.nombre] = entidad;
 		});
+
 		return resultado;
 	}
 
@@ -26,8 +29,18 @@ export default class EntidadFactory {
 		if (nuevaEntidad.renderComp?.colorFondo) {
 			this.randomizarColores(nuevaEntidad.renderComp);
 		}
+		if(nuevaEntidad.aiComp) {
+			this.crearAIComp(nuevaEntidad);
+		}
 		nuevaEntidad.flags = entidadAClonar.flags;
+		if(nuevaEntidad.aiComp) {
+			EventManager.agregar(nuevaEntidad);
+		}
 		return nuevaEntidad;
+	}
+
+	private static crearAIComp(entidad:Entidad): void {
+		entidad.aiComp = new AIComp(entidad.aiComp as any);
 	}
 
 	private static randomizarColores(componente: RenderComp): void {

@@ -9,8 +9,8 @@ import { useStore } from '../../store/store';
 export function crearMundoInicial(): void {
 	const chunk: Chunk = Mapa.obtenerChunk({ cx: 0, cy: 0, cz: 0 });
 
-	crearDungeon({ cx: 0, cy: 0, cz: 0, tx: 0, ty: 0 });
-	// crearCueva({ cx: 0, cy: 0, cz: 0, tx: 0, ty: 0 });
+	// crearDungeon({ cx: 0, cy: 0, cz: 0, tx: 0, ty: 0 });
+	crearCueva({ cx: 0, cy: 0, cz: 0, tx: 0, ty: 0 });
 
 	chunk.obtenerTile({ tx: 12, ty: 12 }).actor = useStore.getState().player;
 }

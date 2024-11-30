@@ -8,6 +8,7 @@ import { MensajeConsola } from '../utils/MensajeConsola';
 export default class PlayerViewController {
 
 	private static accionesHabilitadas = true;
+	
 	public static resolverKeyDown(evento: KeyboardEvent): void {
 		if (PlayerViewController.accionesHabilitadas) {
 
